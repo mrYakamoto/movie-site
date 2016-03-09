@@ -1,25 +1,19 @@
 <div class="row">
 
-<h1>Welcome Home</h1>
+  <h1>Headline 1</h1>
 
-<%@films.each do |film_obj|%>
-  <div class="poster-box">
-    <img class="poster pull-left" src="<%=film_obj.poster_url%>">
-    <div>
-      <p class="showtimes">
-      <%film_obj.screenings.each do |screening_obj|%>
-        <%=screening_obj.date_time.strftime("%I:%M%p")%>
-        <%if screening_obj.id != film_obj.screenings.last.id%>
-         |
-        <%end%>
-      <%end%>
-      </p>
+
+  <div class="buzz-container">
+    <%@films.each do |film_obj|%>
+    <div class="poster-box pull-left col-sm-3 col-md-2">
+      <img class="poster img-responsive" src="<%=film_obj.poster_url%>">
+
     </div>
+
+    <%end%>
+
+  <div class="clearfix">
   </div>
-<%end%>
-
-
-
-
+  </div>
 
 </div>
