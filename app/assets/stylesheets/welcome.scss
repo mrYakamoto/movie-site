@@ -2,4 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+div.buzz-container {
+  padding-left: 5px;
+  padding-right: 5px;
+
+  background-color: gray;
+
+  div.poster-box {
+
+    overflow: hidden;
+    height: 30rem;
+
+
+    img.poster {
+      max-height: 250x;
+      overflow: hidden;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+    }
+  }
+}
+
+
 
