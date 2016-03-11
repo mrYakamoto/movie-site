@@ -57,7 +57,7 @@
     </div>
 
     <!-- Table -->
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="<%=@this_month%>">
       <thead>
         <tr>
           <th>sunday</th>
@@ -72,13 +72,13 @@
       <tbody>
         <%@numbers.each_slice(7) do |slice|%>
         <tr>
-          <td id="td <%=slice[0]%>"><%=slice.shift()%></td>
-          <td id="td <%=slice[0]%>"><%=slice.shift()%></td>
-          <td id="td <%=slice[0]%>"><%=slice.shift()%></td>
-          <td id="td <%=slice[0]%>"><%=slice.shift()%></td>
-          <td id="td <%=slice[0]%>"><%=slice.shift()%></td>
-          <td id="td <%=slice[0]%>"><%=slice.shift()%></td>
-          <td id="td <%=slice[0]%>"><%=slice.shift()%></td>
+          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
+          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
+          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
+          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
+          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
+          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
+          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
         </tr>
         <%end%>
       </tbody>
