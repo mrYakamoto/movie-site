@@ -1,19 +1,53 @@
 <div class="row">
+  <h1></h1>
+</div>
 
-  <h1>Headline 1</h1>
 
+<div class="row buzz-box  clearfix">
+  <div class="col-xs-12">
 
-  <div class="buzz-container">
-    <%@films.each do |film_obj|%>
-    <div class="poster-box pull-left col-sm-3 col-md-2">
-      <img class="poster img-responsive" src="<%=film_obj.poster_url%>">
-
+    <div class="page-header">
+      <h3>San Francisco Film Calendar</h3>
+      <p>The most interesting screenings</p>
     </div>
 
-    <%end%>
 
-  <div class="clearfix">
-  </div>
-  </div>
 
-</div>
+
+    <ul class="thumbnails clearfix">
+
+      <%@top_three_films_arr.each do |film_obj|%>
+
+      <li class="col-xs-4 col-sm-3 col-md-2">
+        <div class="thumbnail">
+
+            <a href="#"><img src="<%=film_obj.poster_url%>" alt=""></a>
+
+        </div>
+      </li>
+
+      <%end%>
+
+      <li class="hidden-xs col-sm-3 col-md-2 ">
+        <div class="thumbnail">
+          <a href="#"><img src="<%=@fourth_top_film.poster_url%>" alt=""></a>
+        </div>
+      </li>
+
+      <% @fifth_and_sixth_top_films_arr.each do |film_obj| %>
+      <li class="hidden-xs hidden-sm col-md-2 ">
+        <div class="thumbnail">
+          <a href="#"><img src="<%=film_obj.poster_url%>" alt=""></a>
+        </div>
+      </li>
+
+      <%end%>
+
+
+    </ul>
+
+
+  </div>
+</div><!-- /.container -->
+
+

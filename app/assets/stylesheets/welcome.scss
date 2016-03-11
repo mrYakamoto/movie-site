@@ -8,29 +8,26 @@
   box-sizing: border-box;
 }
 
-
-div.buzz-container {
-  padding-left: 5px;
-  padding-right: 5px;
-
-  background-color: gray;
-
-  div.poster-box {
-
-    overflow: hidden;
-    height: 30rem;
-
-
-    img.poster {
-      max-height: 250x;
-      overflow: hidden;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-
-    }
-  }
+/*set html font-size at 62.5 to make sizing with rems similar to pixels*/
+html {
+  font-size: 62.5%;
 }
 
+body {
+  overflow-x: hidden;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+
+
+img.poster {
+  /*min-height: 100px;*/
+  max-height: 250px;
+}
 
 
