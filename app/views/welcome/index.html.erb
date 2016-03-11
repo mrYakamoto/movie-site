@@ -52,40 +52,42 @@
   <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading"><%=@this_month_str%></div>
-    <div class="panel-body">
-      <p></p>
-    </div>
 
     <!-- Table -->
-    <table class="table table-bordered" id="<%=@this_month_num%>">
-      <thead>
-        <tr>
-          <th>sunday</th>
-          <th>monday</th>
-          <th>tuesday</th>
-          <th>wednesday</th>
-          <th>thursday</th>
-          <th>friday</th>
-          <th>saturday</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%@numbers.each_slice(7) do |slice|%>
-        <tr>
-          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
-          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
-          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
-          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
-          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
-          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
-          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
-        </tr>
-        <%end%>
-      </tbody>
-    </table>
+    <div id="no-more-tables">
+      <table class="table table-bordered col-sm-12 table-condensed cf" id="<%=@this_month_num%>">
+        <thead class="cf">
+          <tr>
+            <th>sunday</th>
+            <th>monday</th>
+            <th>tuesday</th>
+            <th>wednesday</th>
+            <th>thursday</th>
+            <th>friday</th>
+            <th>saturday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@numbers.each_slice(7) do |slice|%>
+          <tr>
+            <td data-title="sunday, <%="#{@this_month_str.downcase} #{slice[0]}"%>" class="clearfix date-box" id="td<%=slice[0]%>"><span class='date hidden-xs'><%=slice.shift()%></span></td>
+            <td data-title="monday, <%="#{@this_month_str.downcase} #{slice[0]}"%>" class="clearfix date-box"id="td<%=slice[0]%>"><span class='date hidden-xs'><%=slice.shift()%></span></td>
+            <td data-title="tuesday, <%="#{@this_month_str.downcase} #{slice[0]}"%>" class="clearfix date-box"id="td<%=slice[0]%>"><span class='date hidden-xs'><%=slice.shift()%></span></td>
+            <td data-title="wednesday, <%="#{@this_month_str.downcase} #{slice[0]}"%>" class="clearfix date-box"id="td<%=slice[0]%>"><span class='date hidden-xs'><%=slice.shift()%></span></td>
+            <td data-title="thursday, <%="#{@this_month_str.downcase} #{slice[0]}"%>" class="clearfix date-box"id="td<%=slice[0]%>"><span class='date hidden-xs'><%=slice.shift()%></span></td>
+            <td data-title="friday, <%="#{@this_month_str.downcase} #{slice[0]}"%>" class="clearfix date-box"id="td<%=slice[0]%>"><span class='date hidden-xs'><%=slice.shift()%></span></td>
+            <td data-title="saturday, <%="#{@this_month_str.downcase} #{slice[0]}"%>" class="clearfix date-box"id="td<%=slice[0]%>"><span class='date hidden-xs'><%=slice.shift()%></span></td>
+          </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
 
   </div>
 </div>
+
+
+
 
 
 
