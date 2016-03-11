@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get '/screenings/:month' => 'screening#screenings'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
