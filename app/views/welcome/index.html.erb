@@ -51,13 +51,13 @@
 <div class="row">
   <div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading">Panel heading</div>
+    <div class="panel-heading"><%=@this_month_str%></div>
     <div class="panel-body">
       <p></p>
     </div>
 
     <!-- Table -->
-    <table class="table table-bordered" id="<%=@this_month%>">
+    <table class="table table-bordered" id="<%=@this_month_num%>">
       <thead>
         <tr>
           <th>sunday</th>
@@ -72,17 +72,18 @@
       <tbody>
         <%@numbers.each_slice(7) do |slice|%>
         <tr>
-          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
-          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
-          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
-          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
-          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
-          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
-          <td id="td<%=slice[0]%>"><%=slice.shift()%></td>
+          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
+          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
+          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
+          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
+          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
+          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
+          <td id="td<%=slice[0]%>"><span class='date'><%=slice.shift()%></span></td>
         </tr>
         <%end%>
       </tbody>
     </table>
+
   </div>
 </div>
 
