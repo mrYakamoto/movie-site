@@ -2,6 +2,7 @@ class CreateScreenings < ActiveRecord::Migration
   def change
     create_table :screenings do |t|
       t.datetime :date_time
+      t.string :month
       t.string :ticketing_url
 
       t.integer :film_id
