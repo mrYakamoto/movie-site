@@ -1,7 +1,3 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -23,8 +19,6 @@ body {
   float: none;
 }
 
-
-
 img.poster {
   /*min-height: 100px;*/
   max-height: 250px;
@@ -42,7 +36,13 @@ th, td {
   width: 14.29%;
 }
 
-/*no-more-tables*/
+div.page-header h1 {
+  font-size: 3rem;
+}
+
+
+
+/*Calendar styling ('no-more-tables' based responsive styling)*/
 @media only screen and (max-width: 768px) {
   /* Force table to not be like tables anymore */
   #no-more-tables table,
@@ -95,6 +95,7 @@ th, td {
     padding-top: 10px !important;
   }
 }
+
 
 
 
