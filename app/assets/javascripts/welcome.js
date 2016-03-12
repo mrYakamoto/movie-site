@@ -5,23 +5,26 @@ $('document').ready(function(){
 });
 
 
-
-
 function addScreeningsToCalendar(screenings){
   for (var key in screenings){
     console.log(key);
     for(var i = 0; i < screenings[key].length; i++){
-      var movie = screenings[key][i]["movie"];
-      var showtime = screenings[key][i]["showtime"];
-      var theater = screenings[key][i]["theater"];
+      var movie = screenings[key][i].movie;
+      var showtime = screenings[key][i].showtime;
+      var theater = screenings[key][i].theater;
+
       console.log(movie);
       console.log(showtime);
       console.log(theater);
-      $("td#td"+key).append("<br>" + movie + "<br>" + showtime + "<br>" + theater);
+      $("td#td"+key).append("<br><span class='film-title'>"+movie+"</span><br><span class='showtime'>"+showtime+"</span><br><span class='theater-name'>"+theater+"</span>");
     }
-
   }
-};
+  addPlaceholderToEmptyDays();
+}
+
+function addPlaceholderToEmptyDays(){
+  $('td span:only-child').parent().append("<br><span class='placeholder hidden-sm hidden-md hidden-lg hidden-xl'>no screenings</span>")
+}
 
 
 function thisMonth(){

@@ -1,7 +1,3 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -18,16 +14,90 @@ body {
 }
 
 .vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
 }
-
-
 
 img.poster {
   /*min-height: 100px;*/
   max-height: 250px;
 }
+
+span.film-title {
+  font-weight: 800;
+}
+
+span.date {
+  float: right;
+}
+
+th, td {
+  width: 14.29%;
+}
+
+div.page-header h1 {
+  font-size: 3rem;
+}
+
+
+
+/*Calendar styling ('no-more-tables' based responsive styling)*/
+@media only screen and (max-width: 768px) {
+  /* Force table to not be like tables anymore */
+  #no-more-tables table,
+  #no-more-tables thead,
+  #no-more-tables tbody,
+  #no-more-tables th,
+  #no-more-tables td,
+  #no-more-tables tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  #no-more-tables thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  #no-more-tables { border: 1px solid #ccc; }
+
+  #no-more-tables td {
+    /* Behave like a "row" */
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    white-space: normal;
+    text-align:left;
+  }
+
+  #no-more-tables td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 100%;
+    white-space: nowrap;
+    text-align:left;
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+
+  span.placeholder { font-style: italic; }
+
+  /* Label the data */
+  #no-more-tables td:before { content: attr(data-title); }
+
+  td.date-box {
+    padding-top: 10px !important;
+  }
+}
+
+
+
+
 
 

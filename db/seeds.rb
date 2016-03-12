@@ -72,7 +72,7 @@ def create_screenings()
   puts "="*5 << "SEEDING-SCREENINGS" << "="*5
   Film.all.each do |film_obj|
     3.times do
-      time = DateTime.new(2016,05,rand(1..31),rand(11..23),rand(1..59),0)
+      time = DateTime.new(2016,03,rand(1..31),rand(11..23),rand(1..59),0)
       month = time.month.to_s
       theater_id = rand(1..2)
       film_obj.screenings.create!(date_time: time, month: month,ticketing_url: "#", theater_id: theater_id)
