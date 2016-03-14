@@ -5,7 +5,7 @@ class ScreeningController < ApplicationController
     puts "="*50
 
     # month = params[:month]
-    month = '5'
+    month = '3'
 
     @screenings = Screening.full_month_screenings(month)
 

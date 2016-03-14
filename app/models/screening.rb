@@ -2,6 +2,8 @@ class Screening < ActiveRecord::Base
   belongs_to :theater
   belongs_to :film
 
+
+
   def self.full_month_screenings(month)
     screenings_arr = Screening.all.where(month: month)
     screenings_hash = {}

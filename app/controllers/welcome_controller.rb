@@ -2,6 +2,9 @@
 class WelcomeController < ApplicationController
   include CalendarHelper
 
+  require 'nokogiri'
+  require 'open-uri'
+
   def index
     @films = []
     Film.all.each{|film_obj|@films << film_obj}
@@ -12,6 +15,10 @@ class WelcomeController < ApplicationController
     @this_month_num = DateTime.now().month.to_s
     @this_month_str = Date::MONTHNAMES[Date.today.month]
     @numbers = nums_for_calendar_month
+  end
+
+
+  def scrape
   end
 
 
