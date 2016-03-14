@@ -12,11 +12,12 @@ function addScreeningsToCalendar(screenings){
       var movie = screenings[key][i].movie;
       var showtime = screenings[key][i].showtime;
       var theater = screenings[key][i].theater;
+      var url = screenings[key][i].ticketing_url
 
       console.log(movie);
       console.log(showtime);
       console.log(theater);
-      $("td#td"+key).append("<br><span class='film-title'>"+movie+"</span><br><span class='showtime'>"+showtime+"</span><br><span class='theater-name'>"+theater+"</span>");
+      $("td#td"+key).append("<br><a href="+url+"><span class='film-title'>"+movie+"</a></span><br><span class='showtime'>"+showtime+"</span><br><span class='theater-name'>"+theater+"</span>");
     }
   }
   addPlaceholderToEmptyDays();
