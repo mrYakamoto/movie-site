@@ -1,11 +1,11 @@
 require 'nokogiri'
 require 'open-uri'
 
-class RoxieScraper
-  attr_reader :calendar_url
-  @@calendar_url = 'http://www.roxie.com/calendar/'
+class Scraper
+  attr_reader :roxie_main
+  @@roxie_main = 'http://www.roxie.com/calendar/'
 
-  def self.ingest
+  def self.ingest_this_month
     data = RoxieScraper.scrape
 
     year = Time.parse(data['month_year']).year
@@ -45,8 +45,8 @@ class RoxieScraper
   end
 
 
-  def self.scrape
-    html = open(@@calendar_url)
+  def self.scrape_roxie_main
+    html = open(@@roxie_main)
 
     calendar = Nokogiri::HTML(html.read.gsub!("&nbsp;",""))
     month_year = calendar.css('.ai1ec-calendar-title').text
@@ -55,8 +55,6 @@ class RoxieScraper
 
     data = {}
     urls = {}
-
-
 
     full_days.each do |day|
       date = day.css('.ai1ec-date').text

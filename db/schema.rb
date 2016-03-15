@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160308205446) do
     t.datetime "date_time"
     t.string   "month"
     t.string   "mday"
+    t.string   "time"
     t.string   "ticketing_url"
     t.integer  "film_id"
     t.integer  "theater_id"

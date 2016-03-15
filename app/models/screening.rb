@@ -9,13 +9,11 @@ class Screening < ActiveRecord::Base
     screenings_hash = {}
 
     screenings_arr.each do |screening_obj|
-      showtime = Screening.date_time_to_string(screening_obj.date_time).downcase
-
-
+      showtime_html = "<a href='#{screening_obj.ticketing_url}''><span class='showtime'>#{screening_obj.time}</span></a>"
 
       screening_inf = {
         :movie => screening_obj.film.title,
-        :showtime => showtime,
+        :showtime_html => showtime_html,
         :theater => screening_obj.theater.name,
         :ticketing_url => screening_obj.ticketing_url
       }
@@ -24,7 +22,7 @@ class Screening < ActiveRecord::Base
 
       if screenings_hash[mday].any?{|info|info.has_value?(screening_inf[:movie])}
         existing_showtime_info = screenings_hash[mday].select{|info|info[:movie] == screening_inf[:movie]}.first
-        existing_showtime_info[:showtime] << " | #{screening_inf[:showtime]}"
+        existing_showtime_info[:showtime_html] << " " << "#{screening_inf[:showtime_html]}"
       else
         screenings_hash[mday] << screening_inf
       end

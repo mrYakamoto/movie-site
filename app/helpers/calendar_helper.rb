@@ -6,21 +6,25 @@ module CalendarHelper
     # today_obj = DateTime.new(2016,03,5)
     today_obj = DateTime.now()
     month_starts_on = DateTime.new(today_obj.year, today_obj.month, 1).wday
-    puts "MONTH_STARTS_ON"
-    puts "=#{month_starts_on}"
-    if (month_starts_on != 0)
-      calendar_nums = filler_days(today_obj, month_starts_on)
+    if ((today_obj.mday <= 6)&&(month_starts_on != 0))
+      calendar_nums = prev_month_filler_days(today_obj, month_starts_on)
     end
 
     calendar_nums ||= []
 
-    (1..days_this_month(today_obj)).each do |n|
+    if (today_obj.wday != 0)
+      first_day = today_obj.mday - today_obj.wday
+    else
+      first_day = today_obj.mday
+    end
+
+    (first_day..days_this_month(today_obj)).each do |n|
       calendar_nums << n
     end
     return calendar_nums
   end
 
-  def filler_days(today_obj, month_starts_on)
+  def prev_month_filler_days(today_obj, month_starts_on)
     puts "="*50
     puts "FILLER DAYS"
     prev_month_str = Date::MONTHNAMES[today_obj.prev_month.month].downcase
@@ -37,7 +41,7 @@ module CalendarHelper
     dates_from_last_month = Array(first_filler_date..prev_month_days)
     puts "DATES_FROM_LAST_MONTH"
     puts dates_from_last_month
-    dates_from_last_month.map!{|date|Array[date,prev_month_str]}
+    dates_from_last_month.map!{|date|Array["-#{date}-",prev_month_str]}
   end
 
   def days_this_month(today_obj)
