@@ -10,21 +10,21 @@ function addScreeningsToCalendar(screenings){
     console.log(key);
     for(var i = 0; i < screenings[key].length; i++){
       var movie = screenings[key][i].movie;
-      var showtime = screenings[key][i].showtime;
+      var showtimeHtml = screenings[key][i].showtime_html;
       var theater = screenings[key][i].theater;
       var url = screenings[key][i].ticketing_url
 
       console.log(movie);
-      console.log(showtime);
+      console.log(showtimeHtml);
       console.log(theater);
-      $("td#td"+key).append("<br><a href="+url+"><span class='film-title'>"+movie+"</a></span><br><span class='showtime'>"+showtime+"</span><br><span class='theater-name'>"+theater+"</span>");
+      $("td#td"+key).append("<br><span class='film-title'>"+movie+"</span><br>"+showtimeHtml+"<br><span class='theater-name'>"+theater+"</span>");
     }
   }
   addPlaceholderToEmptyDays();
 }
 
 function addPlaceholderToEmptyDays(){
-  $('td span:only-child').parent().append("<br><span class='placeholder hidden-sm hidden-md hidden-lg hidden-xl'>no screenings</span>")
+  $('td span.date:last-child').parent().append("<br><span class='placeholder hidden-sm hidden-md hidden-lg hidden-xl'>no screenings</span>")
 }
 
 

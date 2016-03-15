@@ -13,6 +13,10 @@ body {
   overflow-x: hidden;
 }
 
+a:hover {
+  text-decoration: none !important;
+}
+
 .vcenter {
   display: inline-block;
   vertical-align: middle;
