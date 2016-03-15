@@ -4,6 +4,8 @@
   </div>
 </div>
 
+<h2>Most Popular Screenings</h2>
+
 <div class="row buzz-box  clearfix">
   <div class="col-xs-12">
 
@@ -12,9 +14,13 @@
       <%@top_three_films_arr.each do |film_obj|%>
 
       <li class="col-xs-4 col-sm-3 col-md-2">
-        <div class="thumbnail">
-
-          <a href="#"><img src="<%=film_obj.poster_url%>" alt=""></a>
+        <div class="thumbnail clearfix">
+          <a href="#">
+            <img src="<%=film_obj.poster_url%>" alt="">
+            <div class="overlay">
+              <h2><%=film_obj.title%></h2>
+            </div>
+          </a>
 
         </div>
       </li>
@@ -23,14 +29,22 @@
 
       <li class="hidden-xs col-sm-3 col-md-2 ">
         <div class="thumbnail">
-          <a href="#"><img src="<%=@fourth_top_film.poster_url%>" alt=""></a>
+          <a href="#"><img src="<%=@fourth_top_film.poster_url%>" alt="">
+            <div class="overlay">
+              <h2><%=@fourth_top_film.title%></h2>
+            </div>
+          </a>
         </div>
       </li>
 
       <% @fifth_and_sixth_top_films_arr.each do |film_obj| %>
       <li class="hidden-xs hidden-sm col-md-2 ">
         <div class="thumbnail">
-          <a href="#"><img src="<%=film_obj.poster_url%>" alt=""></a>
+          <a href="#"><img src="<%=film_obj.poster_url%>" alt="">
+            <div class="overlay">
+              <h2><%=film_obj.title%></h2>
+            </div>
+          </a>
         </div>
       </li>
 
@@ -69,53 +83,53 @@
               <td data-title="sunday,
               <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
               class="clearfix date-box" id="td<%=slice[0]%>">
-                <span class='date hidden-xs'><%=slice[0].class == Array ? slice.shift()[0]:slice.shift()%></span>
-              </td>
+              <span class='date hidden-xs'><%=slice[0].class == Array ? slice.shift()[0]:slice.shift()%></span>
+            </td>
 
-              <td data-title="monday,
-              <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-              class="clearfix date-box" id="td<%=slice[0]%>">
-                <span class='date hidden-xs'><%=slice.shift()%></span>
-              </td>
+            <td data-title="monday,
+            <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
+            class="clearfix date-box" id="td<%=slice[0]%>">
+            <span class='date hidden-xs'><%=slice.shift()%></span>
+          </td>
 
-              <td data-title="tuesday,
-              <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-              class="clearfix date-box"id="td<%=slice[0]%>">
-                <span class='date hidden-xs'><%=slice.shift()%></span>
-              </td>
+          <td data-title="tuesday,
+          <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
+          class="clearfix date-box"id="td<%=slice[0]%>">
+          <span class='date hidden-xs'><%=slice.shift()%></span>
+        </td>
 
-              <td data-title="wednesday,
-              <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-              class="clearfix date-box"id="td<%=slice[0]%>">
-                <span class='date hidden-xs'><%=slice.shift()%></span>
-              </td>
+        <td data-title="wednesday,
+        <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
+        class="clearfix date-box"id="td<%=slice[0]%>">
+        <span class='date hidden-xs'><%=slice.shift()%></span>
+      </td>
 
-              <td data-title="thursday,
-              <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-              class="clearfix date-box"id="td<%=slice[0]%>">
-                <span class='date hidden-xs'><%=slice.shift()%></span>
-              </td>
+      <td data-title="thursday,
+      <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
+      class="clearfix date-box"id="td<%=slice[0]%>">
+      <span class='date hidden-xs'><%=slice.shift()%></span>
+    </td>
 
-              <td data-title="friday,
-              <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-              class="clearfix date-box"id="td<%=slice[0]%>">
-                <span class='date hidden-xs'><%=slice.shift()%></span>
-              </td>
+    <td data-title="friday,
+    <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
+    class="clearfix date-box"id="td<%=slice[0]%>">
+    <span class='date hidden-xs'><%=slice.shift()%></span>
+  </td>
 
-              <td data-title="saturday,
-              <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-              class="clearfix date-box"id="td<%=slice[0]%>">
-                <span class='date hidden-xs'><%=slice.shift()%></span>
-              </td>
+  <td data-title="saturday,
+  <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
+  class="clearfix date-box"id="td<%=slice[0]%>">
+  <span class='date hidden-xs'><%=slice.shift()%></span>
+</td>
 
-            </tr>
-            <%end%>
-          </tbody>
-        </table>
-      </div>
+</tr>
+<%end%>
+</tbody>
+</table>
+</div>
 
-    </div>
-  </div>
+</div>
+</div>
 </div>
 
 

@@ -2,7 +2,19 @@
 
 $('document').ready(function(){
   thisMonthsScreenings();
+  addBuzzBoxPosterListener();
 });
+
+
+function addBuzzBoxPosterListener(){
+  $('div.thumbnail').hover(
+    function(){
+      $( this ).find('.overlay').fadeIn( 500 );
+    },
+    function(){
+      $( this ).find('.overlay').fadeOut( 500 );
+    })
+}
 
 
 function addScreeningsToCalendar(screenings){
