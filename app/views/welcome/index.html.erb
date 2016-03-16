@@ -89,24 +89,24 @@
               <td data-title="<%=@date_filler.strftime("%A, %B %-d")%>"
                 class="clearfix date-box" id="td-<%=@date_filler.strftime("%-m-%-d-%Y")%>">
                 <span class='date hidden-xs'><%=@date_filler.mday%></span>
-                <% if (films_today(@date_filler)) %>
+                <% if (films_today?(@date_filler)) %>
 
                   <% films_today(@date_filler).each do |film| %>
                     <br>
                     <span class='film-title'>
-                      <%= screening.film.title %>
+                      <%= film.title %>
                     </span>
                     <br>
 
-                    <% screenings.today(film).each do |screening| %>
+                    <% screenings_today(film, @date_filler).each do |screening| %>
                       <a href="<%= screening.ticketing_url %>">
-                        <span class='showtime'>"<%= screening.time %>"</span>
+                        <span class='showtime'><%= screening.time %></span>
                       </a>
                     <% end %>
 
                     <br>
                     <span class='theater-name'>
-                      <%= theater_name(film) %>
+                      <%= theater_name(film, @date_filler) %>
                     </span>
                   <% end %>
 
