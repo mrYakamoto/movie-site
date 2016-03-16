@@ -1,9 +1,6 @@
-include CalendarHelper
 include UsersHelper
 
 class WelcomeController < ApplicationController
-  require 'nokogiri'
-  require 'open-uri'
 
   def index
     @films = []
@@ -11,12 +8,6 @@ class WelcomeController < ApplicationController
     @top_three_films_arr = @films.sample(3)
     @fourth_top_film = @films.sample()
     @fifth_and_sixth_top_films_arr = @films.sample(2)
-
-    @this_month_num = DateTime.now().month.to_s
-    @this_month_str = Date::MONTHNAMES[Date.today.month]
-    @numbers = nums_for_calendar_month
-
-# refactor
 
     @date_filler = DateTime.now()
     @screenings = Screening.all.where("month >= ? AND mday > ?",@date_filler.month, @date_filler.mday)
