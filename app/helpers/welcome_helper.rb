@@ -1,25 +1,40 @@
 module WelcomeHelper
+  require 'date'
 
-  def from_past_month?(date)
-    date.class == Array ? true : false
+
+  # pseudo for refactoring
+  # send all screening objects for a month, grouped by day, to the view
+  # send today's DateTime object to the view
+
+  # if today's wday is != 0, fill in the filler dates
+    # helper method
+  # for each date after those, get all screening objects and display their info
+
+
+  def set_start_date(date)
+    date - date.wday
   end
 
-  def get_past_month_string(date)
-    "#{date.pop()} #{date[0]}"
+  def films_today?(date)
+    return true if Screening.find_by("month = ? AND mday = ? AND year = ?",date.month, date.mday, date.year)
+    false
   end
 
-  def reformat_array_to_string(date)
-    date[0].to_s
-  end
-
-  def handle_past_month_info(slice)
-    if from_past_month?(slice[0])
-      string = get_past_month_string(slice[0])
-      slice[0] = reformat_array_to_string(slice[0])
-      return string
-    else
-      false
+  def films_today(date)
+    screenings = Screening.where("month = ? AND mday = ? AND year = ?",date.month, date.mday, date.year)
+    films = []
+    screenings.each do |screening|
+      films << screening.film unless films.include?(screening.film)
     end
+    films
+  end
+
+  def screenings_today(film, date)
+    film.screenings.where("month = ? AND mday = ? AND year = ?",date.month, date.mday, date.year)
+  end
+
+  def theater_name(film, date)
+    Screening.find_by("month = ? AND mday = ? AND year = ?",date.month, date.mday, date.year).theater.name
   end
 
 end

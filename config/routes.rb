@@ -2,12 +2,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  get '/screenings/:month' => 'screening#screenings'
-
   resources :users do
   end
-
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

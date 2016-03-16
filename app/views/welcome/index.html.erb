@@ -1,4 +1,4 @@
-<div class="container">
+  <div class="container">
   <div class="row page-header">
     <h1>San Francisco Film Calendar</h1>
   </div>
@@ -6,6 +6,7 @@
 
 <h2>Most Popular Screenings</h2>
 
+<!-- buzz-box -->
 <div class="row buzz-box  clearfix">
   <div class="col-xs-12">
 
@@ -50,22 +51,25 @@
 
       <%end%>
 
-
     </ul>
 
-
   </div>
-</div><!-- /buzz-box -->
+</div>
+<!-- /buzz-box -->
+
 
 <div class="container">
+  <% end_month = @date_filler.month + 2%>
+  <% until @date_filler.month == end_month%>
+  <% @date_filler = set_start_date(@date_filler) %>
   <div class="row">
     <div class="panel panel-default">
       <!-- Default panel contents -->
-      <div class="panel-heading"><%=@this_month_str%></div>
+      <div class="panel-heading"><%= Date::MONTHNAMES[@date_filler.month] %></div>
 
-      <!-- Table -->
+      <!-- Calendar -->
       <div id="no-more-tables">
-        <table class="table table-bordered col-sm-12 table-condensed cf" id="<%=@this_month_num%>">
+        <table class="table table-bordered col-sm-12 table-condensed cf" id="<%= Date::MONTHNAMES[@date_filler.month] %>">
           <thead class="cf">
             <tr>
               <th>sunday</th>
@@ -78,62 +82,48 @@
             </tr>
           </thead>
           <tbody>
-            <%@numbers.each_slice(7) do |slice|%>
+            <% next_month = @date_filler.month + 1 %>
+            <% until @date_filler.month == next_month %>
             <tr>
-              <td data-title="sunday,
-              <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-              class="clearfix date-box" id="td<%=slice[0]%>">
-              <span class='date hidden-xs'><%=slice[0].class == Array ? slice.shift()[0]:slice.shift()%></span>
-            </td>
+              <% 7.times do %>
+              <td data-title="<%=@date_filler.strftime("%A, %B %-d")%>"
+                class="clearfix date-box" id="td-<%=@date_filler.strftime("%-m-%-d-%Y")%>">
+                <span class='date hidden-xs'><%=@date_filler.mday%></span>
+                <% if (films_today?(@date_filler)) %>
 
-            <td data-title="monday,
-            <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-            class="clearfix date-box" id="td<%=slice[0]%>">
-            <span class='date hidden-xs'><%=slice.shift()%></span>
-          </td>
+                  <% films_today(@date_filler).each do |film| %>
+                    <br>
+                    <span class='film-title'>
+                      <%= film.title %>
+                    </span>
+                    <br>
 
-          <td data-title="tuesday,
-          <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-          class="clearfix date-box"id="td<%=slice[0]%>">
-          <span class='date hidden-xs'><%=slice.shift()%></span>
-        </td>
+                    <% screenings_today(film, @date_filler).each do |screening| %>
+                      <a href="<%= screening.ticketing_url %>">
+                        <span class='showtime'><%= screening.time %></span>
+                      </a>
+                    <% end %>
 
-        <td data-title="wednesday,
-        <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-        class="clearfix date-box"id="td<%=slice[0]%>">
-        <span class='date hidden-xs'><%=slice.shift()%></span>
-      </td>
+                    <br>
+                    <span class='theater-name'>
+                      <%= theater_name(film, @date_filler) %>
+                    </span>
+                  <% end %>
 
-      <td data-title="thursday,
-      <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-      class="clearfix date-box"id="td<%=slice[0]%>">
-      <span class='date hidden-xs'><%=slice.shift()%></span>
-    </td>
+                <% else %>
+                  <br><span class='placeholder hidden-sm hidden-md hidden-lg hidden-xl'>no screenings</span>
+                <% end %>
 
-    <td data-title="friday,
-    <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-    class="clearfix date-box"id="td<%=slice[0]%>">
-    <span class='date hidden-xs'><%=slice.shift()%></span>
-  </td>
+              </td>
+              <% @date_filler += 1 %>
+              <% end %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
-  <td data-title="saturday,
-  <%= handle_past_month_info(slice) ||  "#{@this_month_str.downcase} #{slice[0]}"%>"
-  class="clearfix date-box"id="td<%=slice[0]%>">
-  <span class='date hidden-xs'><%=slice.shift()%></span>
-</td>
-
-</tr>
-<%end%>
-</tbody>
-</table>
+    </div>
+  </div>
+  <% end %>
 </div>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-

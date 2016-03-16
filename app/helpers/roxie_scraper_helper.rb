@@ -32,7 +32,7 @@ module RoxieScraperHelper
       new_film = Film.create_with(poster_url: poster_url).find_or_create_by!(title: film_title)
 
 
-      new_film.screenings.create!(date_time: date_time_obj, month: date_time_obj.month, mday: date_time_obj.mday, time: showtime, ticketing_url: ticketing_url, theater_id: theater_id)
+      new_film.screenings.create!(date_time: date_time_obj, month: date_time_obj.month, mday: date_time_obj.mday, year: date_time_obj.year, time: showtime, ticketing_url: ticketing_url, theater_id: theater_id)
 
     end
   end
@@ -51,7 +51,7 @@ module RoxieScraperHelper
   end
 
   def format_time(date_time_obj)
-    time = date_time_obj.strftime("%I:%M%p")
+    time = date_time_obj.strftime("%I:%M%p".downcase)
     return time.slice(1,time.length) if time [0] == "0"
     time
   end

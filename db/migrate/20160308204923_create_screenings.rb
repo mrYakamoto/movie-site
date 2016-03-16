@@ -2,8 +2,9 @@ class CreateScreenings < ActiveRecord::Migration
   def change
     create_table :screenings do |t|
       t.datetime :date_time
-      t.string :month
-      t.string :mday
+      t.integer :month
+      t.integer :mday
+      t.integer :year
       t.string :time
       t.string :ticketing_url
 
