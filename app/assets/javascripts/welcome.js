@@ -1,7 +1,7 @@
 "use strict";
 
 $('document').ready(function(){
-  thisMonthsScreenings();
+  // thisMonthsScreenings();
   addBuzzBoxPosterListener();
 });
 

@@ -4,12 +4,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-user_seeds = {
-  "mr.gregory" => "gregg@gmail.com",
-  "balthasar" => "balthasar@yahoo.com",
-  "mryakamoto" => "mryakamoto@me.com",
-  "buddylee" => "buddylee@aol.com"
-}
+# user_seeds = {
+#   "mr.gregory" => "gregg@gmail.com",
+#   "balthasar" => "balthasar@yahoo.com",
+#   "mryakamoto" => "mryakamoto@me.com",
+#   "buddylee" => "buddylee@aol.com"
+# }
 
 # film_seeds = {
 #   "Carol" => "assets/seed_posters/carol.jpg",
@@ -81,7 +81,7 @@ theater_seeds = {
 #   end
 # end
 
-create_users(user_seeds)
+# create_users(user_seeds)
 # create_films(film_seeds)
 create_theaters(theater_seeds)
 # create_screenings

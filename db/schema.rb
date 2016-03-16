@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20160308205446) do
 
   create_table "screenings", force: :cascade do |t|
     t.datetime "date_time"
-    t.string   "month"
-    t.string   "mday"
+    t.integer  "month"
+    t.integer  "mday"
     t.string   "time"
     t.string   "ticketing_url"
     t.integer  "film_id"

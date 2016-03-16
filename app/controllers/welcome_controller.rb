@@ -15,6 +15,11 @@ class WelcomeController < ApplicationController
     @this_month_num = DateTime.now().month.to_s
     @this_month_str = Date::MONTHNAMES[Date.today.month]
     @numbers = nums_for_calendar_month
+
+# refactor
+
+    @date_filler = DateTime.now()
+    @screenings = Screening.all.where("month >= ? AND mday > ?",@date_filler.month, @date_filler.mday)
   end
 
 end

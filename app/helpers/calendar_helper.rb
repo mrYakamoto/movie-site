@@ -2,6 +2,20 @@
 module CalendarHelper
   require 'date'
 
+  # pseudo for refactoring
+  # send all screening objects for a month, grouped by day, to the view
+  # send today's DateTime object to the view
+
+  # if today's wday is != 0, fill in the filler dates
+    # helper method
+  # for each date after those, get all screening objects and display their info
+
+
+  def filler_days(todays_mday)
+
+  end
+
+
   def nums_for_calendar_month
     # today_obj = DateTime.new(2016,03,5)
     today_obj = DateTime.now()
