@@ -1,0 +1,14 @@
+<div class="container">
+  <% if @user.errors.any? %>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= pluralize(@user.errors.count, "error") %> prohibited your account from being created:</h3>
+    </div>
+    <div class="panel-body">
+      <%= @user.errors.full_messages.join(", ") %>
+    </div>
+  </div>
+  <% end %>
+  <legend>New User Registration</legend>
+  <%= render 'users/form' %>
+</div>
