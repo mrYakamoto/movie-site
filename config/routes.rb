@@ -2,8 +2,11 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :users do
-  end
+  resources :users
+
+  resources :users_films, only: [:create, :destroy]
+
+  resources :sessions, only: [:new, :create, :destroy]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

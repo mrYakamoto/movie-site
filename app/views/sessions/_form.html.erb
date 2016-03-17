@@ -1,0 +1,30 @@
+<%= form_for :session, url: sessions_path, html: {:class => 'form-horizontal'} do |f| %>
+  <fieldset>
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="username">Username</label>
+    <div class="col-md-6">
+    <input id="username_or_email" name="username_or_email" type="text" placeholder="username or email" class="form-control input-md" required="">
+
+    </div>
+  </div>
+
+  <!-- Password input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="password_plaintext">Password</label>
+    <div class="col-md-6">
+      <input id="password_plaintext" name="password_plaintext" type="password" placeholder="" class="form-control input-md" required="">
+
+    </div>
+  </div>
+
+  <!-- Button -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="login"></label>
+    <div class="col-md-4">
+      <button id="login" name="login" class="btn btn-primary">Login</button>
+    </div>
+  </div>
+
+  </fieldset>
+<% end %>
