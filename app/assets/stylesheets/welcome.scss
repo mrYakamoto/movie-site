@@ -3,6 +3,17 @@
   display: none;
 }
 
+.alert {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  margin-top: 100px;
+  z-index: 9999;
+
+  transform: translate(-50%);
+}
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

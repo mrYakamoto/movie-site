@@ -10,9 +10,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+    <center>
+      <div class="alert alert-info" data-dismiss="alert" role="alert">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+    </center>
+
+    <center>
+    <div class="alert alert-danger" data-dismiss="alert" role="alert">
+    </div>
+    </center>
+
+    <center>
+      <div class="alert alert-success" data-dismiss="alert" role="alert">
+    </div>
+    </center>
+
+
   <%= render 'layouts/nav' %>
 
   <div class="container-fluid">
+
     <%= yield %>
 
 

@@ -1,12 +1,8 @@
   <div class="container">
   <div class="row page-header">
-    <h1>San Francisco Film Calendar</h1>
+    <h1>Most Popular Screenings</h1>
   </div>
 </div>
-
-<h2>Most Popular Screenings</h2>
-
-
 <!-- buzz-box -->
 <div class="row buzz-box  clearfix">
 
@@ -87,7 +83,7 @@
                   <% films_today(@date_filler).each do |film| %>
                     <br>
                       <span class='film-title hasTooltip' title="add to watchlist"><%= film.title %></span>
-                      <div class="tooltipContent" ><a href='#' id='<%=film.id%>'>add movie to watchlist</a></div>
+                      <div class="tooltipContent" ><button class='btn btn-default' id='<%=film.id%>'>add film to watchlist</button></div>
 
                     <br>
 
