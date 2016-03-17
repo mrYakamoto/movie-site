@@ -1,18 +1,12 @@
 module WelcomeHelper
   require 'date'
 
-
-  # pseudo for refactoring
-  # send all screening objects for a month, grouped by day, to the view
-  # send today's DateTime object to the view
-
-  # if today's wday is != 0, fill in the filler dates
-    # helper method
-  # for each date after those, get all screening objects and display their info
-
-
   def set_start_date(date)
     date - date.wday
+  end
+
+  def reset_date_filler(date)
+    DateTime.new(date.year, date.month, 1) - date.wday
   end
 
   def films_today?(date)

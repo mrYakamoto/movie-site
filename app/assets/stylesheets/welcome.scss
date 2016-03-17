@@ -1,3 +1,8 @@
+
+.tooltipContent {
+  display: none;
+}
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -16,6 +21,7 @@ body {
 a:hover {
   text-decoration: none !important;
 }
+
 
 .vcenter {
   display: inline-block;
