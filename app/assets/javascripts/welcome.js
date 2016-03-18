@@ -2,8 +2,8 @@
 
 $('document').ready(function(){
   addBuzzBoxPosterListener();
-  addToolTips();
-  addToWatchlistListener();
+  addWelcomeToolTips();
+  wecolmeTooltipClickListener();
 });
 
 function cookieValue(){
@@ -29,10 +29,10 @@ function addBuzzBoxPosterListener(){
     })
 }
 
-function addToolTips(){
+function addWelcomeToolTips(){
   if (userLoggedIn()){
 
-    $('.hasTooltip').each(function(){
+    $('body.welcome .hasTooltip').each(function(){
       $(this).qtip({
         content: $(this).next('.tooltipContent:first'),
         show: {
@@ -46,7 +46,7 @@ function addToolTips(){
           effect: function(offset) {
             $( this ).slideUp( 100 )
           },
-          inactive: 2000
+          inactive: 1300
         },
         style: {
           classes: 'qtip-tipsy'
@@ -60,25 +60,80 @@ function addToolTips(){
   }
 }
 
-function addToWatchlistListener(){
-  $('div.tooltipContent button').click(function(e){
-
+function wecolmeTooltipClickListener(){
+  $('body.welcome div.tooltipContent button').click(function(e){
     var data = {film_id: this.id}
-    $.ajax({
-      method: 'POST',
-      url: '/users_films',
-      data: data
-    })
-    .done(function(response){
-      flashAjaxResponse(response);
-    })
-    .error(function(xhr, unknown, error){
-      alert(error);
-    })
+    if ( $(this).hasClass('add-film') ){
+      addFilmToWatchlist(data)
+    }
+    else if ( $(this).hasClass('remove-film') ){
+      removeFilmFromWatchlist(data)
+    }
   })
 }
 
+function addFilmToWatchlist(data){
+  $.ajax({
+    method: 'POST',
+    url: '/users_films',
+    data: data
+  })
+  .done(function(response){
+    flashAjaxResponse(response);
+  })
+  .error(function(xhr, unknown, error){
+    alert(error);
+  })
+}
+
+function removeFilmFromWatchlist(data){
+  $.ajax({
+    method: 'DELETE',
+    url: "/users_films/0",
+    data: data
+  })
+  .done(function(response){
+    flashAjaxResponse(response);
+  })
+  .error(function(xhr, unknown, error){
+    alert(error);
+
+  })
+}
+
+function addWatchlistTooltips(){
+  if (userLoggedIn()){
+
+    $('body.users.show .hasTooltip').each(function(){
+      $(this).qtip({
+        content: $(this).next('.tooltipContent:first'),
+        show: {
+          event: 'click',
+          effect: function(offset) {
+            $( this ).slideDown( 100 )
+          }
+        },
+        hide: {
+          event: 'unfocus',
+          effect: function(offset) {
+            $( this ).slideUp( 100 )
+          },
+          inactive: 1300
+        },
+        style: {
+          classes: 'qtip-tipsy'
+        },
+        position: {
+          my: 'top center',
+          at: 'bottom center'
+        }
+      });
+    });
+  }
+}
+
 function flashAjaxResponse(response){
+
   if ( response.success ){
     flashSuccess(response.success)
   }

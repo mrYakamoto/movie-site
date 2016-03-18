@@ -1,3 +1,2 @@
-<% @films.each do |film| %>
-<h2><%= film.title %></h2>
-<% end %>
+<!-- Calendar -->
+<%= render partial: "/calendar", locals: {screenings: @screenings, date_filler: @date_filler} %>
