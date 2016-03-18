@@ -1,0 +1,79 @@
+<div class="container">
+  <% end_month = @date_filler.month + 2%>
+  <% until @date_filler.month == end_month%>
+  <% @date_filler = set_start_date(@date_filler) %>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= Date::MONTHNAMES[@date_filler.month] %></div>
+<!-- Responsive Calendar -->
+      <div id="no-more-tables">
+        <table class="table table-bordered col-sm-12 table-condensed cf" id="<%= Date::MONTHNAMES[@date_filler.month] %>">
+          <thead class="cf">
+            <tr>
+              <th>sunday</th>
+              <th>monday</th>
+              <th>tuesday</th>
+              <th>wednesday</th>
+              <th>thursday</th>
+              <th>friday</th>
+              <th>saturday</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% next_month = @date_filler.month + 1 %>
+            <% until @date_filler.month == next_month %>
+            <tr>
+              <% 7.times do %>
+              <td data-title="<%=@date_filler.strftime("%A, %B %-d")%>"
+                class="clearfix date-box" id="td-<%=@date_filler.strftime("%-m-%-d-%Y")%>">
+                <span class='date hidden-xs'><%=@date_filler.mday%></span>
+                <% if (screenings_today?(@screenings, @date_filler)) %>
+
+                  <% films_today(@screenings, @date_filler).each do |film| %>
+                    <br>
+                      <span class='film-title hasTooltip'><%= film.title %></span>
+                      <div class="tooltipContent" >
+                        <% if current_user.films.include?(film)%>
+                        <button class='btn btn-default remove-film' id='<%=film.id%>'>
+                          remove from watchlist</button>
+                        <% else %>
+                        <button class='btn btn-default add-film' id='<%=film.id%>'>
+                          add film to watchlist</button>
+
+                        <% end %>
+
+                      </div>
+
+                    <br>
+
+
+                    <% screenings_today(film, @date_filler).each do |screening| %>
+                      <a href="<%= screening.ticketing_url %>">
+                        <span class='showtime'><%= screening.time %></span>
+                      </a>
+                    <% end %>
+
+                    <br>
+                    <span class='theater-name'><%= screenings_today(film, @date_filler).first.theater.name %></span>
+                  <% end %>
+
+                <% else %>
+                  <br>
+                  <span class='placeholder hidden-sm hidden-md hidden-lg hidden-xl'>no screenings</span>
+                <% end %>
+
+              </td>
+              <% @date_filler += 1 %>
+              <% end %>
+
+            </tr>
+            <% end %>
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+  <% end %>
+</div>

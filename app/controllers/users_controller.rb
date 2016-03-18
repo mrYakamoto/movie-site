@@ -9,7 +9,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @films = current_user.films
+    @date_filler = DateTime.now()
+    @screenings  = []
+    current_user.films.each do |film|
+      film.screenings.each do |screening|
+        @screenings << screening
+      end
+    end
   end
 
   def new
