@@ -14,6 +14,24 @@
   transform: translate(-50%);
 }
 
+.gradient {
+background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    #ccc 10px,
+    #ccc 20px
+  ),
+  linear-gradient(
+    to bottom,
+    #aaa,
+    #fff
+  );
+}
+.grandient:before {
+    color: yellow;
+  }
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -110,7 +128,20 @@ div.page-header h1 {
   span.placeholder { font-style: italic; }
 
   /* Label the data */
-  #no-more-tables td:before { content: attr(data-title); }
+  #no-more-tables td:before {
+    content: attr(data-title);
+  }
+
+  div.add-film:before {
+    content: "add film to watchlist";
+  }
+  div.remove-film:before {
+    content: "remove from watchlist";
+  }
+
+  #no-more-tables td.gradient:before {
+    color: gray;
+  }
 
   td.date-box {
     padding-top: 10px !important;

@@ -2,8 +2,9 @@
 
 $('document').ready(function(){
   addBuzzBoxPosterListener();
-  addWelcomeToolTips();
-  wecolmeTooltipClickListener();
+
+  addAllToolTips();
+  addBackgroundToEmptyDays();
 });
 
 function cookieValue(){
@@ -29,47 +30,101 @@ function addBuzzBoxPosterListener(){
     })
 }
 
-function addWelcomeToolTips(){
-  if (userLoggedIn()){
+function addAllToolTips(){
 
-    $('body.welcome .hasTooltip').each(function(){
-      $(this).qtip({
-        content: $(this).next('.tooltipContent:first'),
-        show: {
-          event: 'click',
-          effect: function(offset) {
-            $( this ).slideDown( 100 )
-          }
-        },
-        hide: {
-          event: 'unfocus',
-          effect: function(offset) {
-            $( this ).slideUp( 100 )
-          },
-          inactive: 1300
-        },
-        style: {
-          classes: 'qtip-tipsy'
-        },
-        position: {
-          my: 'top center',
-          at: 'bottom center'
-        }
-      });
-    });
+  console.log("ADD ALL TOOL TIPS");
+  if (userLoggedIn()){
+    console.log("USER LOGGED IN");
+
+    $('.hasTooltip').each(function(){
+      var target = this
+      addTooltip.call(target);
+    })
+    addAllTooltipClickListeners();
   }
 }
 
-function wecolmeTooltipClickListener(){
-  $('body.welcome div.tooltipContent button').click(function(e){
-    var data = {film_id: this.id}
-    if ( $(this).hasClass('add-film') ){
-      addFilmToWatchlist(data)
+function addTooltip(){
+  console.log("ADD TOOL TIP")
+  $(this).qtip({
+    content: $(this).next('.tooltipContent:first'),
+    show: {
+      event: 'click',
+      effect: function(offset) {
+        $( this ).slideDown( 100 )
+      }
+    },
+    hide: {
+      event: 'unfocus',
+      effect: function(offset) {
+        $( this ).slideUp( 100 )
+      },
+      inactive: 1300
+    },
+    style: {
+      classes: 'qtip-tipsy'
+    },
+    position: {
+      my: 'top center',
+      at: 'bottom center'
     }
-    else if ( $(this).hasClass('remove-film') ){
-      removeFilmFromWatchlist(data)
-    }
+  });
+}
+
+
+function addAllTooltipClickListeners(){
+  console.log("ADD ALL TOOLTIP CLICK LISTENERS");
+  $('div.tooltipContent').each(function(){
+    var toolTipContent = this
+    addTooltipClickListener.call(toolTipContent);
   })
+}
+
+function addTooltipClickListener(){
+  console.log("ADD TOOLTIP CLICK LISTENER")
+  var toolTipContent = this
+  var data = {film_id: toolTipContent.id};
+
+  $(toolTipContent).click(function(){
+    console.log('CLICKED');
+    if (!isOnWatchlist.call(toolTipContent)){
+      addFilmToWatchlist(data);
+    } else if (isOnWatchlist.call(toolTipContent)){
+      removeFilmFromWatchlist(data);
+    }
+    switchTooltips.call(toolTipContent);
+  })
+}
+
+function isOnWatchlist(){
+  console.log("IS ON WATCHLIST?");
+
+  var $tooltipContent = $(this)
+  if ( $tooltipContent.hasClass('remove-film') ){
+    return true;
+  }
+  else if ( $tooltipContent.hasClass('add-film') ){
+    return false;
+  }
+}
+
+
+
+function switchTooltips(){
+  console.log("SWITCH TOOLTIPS");
+  var toolTipContent = this;
+  var $toolTipContent = $(toolTipContent);
+
+  debugger
+
+  var qtipId = $toolTipContent.closest('div.qtip').attr('data-qtip-id');
+  var target = $('span[data-hasqtip='+qtipId+']');
+  var api = $(target).qtip('api');
+
+  $toolTipContent.toggleClass("add-film remove-film");
+  addTooltipClickListener.call(toolTipContent);
+// replace content of qtip
+// target.qtip('option', 'content.text', "add to favorites");
 }
 
 function addFilmToWatchlist(data){
@@ -157,3 +212,11 @@ function flashSuccess(text){
     $("div.alert-success").empty().slideUp(150);
   }, 2000);
 }
+
+
+function addBackgroundToEmptyDays(){
+  var $empty_dates = $( 'td.date-box:has( > span.placeholder )');
+  $empty_dates.addClass('gradient')
+}
+
+
