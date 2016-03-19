@@ -5,7 +5,7 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading"><%= Date::MONTHNAMES[@date_filler.month] %></div>
-<!-- Responsive Calendar -->
+      <!-- Responsive Calendar -->
       <div id="no-more-tables">
         <table class="table table-bordered col-sm-12 table-condensed cf" id="<%= Date::MONTHNAMES[@date_filler.month] %>">
           <thead class="cf">
@@ -30,15 +30,16 @@
                 <% if (screenings_today?(@screenings, @date_filler)) %>
 
                   <% films_today(@screenings, @date_filler).each do |film| %>
-                    <br>
-                      <span class='film-title hasTooltip' <id='<%=film.id%>'><%= film.title %></span>
+                    <div class='film-listing-container' id=<%="film-#{film.id}"%>>
 
-                      <% if current_user && current_user.films.include?(film)%>
-                        <div class="tooltipContent remove-film" id='<%=film.id%>'>
-                      <% else %>
-                        <div class="tooltipContent add-film" id='<%=film.id%>'>
-                      <% end %>
-                        </div><br>
+                    <span class='film-title hasTooltip' <id='<%=film.id%>'><%= film.title %></span>
+
+                    <% if current_user && current_user.films.include?(film)%>
+                      <div class="tooltipContent remove-film" id='<%=film.id%>'>
+                    <% else %>
+                      <div class="tooltipContent add-film" id='<%=film.id%>'>
+                    <% end %>
+                      </div><br>
 
                     <% screenings_today(film, @date_filler).each do |screening| %>
                       <a href="<%= screening.ticketing_url %>">
@@ -48,25 +49,27 @@
 
                     <br>
                     <span class='theater-name'><%= screenings_today(film, @date_filler).first.theater.name %></span>
+                  </div>
                   <% end %>
 
                 <% else %>
                   <br>
-                  <span class='placeholder hidden-sm hidden-md hidden-lg hidden-xl'>no screenings</span>
+                  <span class='placeholder hidden-sm hidden-md hidden-lg hidden-xl'></span>
                 <% end %>
 
-              </td>
-              <% @date_filler += 1 %>
+
+                </td>
+                <% @date_filler += 1 %>
+                <% end %>
+
+              </tr>
               <% end %>
 
-            </tr>
-            <% end %>
+            </tbody>
+          </table>
+        </div>
 
-          </tbody>
-        </table>
       </div>
-
     </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
