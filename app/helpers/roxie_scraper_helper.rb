@@ -51,7 +51,7 @@ module RoxieScraperHelper
   end
 
   def format_time(date_time_obj)
-    time = date_time_obj.strftime("%I:%M%p".downcase)
+    time = date_time_obj.strftime("%I:%M%p").downcase
     return time.slice(1,time.length) if time [0] == "0"
     time
   end

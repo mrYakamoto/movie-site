@@ -16,6 +16,7 @@ module WelcomeHelper
   end
 
   def screenings_today?(screenings, date)
+
     return true if screenings.detect{|screening|(screening.month == date.month)&&(screening.mday == date.mday)&&(screening.year == date.year)}
     false
 

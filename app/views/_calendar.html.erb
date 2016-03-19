@@ -31,21 +31,14 @@
 
                   <% films_today(@screenings, @date_filler).each do |film| %>
                     <br>
-                      <span class='film-title hasTooltip'><%= film.title %></span>
-                      <div class="tooltipContent" >
-                        <% if current_user.films.include?(film)%>
-                        <button class='btn btn-default remove-film' id='<%=film.id%>'>
-                          remove from watchlist</button>
-                        <% else %>
-                        <button class='btn btn-default add-film' id='<%=film.id%>'>
-                          add film to watchlist</button>
+                      <span class='film-title hasTooltip' <id='<%=film.id%>'><%= film.title %></span>
 
-                        <% end %>
-
-                      </div>
-
-                    <br>
-
+                      <% if current_user && current_user.films.include?(film)%>
+                        <div class="tooltipContent remove-film" id='<%=film.id%>'>
+                      <% else %>
+                        <div class="tooltipContent add-film" id='<%=film.id%>'>
+                      <% end %>
+                        </div><br>
 
                     <% screenings_today(film, @date_filler).each do |screening| %>
                       <a href="<%= screening.ticketing_url %>">

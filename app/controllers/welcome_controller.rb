@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
     @fifth_and_sixth_top_films_arr = @films.sample(2)
 
     @date_filler = DateTime.now()
-    @screenings = Screening.all.where("month >= ? AND mday > ?",@date_filler.month, @date_filler.mday)
+    @screenings = Screening.all.where("month > ? OR month = ? AND mday >= ?",@date_filler.month, @date_filler.month, @date_filler.mday)
   end
 
 end
