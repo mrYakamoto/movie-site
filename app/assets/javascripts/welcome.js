@@ -3,7 +3,7 @@
 $('document').ready(function(){
   addBuzzBoxPosterListener();
 
-  addAllToolTips();
+  addAllTooltips();
   addBackgroundToAllEmptyDays();
 });
 
@@ -86,7 +86,7 @@ function flashSuccess(text){
 
 // TOOLTIPS
 
-function addAllToolTips(){
+function addAllTooltips(){
   console.log("ADD ALL TOOL TIPS");
   if (userLoggedIn()){
     console.log("USER LOGGED IN");
@@ -114,7 +114,7 @@ function addTooltip(){
       effect: function(offset) {
         $( this ).slideUp( 100 )
       },
-      inactive: 20000
+      inactive: 1300
     },
     style: { classes: 'qtip-tipsy' },
     position: {
@@ -127,26 +127,27 @@ function addTooltip(){
 function addAllTooltipClickListeners(){
   console.log("ADD ALL TOOLTIP CLICK LISTENERS");
   $('div.tooltipContent').each(function(){
-    var toolTipContent = this
-    addTooltipClickListener.call(toolTipContent);
+    var tooltipContent = this
+    addTooltipClickListener.call(tooltipContent);
   })
 }
 
 function addTooltipClickListener(){
   console.log("ADD TOOLTIP CLICK LISTENER")
-  var toolTipContent = this
+  var tooltipContent = this
 
-  var data = {film_id: toolTipContent.id};
 
-  $(toolTipContent).click(function(){
+  var data = {film_id: tooltipContent.getAttribute('data-value')};
+
+  $(tooltipContent).click(function(){
     console.log('CLICKED');
-    if (!isOnWatchlist.call(toolTipContent)){
+    if (!isOnWatchlist.call(tooltipContent)){
       addFilmToWatchlist(data);
-    } else if (isOnWatchlist.call(toolTipContent)){
+    } else if (isOnWatchlist.call(tooltipContent)){
       removeFilmFromWatchlist(data);
     }
-    $(toolTipContent).off('click');
-    switchTooltips.call(toolTipContent);
+    $(tooltipContent).off('click');
+    switchTooltips.call(tooltipContent);
   })
 }
 
@@ -164,17 +165,24 @@ function isOnWatchlist(){
 
 function switchTooltips(){
   console.log("SWITCH TOOLTIPS");
-  var tooltipContent = this
   var $tooltipContent = $(this);
-  var $allFilmsToolTips = $('div.tooltipContent#'+$tooltipContent.attr('id'))
+  var filmId = $tooltipContent.attr('data-value');
+  var $allFilmsTooltips = $("div.tooltipContent[data-value='"+filmId+"']");
+
+  $allFilmsTooltips.each(function(){
+    var tooltipContent = this;
+    $(tooltipContent).toggleClass("add-film remove-film");
+    $(tooltipContent).off('click');
+    addTooltipClickListener.call(tooltipContent);
+
+  })
+
+
 
   // var qtipId = $toolTipContent.closest('div.qtip').attr('data-qtip-id');
   // var target = $('span[data-hasqtip='+qtipId+']');
   // var api = $(target).qtip('api');
 
-
-  $tooltipContent.toggleClass("add-film remove-film");
-  addTooltipClickListener.call(tooltipContent);
 
 
   // $allFilmsToolTips.each(function(){

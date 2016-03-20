@@ -33,10 +33,24 @@ module RoxieScraperHelper
 
 
       new_film.screenings.create!(date_time: date_time_obj, month: date_time_obj.month, mday: date_time_obj.mday, year: date_time_obj.year, time: showtime, ticketing_url: ticketing_url, theater_id: theater_id)
+    end
+    save_all_posters
+  end
 
+  def save_all_posters
+    Film.all.each do |film|
+      unless have_poster_file?("poster-#{film.id}")
+        open(Rails.root.join('app','assets','images','posters',"poster-#{film.id}.jpg"), 'wb') do |file|
+          file << open(film.poster_url).read
+        end
+      end
     end
   end
 
+
+  def have_poster_file?(file_name)
+    Rails.application.assets.find_asset "posters/#{file_name}" ? true : false
+  end
 
   def url_root
     "https://ticketing.us.veezi.com"
