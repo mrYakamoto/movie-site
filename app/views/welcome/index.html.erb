@@ -12,7 +12,7 @@
       <li class="col-xs-4 col-sm-3 col-md-2">
         <div class="thumbnail clearfix">
           <a href="#">
-            <img src="<%=film_obj.poster_url%>" alt="">
+            <%= image_tag "posters/poster-#{film_obj.id}" %>
             <div class="overlay">
               <h2><%=film_obj.title%></h2>
             </div>
@@ -23,7 +23,7 @@
 
       <li class="hidden-xs col-sm-3 col-md-2 ">
         <div class="thumbnail">
-          <a href="#"><img src="<%=@fourth_top_film.poster_url%>" alt="">
+          <a href="#"><%= image_tag "posters/poster-#{@fourth_top_film.id}" %>
             <div class="overlay">
               <h2><%=@fourth_top_film.title%></h2>
             </div>
@@ -34,7 +34,7 @@
       <% @fifth_and_sixth_top_films_arr.each do |film_obj| %>
       <li class="hidden-xs hidden-sm col-md-2 ">
         <div class="thumbnail">
-          <a href="#"><img src="<%=film_obj.poster_url%>" alt="">
+          <a href="#"><%= image_tag "posters/poster-#{film_obj.id}" %>
             <div class="overlay">
               <h2><%=film_obj.title%></h2>
             </div>

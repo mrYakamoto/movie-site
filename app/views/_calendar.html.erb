@@ -32,12 +32,12 @@
                   <% films_today(@screenings, @date_filler).each do |film| %>
                     <div class='film-listing-container' id=<%="film-#{film.id}"%>>
 
-                    <span class='film-title hasTooltip' <id='<%=film.id%>'><%= film.title %></span>
+                    <span class='film-title hasTooltip' data-value='<%=film.id%>'><%= film.title %></span>
 
                     <% if current_user && current_user.films.include?(film)%>
-                      <div class="tooltipContent remove-film" id='<%=film.id%>'>
+                      <div class="tooltipContent remove-film" data-value='<%=film.id%>'>
                     <% else %>
-                      <div class="tooltipContent add-film" id='<%=film.id%>'>
+                      <div class="tooltipContent add-film" data-value='<%=film.id%>'>
                     <% end %>
                       </div><br>
 
