@@ -11,6 +11,12 @@ class WelcomeController < ApplicationController
 
     @date_filler = DateTime.now()
     @screenings = Screening.all.where("month > ? OR month = ? AND mday >= ?",@date_filler.month, @date_filler.month, @date_filler.mday)
+    @theaters = Theater.all
+
+    respond_to do |format|
+        format.html
+        format.js { render :file => "/screenings/from_theater.js.erb" }
+    end
   end
 
 end

@@ -1,6 +1,6 @@
   <div class="container">
   <div class="row page-header">
-    <h1>Most Popular Screenings</h1>
+    <h1>Buzz Screenings</h1>
   </div>
 </div>
 <!-- buzz-box -->
@@ -11,10 +11,10 @@
       <%@top_three_films_arr.each do |film_obj|%>
       <li class="col-xs-4 col-sm-3 col-md-2">
         <div class="thumbnail clearfix">
-          <a href="#">
+          <a href="http://<%= film_obj.screenings.first.theater.website_url %>">
             <%= image_tag "posters/poster-#{film_obj.id}" %>
             <div class="overlay">
-              <h2><%=film_obj.title%></h2>
+              <h2><%= film_obj.title %></h2>
             </div>
           </a>
         </div>
@@ -23,7 +23,7 @@
 
       <li class="hidden-xs col-sm-3 col-md-2 ">
         <div class="thumbnail">
-          <a href="#"><%= image_tag "posters/poster-#{@fourth_top_film.id}" %>
+          <a href="http://<%= @fourth_top_film.screenings.first.theater.website_url %>"><%= image_tag "posters/poster-#{@fourth_top_film.id}" %>
             <div class="overlay">
               <h2><%=@fourth_top_film.title%></h2>
             </div>
@@ -34,7 +34,7 @@
       <% @fifth_and_sixth_top_films_arr.each do |film_obj| %>
       <li class="hidden-xs hidden-sm col-md-2 ">
         <div class="thumbnail">
-          <a href="#"><%= image_tag "posters/poster-#{film_obj.id}" %>
+          <a href="http://<%= film_obj.screenings.first.theater.website_url %>"><%= image_tag "posters/poster-#{film_obj.id}" %>
             <div class="overlay">
               <h2><%=film_obj.title%></h2>
             </div>
@@ -47,6 +47,7 @@
   </div>
 </div>
 <!-- /buzz-box -->
+<%= render partial: "/theaters_nav", locals: {theaters: @theaters}%>
 
 <!-- Calendar -->
 <%= render partial: "/calendar", locals: {screenings: @screenings, date_filler: @date_filler} %>
