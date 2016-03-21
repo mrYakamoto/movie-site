@@ -1,3 +1,13 @@
+.buzz-box {
+  position: relative;
+}
+
+.theater-nav-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
 
 .tooltipContent {
   display: none;
@@ -17,7 +27,6 @@ div.remove-film:before {
   left: 50%;
   margin-top: 100px;
   z-index: 9999;
-
   transform: translate(-50%);
 }
 

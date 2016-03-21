@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
+  get "/fetch_screenings" => 'screenings#from_theater', as: 'fetch_screenings'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
