@@ -27,6 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'factory_girl'
 gem 'hirb'
 
+
 group :development, :test do
   gem 'byebug'
 end

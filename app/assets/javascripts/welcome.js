@@ -5,7 +5,16 @@ $('document').ready(function(){
 
   addAllTooltips();
   addBackgroundToAllEmptyDays();
+  theaterTabListener();
 });
+
+function theaterTabListener(){
+  $('a.theater-tab').click(function(){
+
+    $('li.theater-tab-box.active').toggleClass('active');
+    $(this).closest('li').toggleClass('active');
+  })
+}
 
 
 function addBuzzBoxPosterListener(){

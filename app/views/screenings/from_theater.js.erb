@@ -1,1 +1,2 @@
 $("#calendar-box").html("<%= escape_javascript(render partial: '/calendar', locals: { screenings: @selected })%>");
+addBackgroundToAllEmptyDays();
