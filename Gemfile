@@ -27,6 +27,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'factory_girl'
 gem 'hirb'
 
+gem 'table_parser'
+
 
 group :development, :test do
   gem 'byebug'

@@ -12,7 +12,11 @@
       <li class="col-xs-4 col-sm-3 col-md-2">
         <div class="thumbnail clearfix">
           <a href="http://<%= film_obj.screenings.first.theater.website_url %>">
+            <% if (film_obj.poster_url == "NA") %>
+            <%= image_tag "posters/default" %>
+            <% else %>
             <%= image_tag "posters/poster-#{film_obj.id}" %>
+            <% end %>
             <div class="overlay">
               <h2><%= film_obj.title %></h2>
             </div>
@@ -23,7 +27,13 @@
 
       <li class="hidden-xs col-sm-3 col-md-2 ">
         <div class="thumbnail">
-          <a href="http://<%= @fourth_top_film.screenings.first.theater.website_url %>"><%= image_tag "posters/poster-#{@fourth_top_film.id}" %>
+          <a href="http://<%= @fourth_top_film.screenings.first.theater.website_url %>">
+            <% if (@fourth_top_film.poster_url == "NA") %>
+            <%= image_tag "posters/default" %>
+            <% else %>
+            <%= image_tag "posters/poster-#{@fourth_top_film.id}" %>
+            <% end %>
+
             <div class="overlay">
               <h2><%=@fourth_top_film.title%></h2>
             </div>
@@ -34,7 +44,12 @@
       <% @fifth_and_sixth_top_films_arr.each do |film_obj| %>
       <li class="hidden-xs hidden-sm col-md-2 ">
         <div class="thumbnail">
-          <a href="http://<%= film_obj.screenings.first.theater.website_url %>"><%= image_tag "posters/poster-#{film_obj.id}" %>
+          <a href="http://<%= film_obj.screenings.first.theater.website_url %>">
+            <% if (film_obj.poster_url == "NA") %>
+            <%= image_tag "posters/default" %>
+            <% else %>
+            <%= image_tag "posters/poster-#{film_obj.id}" %>
+            <% end %>
             <div class="overlay">
               <h2><%=film_obj.title%></h2>
             </div>
