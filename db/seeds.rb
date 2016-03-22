@@ -25,6 +25,10 @@ theater_seeds = {
     "address" => "3117 16th Street, San Francisco, CA",
     "website_url" => "www.roxie.com"
     },
+    "Castro Theater" => {
+      "address" => "429 Castro Street, San Francisco, CA",
+      "website_url" => "http://www.castrotheatre.com/"
+    },
     "Yerba Buena Center for the Arts" => {
       "address" => "701 Mission Street San Francisco, CA 94103",
       "website_url" => "http://www.ybca.org/"
@@ -32,10 +36,6 @@ theater_seeds = {
     "New Parkway" => {
       "address" => "474 24th Street, Oakland, CA 94612",
       "website_url" => "newparkway.com"
-    },
-    "Castro Theater" => {
-      "address" => "429 Castro Street, San Francisco, CA",
-      "website_url" => "http://www.castrotheatre.com/"
     }
   }
 
