@@ -3,11 +3,11 @@
     <!-- <li class="active">
       <a class="theater-pill" href="#">all listings</a>
     </li> -->
-    <li class="active">
+    <li class="theater-tab-box active">
       <%= link_to 'all screenings', root_path, class:"theater-tab", :remote => true %>
     </li>
     <% @theaters.each do |theater| %>
-    <li class="">
+    <li class="theater-tab-box">
       <%= link_to theater.name, fetch_screenings_path(:theater_id => theater.id), class: "theater-tab", :remote => true %>
     </li>
     <% end %>

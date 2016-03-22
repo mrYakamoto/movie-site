@@ -28,6 +28,14 @@ theater_seeds = {
     "Yerba Buena Center for the Arts" => {
       "address" => "701 Mission Street San Francisco, CA 94103",
       "website_url" => "http://www.ybca.org/"
+    },
+    "New Parkway" => {
+      "address" => "474 24th Street, Oakland, CA 94612",
+      "website_url" => "newparkway.com"
+    },
+    "Castro Theater" => {
+      "address" => "429 Castro Street, San Francisco, CA",
+      "website_url" => "http://www.castrotheatre.com/"
     }
   }
 
