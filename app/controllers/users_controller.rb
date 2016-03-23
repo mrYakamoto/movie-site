@@ -16,11 +16,17 @@ class UsersController < ApplicationController
         @screenings << screening
       end
     end
+
+    respond_to do |format|
+      format.js
+    end
   end
+
 
   def new
     @user = User.new
   end
+
 
   def edit
     @user = User.find(params[:id])
