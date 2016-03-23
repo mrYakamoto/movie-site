@@ -4,9 +4,6 @@ class Screening < ActiveRecord::Base
 
   validates :month, :mday, :year, :time, :ticketing_url, :film_id, :theater_id, presence: true
 
+  validates_uniqueness_of :date_time, :scope => [:film_id, :theater_id]
+
 end
-
-
-
-
-
