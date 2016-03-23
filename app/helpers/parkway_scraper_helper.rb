@@ -1,9 +1,9 @@
 require 'nokogiri'
 require 'open-uri'
 
-module NewParkwayScraperHelper
+module ParkwayScraperHelper
 
-  def scrape_new_parkway
+  def scrape_parkway
     html = open("http://thenewparkway.com/").read
     data = Nokogiri::HTML(html)
     all_days = data.css('div.eventDay')
@@ -45,44 +45,15 @@ module NewParkwayScraperHelper
 
           new_film = Film.create_with(poster_url: poster_url).find_or_create_by!(title: film_title)
 
-          new_film.screenings.create!(date_time: date_time_obj, month: date_time_obj.month, mday: date_time_obj.mday, year: date_time_obj.year, time: showtime, ticketing_url: ticketing_url, theater_id: theater_id)
+          new_film.screenings.create(date_time: date_time_obj, month: date_time_obj.month, mday: date_time_obj.mday, year: date_time_obj.year, time: showtime, ticketing_url: ticketing_url, theater_id: theater_id)
         end
       end
     end
   end
 
-end
-
-def save_all_posters
-  Film.all.each do |film|
-    byebug
-    unless (have_poster_file?("poster-#{film.id}")||(film.poster_url == "NA"))
-
-      open(Rails.root.join('app','assets','images','posters',"poster-#{film.id}.jpg"), 'wb') do |file|
-        file << open(film.poster_url).read
-      end
-    end
+  def format_time(date_time_obj)
+    time = date_time_obj.strftime("%I:%M%p").downcase
+    return time.slice(1,time.length) if time [0] == "0"
+    time
   end
 end
-
-def have_poster_file?(file_name)
-  Rails.application.assets.find_asset "posters/#{file_name}" ? true : false
-end
-
-def remove_whitespace(string)
-  string.gsub(/^\s*|\n\s*|\r\s*|\s{2}|\s*$/,'')
-end
-
-def this_year
-  DateTime.now().year.to_s
-end
-
-def format_time(date_time_obj)
-  time = date_time_obj.strftime("%I:%M%p").downcase
-  return time.slice(1,time.length) if time [0] == "0"
-  time
-end
-
-
-
-

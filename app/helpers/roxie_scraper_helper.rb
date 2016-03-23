@@ -3,7 +3,9 @@ require 'open-uri'
 
 module RoxieScraperHelper
 
-  def scrape_mobile_site
+  def scrape_roxie
+    url_root = "https://ticketing.us.veezi.com"
+
     html = open("https://ticketing.us.veezi.com/sessions/?siteToken=4m48btf3yavn7xjk5yxk6nc40c").read
     data = Nokogiri::HTML(html)
     js_data = data.css('script')[8]
@@ -24,44 +26,14 @@ module RoxieScraperHelper
       film_title = narrow_info.match(/^(.*)\",\"url\"/)[1]
       ticketing_url = narrow_info.match(/,\"url\":\"(.*)/)[1]
 
-
-
       poster_url = data.css('img').find{|x|x['alt'] == film_title}['src']
-      poster_url = url_root << poster_url
+      poster_url = "#{url_root}#{poster_url}"
 
       new_film = Film.create_with(poster_url: poster_url).find_or_create_by!(title: film_title)
 
 
-      new_film.screenings.create!(date_time: date_time_obj, month: date_time_obj.month, mday: date_time_obj.mday, year: date_time_obj.year, time: showtime, ticketing_url: ticketing_url, theater_id: theater_id)
+      new_film.screenings.create(date_time: date_time_obj, month: date_time_obj.month, mday: date_time_obj.mday, year: date_time_obj.year, time: showtime, ticketing_url: ticketing_url, theater_id: theater_id)
     end
-    save_all_posters
-  end
-
-  def save_all_posters
-    Film.all.each do |film|
-      unless have_poster_file?("poster-#{film.id}")
-        open(Rails.root.join('app','assets','images','posters',"poster-#{film.id}.jpg"), 'wb') do |file|
-          file << open(film.poster_url).read
-        end
-      end
-    end
-  end
-
-
-  def have_poster_file?(file_name)
-    Rails.application.assets.find_asset "posters/#{file_name}" ? true : false
-  end
-
-  def url_root
-    "https://ticketing.us.veezi.com"
-  end
-
-  def remove_whitespace(string)
-    string.gsub(/^\s*|\n\s*|\r\s*|\s{2}|\s*$/,'')
-  end
-
-  def this_year
-    DateTime.now().year.to_s
   end
 
   def format_time(date_time_obj)
