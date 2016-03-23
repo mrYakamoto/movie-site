@@ -8,14 +8,15 @@ $('document').ready(function(){
   theaterTabListener();
 });
 
+
 function theaterTabListener(){
-  $('a.theater-tab').click(function(){
+  $('a.theater-tab').click(function(e){
+    e.preventDefault();
 
     $('li.theater-tab-box.active').toggleClass('active');
     $(this).closest('li').toggleClass('active');
   })
 }
-
 
 function addBuzzBoxPosterListener(){
   $('div.thumbnail').hover(
@@ -27,13 +28,10 @@ function addBuzzBoxPosterListener(){
     })
 }
 
-
 function addBackgroundToAllEmptyDays(){
   var $empty_dates = $( 'td.date-box:has( > span.placeholder )');
   $empty_dates.addClass('gradient')
 }
-
-
 
 // AJAX
 
