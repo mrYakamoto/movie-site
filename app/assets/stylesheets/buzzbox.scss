@@ -1,7 +1,114 @@
-/* Global */
+/* BUZZ BOX TEST */
+.thumbnail {
+    position:relative;
+    overflow:hidden;
 
 
-div.buzz-box{
+    *{
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+.caption {
+    position:absolute;
+    top:-100%;
+    right:0;
+    background:rgba(66, 139, 202, 0.75);
+    width:100%;
+    height:100%;
+    padding:2%;
+    text-align:center;
+    color:#fff !important;
+    z-index:2;
+    h4 {
+        border-bottom: 2px solid yellow;
+    }
+}
+.thumbnail:hover {
+    -webkit-transform: scale(1.3, 1.3);
+    -ms-transform: scale(1.3, 1.3);
+    transform: scale(1.3, 1.3);
+
+    .caption {
+        top:0%;
+    }
+}
+
+/*.thumbnail {
+    position:relative;
+    overflow:hidden;
+    *{
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+    }
+}
+.caption {
+    position:absolute;
+    top:-100%;
+    right:0;
+    background:rgba(66, 139, 202, 0.75);
+    width:100%;
+    height:100%;
+    padding:2%;
+    text-align:center;
+    color:#fff !important;
+    z-index:2;
+    h4 {
+        border-bottom: 2px solid yellow;
+    }
+}
+.thumbnail:hover {
+
+    -webkit-transform: scale(1.3, 1.3);
+    -ms-transform: scale(1.3, 1.3);
+    transform: scale(1.3, 1.3);
+    opacity:0.5;
+    .caption {
+        top:0%;
+    }
+    img {
+        opacity:0.5;
+    }
+    }*/
+
+
+
+
+
+
+/*div.thumbnail:hover {
+    position: relative;
+    text-decoration: none;
+    z-index: 1;
+
+    h2{
+        border-bottom: 2px solid yellow;
+    }
+
+    img {
+        position: relative;
+        cursor: pointer;
+        -webkit-transform: scale(1.3, 1.3);
+        -ms-transform: scale(1.3, 1.3);
+        transform: scale(1.3, 1.3);
+        transition-duration: 0.3s;
+        -webkit-transition-duration: 0.3s;*/ /* Safari */
+        /*  box-shadow: 10px 10px 5px #cccc00;*/
+     /*   opacity:0.5;
+    }
+    }*/
+    /* END OF TEST CODE */
+
+
+
+/*div.buzz-box{
     background-color: black;
 
     .overlay {
@@ -14,16 +121,16 @@ div.buzz-box{
     }
 
     img {
-        background-color: black;
+
         max-width:100%;
-        max-height: 250px;
+        max-height: 200px;
 
         -webkit-transform: scale(1, 1);
         -ms-transform: scale(1, 1);
         transform: scale(1, 1);
         transition-duration: 0.5s;
-        -webkit-transition-duration: 0.5s; /* Safari */
-    }
+        -webkit-transition-duration: 0.5s; */
+ /*   }
 
     div.thumbnail {
         position: relative;
@@ -35,8 +142,8 @@ div.buzz-box{
         z-index: 1;
 
         h2{
-        border-bottom: 2px solid yellow;
-    }
+            border-bottom: 2px solid yellow;
+        }
 
         img {
             position: relative;
@@ -45,35 +152,17 @@ div.buzz-box{
             -ms-transform: scale(1.3, 1.3);
             transform: scale(1.3, 1.3);
             transition-duration: 0.3s;
-            -webkit-transition-duration: 0.3s; /* Safari */
-            /*  box-shadow: 10px 10px 5px #cccc00;*/
-            opacity:0.5;
-
+            -webkit-transition-duration: 0.3s; */
+            /*opacity:0.5;
         }
     }
 
     a {
-
         -webkit-transition: all 150ms ease;
         -moz-transition: all 150ms ease;
         -ms-transition: all 150ms ease;
         -o-transition: all 150ms ease;
         transition: all 150ms ease;
-    }
-
-    /* Page Header */
-    .page-header {
-        background: #f9f9f9;
-        margin: 0px -30px 0px;
-        padding: 20px 40px;
-        border-top: 4px solid #ccc;
-        color: #999;
-        text-transform: uppercase;
-    }
-
-    .page-header h3 {
-        line-height: 0.88rem;
-        color: #000;
     }
 
     ul.thumbnails {
@@ -88,29 +177,6 @@ div.buzz-box{
     }
 
 
-
-
-    /* Carousel Control */
-    .control-box {
-        text-align: right;
-        width: 100%;
-    }
-    .carousel-control{
-        background: #666;
-        border: 0px;
-        border-radius: 0px;
-        display: inline-block;
-        font-size: 34px;
-        font-weight: 200;
-        line-height: 18px;
-        opacity: 0.5;
-        padding: 4px 10px 0px;
-        position: static;
-        height: 30px;
-        width: 15px;
-    }
-
-
     li {
         list-style-type:none;
         padding-left: 2.5px;
@@ -120,3 +186,5 @@ div.buzz-box{
     ::selection { background: #ff5e99; color: #FFFFFF; text-shadow: 0; }
     ::-moz-selection { background: #ff5e99; color: #FFFFFF; }
 }
+*/
+

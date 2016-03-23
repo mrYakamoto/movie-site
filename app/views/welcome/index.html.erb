@@ -4,6 +4,8 @@
   </div>
 </div>
 <!-- buzz-box -->
+<%= render partial: 'welcome/buzz_box', locals: {films: @films}%>
+
 <div class="row buzz-box  clearfix">
 
   <div class="col-xs-12">
@@ -11,11 +13,12 @@
       <%@top_three_films_arr.each do |film_obj|%>
       <li class="col-xs-4 col-sm-3 col-md-2">
         <div class="thumbnail clearfix">
+
           <a href="http://<%= film_obj.screenings.first.theater.website_url %>">
             <% if (film_obj.poster_url == "NA") %>
-            <%= image_tag "posters/default" %>
+            <%= image_tag "posters/default", class: "poster" %>
             <% else %>
-            <%= image_tag "posters/poster-#{film_obj.id}" %>
+            <%= image_tag "posters/poster-#{film_obj.id}", class: "poster" %>
             <% end %>
             <div class="overlay">
               <h2><%= film_obj.title %></h2>

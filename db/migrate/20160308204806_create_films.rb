@@ -3,6 +3,7 @@ class CreateFilms < ActiveRecord::Migration
     create_table :films do |t|
       t.string :title
       t.string :poster_url
+      t.integer :popularity
 
       t.timestamps null: false
     end

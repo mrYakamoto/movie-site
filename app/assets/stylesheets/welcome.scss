@@ -1,5 +1,19 @@
+
+
 .buzz-box {
   position: relative;
+}
+
+img.poster {
+  /*min-height: 100px;*/
+  max-height: 250px;
+}
+
+
+
+
+.body-container {
+  background-color: yellow;
 }
 
 .theater-nav-container {
@@ -65,16 +79,6 @@ a:hover {
 }
 
 
-.vcenter {
-  display: inline-block;
-  vertical-align: middle;
-  float: none;
-}
-
-img.poster {
-  /*min-height: 100px;*/
-  max-height: 250px;
-}
 
 span.film-title {
   font-weight: 800;
@@ -96,8 +100,6 @@ th, td {
 div.page-header h1 {
   font-size: 3rem;
 }
-
-
 
 /*Calendar styling ('no-more-tables' based responsive styling)*/
 @media only screen and (max-width: 768px) {
