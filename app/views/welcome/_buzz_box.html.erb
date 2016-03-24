@@ -1,45 +1,26 @@
 <div class="container">
 
     <div class="row">
-
-        <div class="col-xs-6 col-sm-4 col-md-3">
+        <% 6.times do %>
+          <% film = @films.shift() %>
+        <div class="thumbnail-container col-xs-6 col-sm-3 col-md-2">
             <div class="thumbnail">
                 <div class="caption">
-                    <h4>Film Title</h4>
-                    <p>New Parkway</p>
+                    <h4><%= film.title %></h4>
+                    <p>theater</p>
                     <p>
-                        <a href="" class="label label-danger">tickets</a>
+                        <a href="" class="label label-danger">dates</a>
                     </p>
                 </div>
-                <img src="http://lorempixel.com/400/300/sports/1/" alt="...">
+                <% if (film.poster_url == "NA") %>
+                  <%= image_tag "posters/default", class: "poster" %>
+                <% else %>
+                  <%= image_tag "posters/poster-#{film.id}", class: "poster" %>
+                <% end %>
             </div>
         </div>
 
-        <div class="col-xs-6 col-sm-4 col-md-3">
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4>Film Title</h4>
-                    <p>Roxie Theater</p>
-                    <p>
-                        <a href="" class="label label-danger">tickets</a>
-                    </p>
-                </div>
-                <img src="http://lorempixel.com/400/300/sports/2/" alt="...">
-            </div>
-        </div>
-
-        <div class="col-xs-6 col-sm-4 col-md-3">
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4>Film Title</h4>
-                    <p>Yerba Buena Center for the Arts</p>
-                    <p>
-                        <a href="" class="label label-danger">tickets</a>
-                    </p>
-                </div>
-                <img src="http://lorempixel.com/400/300/sports/3/" alt="...">
-            </div>
-        </div>
-
+        <% end %>
     </div>
 </div>
+

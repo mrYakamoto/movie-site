@@ -5,18 +5,25 @@ $('document').ready(function(){
 
   addAllTooltips();
   addBackgroundToAllEmptyDays();
-  theaterTabListener();
+
+  dropDown();
 });
 
-
-function theaterTabListener(){
-  $('a.theater-tab').click(function(e){
+function dropDown(){
+  $('.nav-tabs-dropdown').each(function(i, elm) {
+    $(elm).text($(elm).next('ul').find('li.active a').text());
+  });
+  $('.nav-tabs-dropdown').on('click', function(e) {
     e.preventDefault();
-
-    $('li.theater-tab-box.active').toggleClass('active');
-    $(this).closest('li').toggleClass('active');
-  })
+    $(e.target).toggleClass('open').next('ul').slideToggle();
+  });
+  $('#nav-tabs-wrapper a[data-toggle="tab"]').on('click', function(e) {
+    e.preventDefault();
+    $(e.target).closest('ul').hide().prev('a').removeClass('open').text($(this).text())
+  });
 }
+
+
 
 function addBuzzBoxPosterListener(){
   $('div.thumbnail').hover(
@@ -29,8 +36,10 @@ function addBuzzBoxPosterListener(){
 }
 
 function addBackgroundToAllEmptyDays(){
-  var $empty_dates = $( 'td.date-box:has( > span.placeholder )');
-  $empty_dates.addClass('gradient')
+  var $emptyDates = $( 'td.date-box:has( > span.placeholder )');
+  $emptyDates.addClass('gradient')
+  var $pastEmptyDates = $( 'td.date-box:has( > span.past-placeholder )');
+  $pastEmptyDates.addClass('gradient')
 }
 
 // AJAX
@@ -202,7 +211,7 @@ function switchTooltips(){
 }
 
 function removeWatchlistListings(film_id){
-  var $filmListings = $("body.users.show div.film-listing-container#film-"+film_id)
+  var $filmListings = $(".user-watchlist div.film-listing-container#film-"+film_id)
   var $dateBoxes = $filmListings.parent();
   $filmListings.remove();
   $dateBoxes.each(function(){
