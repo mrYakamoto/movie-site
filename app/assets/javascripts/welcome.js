@@ -6,22 +6,29 @@ $('document').ready(function(){
   addAllTooltips();
   addBackgroundToAllEmptyDays();
 
-  dropDown();
+  carouselAdvanceOneAtATimeFix();
+
 });
 
-function dropDown(){
-  $('.nav-tabs-dropdown').each(function(i, elm) {
-    $(elm).text($(elm).next('ul').find('li.active a').text());
-  });
-  $('.nav-tabs-dropdown').on('click', function(e) {
-    e.preventDefault();
-    $(e.target).toggleClass('open').next('ul').slideToggle();
-  });
-  $('#nav-tabs-wrapper a[data-toggle="tab"]').on('click', function(e) {
-    e.preventDefault();
-    $(e.target).closest('ul').hide().prev('a').removeClass('open').text($(this).text())
+function carouselAdvanceOneAtATimeFix(){
+  $('.carousel[data-type="multi"] .item').each(function(){
+    var next = $(this).next();
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+
+    for (var i=0;i<4;i++) {
+      next=next.next();
+      if (!next.length) {
+        next = $(this).siblings(':first');
+      }
+      next.children(':first-child').clone().appendTo($(this));
+    }
   });
 }
+
+
 
 
 

@@ -33,7 +33,7 @@ module WelcomeHelper
 
   def screenings_today(film, date)
     film.screenings.where("month = ? AND mday = ? AND year = ?",date.month, date.mday, date.year)
-
   end
+
 
 end

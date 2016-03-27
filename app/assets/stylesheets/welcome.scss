@@ -1,3 +1,47 @@
+
+@font-face {
+    font-family: 'slick';
+    src:font-url('slick.eot');
+    src:font-url('slick.eot?#iefix') format('embedded-opentype'),
+        font-url('slick.ttf') format('truetype'),
+        font-url('slick.woff') format('woff'),
+        font-url('slick.svg#slick') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'sketch';
+    src:font-url('sketch.eot');
+    src:font-url('sketch.eot?#iefix') format('embedded-opentype'),
+        font-url('sketch.ttf') format('truetype'),
+        font-url('sketch.woff') format('woff'),
+        font-url('sketch.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('/assets/glyphicons-halflings-regular.eot');
+    src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+    url('/assets/glyphicons-halflings-regular.woff') format('woff'),
+    url('/assets/glyphicons-halflings-regular.ttf') format('truetype'),
+    url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+h1, h2, h3, h4, h5, h6, th, td, span.theater-name, li, a {
+  font-family: 'Poiret One', courier !important;
+}
+p, div {
+    font-family: 'Poirot One' !important;
+}
+
+.theater-tab-box {
+  clear: both;
+}
+
+
 .nav-tabs-dropdown {
   display: none;
   border-bottom-left-radius: 0;
@@ -127,7 +171,7 @@ div.remove-film:before {
   position: fixed;
   top: 0;
   left: 50%;
-  margin-top: 100px;
+  margin-top: 50px;
   z-index: 9999;
   transform: translate(-50%);
 }
