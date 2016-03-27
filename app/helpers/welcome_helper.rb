@@ -1,6 +1,11 @@
 module WelcomeHelper
   require 'date'
 
+  def date_today
+    today = DateTime.now()
+    DateTime.new(today.year, today.month, today.mday, 1, 1)
+  end
+
   def set_start_date(date)
     date - date.wday
   end
@@ -28,7 +33,7 @@ module WelcomeHelper
 
   def screenings_today(film, date)
     film.screenings.where("month = ? AND mday = ? AND year = ?",date.month, date.mday, date.year)
-
   end
+
 
 end

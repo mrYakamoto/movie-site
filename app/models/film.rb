@@ -3,6 +3,10 @@ class Film < ActiveRecord::Base
   has_many :screenings
 
   validates :title, presence: true, uniqueness: true
+
+  scope :by_popularity, -> {
+    order(:popularity => :desc)
+  }
 end
 
 

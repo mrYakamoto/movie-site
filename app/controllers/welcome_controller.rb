@@ -3,6 +3,9 @@ include UsersHelper
 class WelcomeController < ApplicationController
 
   def index
+    # @films = Film.by_popularity.limit(10)
+
+
     @films = []
     Film.all.each{|film_obj|@films << film_obj}
     @top_three_films_arr = @films.sample(3)
