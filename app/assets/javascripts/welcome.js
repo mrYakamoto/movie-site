@@ -8,13 +8,21 @@ $('document').ready(function(){
 
   carouselAdvanceOneAtATimeFix();
 
+
+
+  makeTheaterNavSticky();
+
+});
+
+
+
+function makeTheaterNavSticky(){
   $('#theater-nav-container').affix({
     offset: {
       top: ($('#theater-nav-container').offset().top -50)
     }
   });
-});
-
+}
 
 
 function carouselAdvanceOneAtATimeFix(){
@@ -34,11 +42,6 @@ function carouselAdvanceOneAtATimeFix(){
     }
   });
 }
-
-
-
-
-
 
 
 function addBuzzBoxPosterListener(){
@@ -146,12 +149,12 @@ function addTooltip(){
       effect: function(offset) {
         $( this ).slideUp( 100 )
       },
-      inactive: 1300
+      inactive: 1500
     },
     style: { classes: 'qtip-tipsy' },
     position: {
-      my: 'top center',
-      at: 'bottom center'
+      my: 'top left',
+      at: 'top left'
     }
   });
 }

@@ -38,13 +38,13 @@ p, div {
 }
 
 nav#main-header {
-  z-index: 4;
+  z-index: 16001
 }
 
 .affix {
   top: 50px;
   width: 100%;
-  z-index: 3;
+  z-index: 16000;
 }
 
 div#affix-placeholder {
@@ -219,7 +219,7 @@ div.remove-film:before {
   top: 0;
   left: 50%;
   margin-top: 50px;
-  z-index: 9999;
+  z-index: 16002;
   transform: translate(-50%);
 }
 
