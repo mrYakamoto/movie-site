@@ -1,7 +1,7 @@
 <% end_month = @date_filler.month + 2%>
 <% until @date_filler.month == end_month%>
 <% @date_filler = set_start_date(@date_filler) %>
-<div class="row">
+<div class="row calendar-container">
   <div class="panel panel-default">
     <div class="panel-heading"><%= Date::MONTHNAMES[@date_filler.month] %>
     </div>

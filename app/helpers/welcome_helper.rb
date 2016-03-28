@@ -6,6 +6,11 @@ module WelcomeHelper
     DateTime.new(today.year, today.month, today.mday, 1, 1)
   end
 
+  def short_title(title)
+    return "#{title[0..50]}..." if title.length > 50
+    title
+  end
+
   def set_start_date(date)
     date - date.wday
   end

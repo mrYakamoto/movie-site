@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12 buzz-box-container clearfix">
     <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="8000" id="myCarousel">
 
       <div class="carousel-inner">
@@ -9,7 +9,7 @@
                 <div class="thumbnail">
 
                     <div class="caption">
-                        <h4><%= film.title %></h4>
+                        <h4><%= short_title(film.title) %></h4>
                         <p>theater</p>
                         <p><a href="" class="label label-danger">dates</a></p>
                     </div>
@@ -32,7 +32,7 @@
                <div class="thumbnail">
 
                    <div class="caption">
-                       <h4><%= film.title %></h4>
+                       <h4><%= short_title(film.title) %></h4>
                        <p>theater</p>
                        <p><a href="" class="label label-danger">dates</a></p>
                    </div>
