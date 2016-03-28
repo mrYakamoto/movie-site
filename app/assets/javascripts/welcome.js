@@ -8,7 +8,14 @@ $('document').ready(function(){
 
   carouselAdvanceOneAtATimeFix();
 
+  $('#theater-nav-container').affix({
+    offset: {
+      top: ($('#theater-nav-container').offset().top -50)
+    }
+  });
 });
+
+
 
 function carouselAdvanceOneAtATimeFix(){
   $('.carousel[data-type="multi"] .item').each(function(){
@@ -27,6 +34,8 @@ function carouselAdvanceOneAtATimeFix(){
     }
   });
 }
+
+
 
 
 

@@ -1,43 +1,98 @@
 
 @font-face {
-    font-family: 'slick';
-    src:font-url('slick.eot');
-    src:font-url('slick.eot?#iefix') format('embedded-opentype'),
-        font-url('slick.ttf') format('truetype'),
-        font-url('slick.woff') format('woff'),
-        font-url('slick.svg#slick') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'slick';
+  src:font-url('slick.eot');
+  src:font-url('slick.eot?#iefix') format('embedded-opentype'),
+  font-url('slick.ttf') format('truetype'),
+  font-url('slick.woff') format('woff'),
+  font-url('slick.svg#slick') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'sketch';
-    src:font-url('sketch.eot');
-    src:font-url('sketch.eot?#iefix') format('embedded-opentype'),
-        font-url('sketch.ttf') format('truetype'),
-        font-url('sketch.woff') format('woff'),
-        font-url('sketch.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'sketch';
+  src:font-url('sketch.eot');
+  src:font-url('sketch.eot?#iefix') format('embedded-opentype'),
+  font-url('sketch.ttf') format('truetype'),
+  font-url('sketch.woff') format('woff'),
+  font-url('sketch.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url('/assets/glyphicons-halflings-regular.eot');
-    src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
-    url('/assets/glyphicons-halflings-regular.woff') format('woff'),
-    url('/assets/glyphicons-halflings-regular.ttf') format('truetype'),
-    url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+  font-family: 'Glyphicons Halflings';
+  src: url('/assets/glyphicons-halflings-regular.eot');
+  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  url('/assets/glyphicons-halflings-regular.woff') format('woff'),
+  url('/assets/glyphicons-halflings-regular.ttf') format('truetype'),
+  url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 
-h1, h2, h3, h4, h5, h6, th, td, span.theater-name, li, a {
+h1, h2, h3, h4, h5, h6, th, td, span.theater-name, span.theater-tab, li, a, div.panel-heading {
   font-family: 'Poiret One', courier !important;
 }
 p, div {
-    font-family: 'Poirot One' !important;
+  font-family: 'Poirot One' !important;
+}
+
+nav#main-header {
+  z-index: 4;
+}
+
+.affix {
+  top: 50px;
+  width: 100%;
+  z-index: 3;
+}
+
+div#affix-placeholder {
+  float: left;
+  height: 35px;
+  z-index: -1;
+}
+
+
+.theater-nav-container {
+  background-color: gray;
+  .navbar-toggle {
+    margin: 0;
+    padding: 6px 10px;
+    span {
+      color: white;
+    }
+  }
 }
 
 .theater-tab-box {
+  border-radius: 4px;
+  background: gray;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  z-index: 2;
+  position: absolute;
+}
+
+theater-tab-box.collapsed {
+  width: 100%;
+}
+
+.calendar-container {
+  clear:both;
+}
+.buzz-box-container {
+  padding-top: 10px;
+  .carousel-control.right {
+    right: -3px;
+  }
+  .carousel-control.left {
+    left: -20px;
+  }
+}
+
+.navbar-collapse {
   clear: both;
 }
 
@@ -65,60 +120,52 @@ p, div {
 }
 
 @media screen and (max-width: 768px) {
-    .nav-tabs-dropdown {
-        display: block;
-    }
-    #nav-tabs-wrapper {
-        position: absolute;
-        display: none;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        text-align: center;
-        z-index: 1;
-        float: left !important;
-        background-color: white;
+  .nav-tabs-dropdown {
+    display: block;
+  }
+  #nav-tabs-wrapper {
+    position: absolute;
+    display: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    text-align: center;
+    z-index: 1;
+    float: left !important;
+    background-color: white;
 
 
-    }
-   .nav-tabs-horizontal {
-        min-height: 20px;
-        padding: 19px;
-        margin-bottom: 20px;
-        background-color: #f5f5f5;
-        border: 1px solid #e3e3e3;
-        border-radius: 4px;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-        box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-   }
-    .nav-tabs-horizontal  > li {
-        float: none;
-    }
-    .nav-tabs-horizontal  > li + li {
-        margin-left: 2px;
-    }
-    .nav-tabs-horizontal > li,
-    .nav-tabs-horizontal > li > a {
-        background: transparent;
-        width: 100%;
-    }
-    .nav-tabs-horizontal  > li > a {
-        border-radius: 4px;
-    }
-    .nav-tabs-horizontal  > li.active > a,
-    .nav-tabs-horizontal  > li.active > a:hover,
-    .nav-tabs-horizontal  > li.active > a:focus {
-        color: #ffffff;
-        background-color: #428bca;
-    }
+  }
+  .nav-tabs-horizontal {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+  }
+  .nav-tabs-horizontal  > li {
+    float: none;
+  }
+  .nav-tabs-horizontal  > li + li {
+    margin-left: 2px;
+  }
+  .nav-tabs-horizontal > li,
+  .nav-tabs-horizontal > li > a {
+    background: transparent;
+    width: 100%;
+  }
+  .nav-tabs-horizontal  > li > a {
+    border-radius: 4px;
+  }
+  .nav-tabs-horizontal  > li.active > a,
+  .nav-tabs-horizontal  > li.active > a:hover,
+  .nav-tabs-horizontal  > li.active > a:focus {
+    color: #ffffff;
+    background-color: #428bca;
+  }
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -142,7 +189,7 @@ nav.navbar.navbar-default {
 
 img.poster {
   /*min-height: 100px;*/
-  max-height: 250px;
+  max-height: 200px;
 }
 
 .body-container {
