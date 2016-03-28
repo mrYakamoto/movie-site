@@ -37,6 +37,21 @@ p, div {
   font-family: 'Poirot One' !important;
 }
 
+nav#main-header {
+  z-index: 4;
+}
+
+.affix {
+  top: 50px;
+  width: 100%;
+  z-index: 3;
+}
+
+div#affix-placeholder {
+  float: left;
+  height: 35px;
+  z-index: -1;
+}
 
 
 .theater-nav-container {
@@ -56,16 +71,13 @@ p, div {
   margin: 0;
   padding: 0;
   border: 0;
-  z-index: 9999;
+  z-index: 2;
   position: absolute;
 }
 
 theater-tab-box.collapsed {
   width: 100%;
 }
-
-
-
 
 .calendar-container {
   clear:both;
@@ -79,8 +91,6 @@ theater-tab-box.collapsed {
     left: -20px;
   }
 }
-
-
 
 .navbar-collapse {
   clear: both;
