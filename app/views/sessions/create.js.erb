@@ -1,0 +1,12 @@
+console.log("/sessions/create.js.erb file");
+
+console.log(userLoggedIn())
+
+if (userLoggedIn()){
+  $('div#login-modal').removeClass('in');
+  $('div.modal-backdrop').removeClass('in');
+  flashSuccess("<%= flash[:success] %>")
+}
+else{
+  flashError("<%= flash[:error] %>");
+}

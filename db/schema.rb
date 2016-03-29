@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160308205446) do
   create_table "films", force: :cascade do |t|
     t.string   "title"
     t.string   "poster_url"
+    t.integer  "popularity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

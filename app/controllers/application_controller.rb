@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   private
 
   def set_user
+    # cookies[:username] = ''
+    # session[:user_id] = nil
     if authenticated?
     cookies[:username] = current_user.username
     else

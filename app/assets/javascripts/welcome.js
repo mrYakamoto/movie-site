@@ -1,57 +1,27 @@
 "use strict";
 
 $('document').ready(function(){
-  addBuzzBoxPosterListener();
 
   addAllTooltips();
   addBackgroundToAllEmptyDays();
 
-  carouselAdvanceOneAtATimeFix();
+  theaterTabListener();
 
+  dropDownLinksListener();
 
+})
 
-  makeTheaterNavSticky();
-
-});
-
-
-
-function makeTheaterNavSticky(){
-  $('#theater-nav-container').affix({
-    offset: {
-      top: ($('#theater-nav-container').offset().top -50)
-    }
-  });
+function theaterTabListener(){
+  $('li.theater-tab-box').click(function(){
+    $('li.theater-tab-box.active').removeClass('active');
+    $( this ).addClass('active');
+  })
 }
 
-
-function carouselAdvanceOneAtATimeFix(){
-  $('.carousel[data-type="multi"] .item').each(function(){
-    var next = $(this).next();
-    if (!next.length) {
-      next = $(this).siblings(':first');
-    }
-    next.children(':first-child').clone().appendTo($(this));
-
-    for (var i=0;i<4;i++) {
-      next=next.next();
-      if (!next.length) {
-        next = $(this).siblings(':first');
-      }
-      next.children(':first-child').clone().appendTo($(this));
-    }
-  });
-}
-
-
-function addBuzzBoxPosterListener(){
-  $('div.thumbnail').hover(
-    function(){
-      $( this ).find('.overlay').fadeIn( 500 );
-    },
-    function(){
-      $( this ).find('.overlay').fadeOut( 500 );
-    })
+function dropDownLinksListener(){
+  $('div#navbar-collapse-1 a').click(function(){
+    $('div#navbar-collapse-1').toggleClass('in');
+  })
 }
 
 function addBackgroundToAllEmptyDays(){
@@ -61,63 +31,6 @@ function addBackgroundToAllEmptyDays(){
   $pastEmptyDates.addClass('gradient')
 }
 
-// AJAX
-
-function addFilmToWatchlist(data){
-  $.ajax({
-    method: 'POST',
-    url: '/users_films',
-    data: data
-  })
-  .done(function(response){
-    flashAjaxResponse(response);
-  })
-  .error(function(xhr, unknown, error){
-    alert(error);
-  })
-}
-
-function removeFilmFromWatchlist(data){
-  $.ajax({
-    method: 'DELETE',
-    url: "/users_films/0",
-    data: data
-  })
-  .done(function(response){
-    flashAjaxResponse(response);
-    removeWatchlistListings(data["film_id"]);
-  })
-  .error(function(xhr, unknown, error){
-    alert(error);
-  })
-}
-
-function flashAjaxResponse(response){
-  if ( response.success ){
-    flashSuccess(response.success)
-  }
-  else if ( response.errors.film_id ){
-    flashError(response.errors.film_id[0])
-  }
-  else
-    console.log("ERROR");
-}
-
-function flashError(text){
-  $("div.alert-danger").empty().prepend(text).slideDown(150);
-  setTimeout(function() {
-    $("div.alert-danger").slideUp(150);
-  }, 2000);
-}
-
-function flashSuccess(text){
-  $("div.alert-success").empty().prepend(text).slideDown(150);
-  setTimeout(function() {
-    $("div.alert-success").slideUp(150);
-  }, 2000);
-}
-
-// END OF AJAX
 
 // TOOLTIPS
 
@@ -211,22 +124,6 @@ function switchTooltips(){
     addTooltipClickListener.call(tooltipContent);
 
   })
-
-
-
-  // var qtipId = $toolTipContent.closest('div.qtip').attr('data-qtip-id');
-  // var target = $('span[data-hasqtip='+qtipId+']');
-  // var api = $(target).qtip('api');
-
-
-
-  // $allFilmsToolTips.each(function(){
-  //   var tooltipContent = this
-
-  //   $(tooltipContent).toggleClass("add-film remove-film");
-  //   addTooltipClickListener.call(tooltipContent);
-  // })
-
 }
 
 function removeWatchlistListings(film_id){
@@ -239,6 +136,60 @@ function removeWatchlistListings(film_id){
       $(this).addClass('gradient')
     }
   })
+}
+
+function addFilmToWatchlist(data){
+  $.ajax({
+    method: 'POST',
+    url: '/users_films',
+    data: data
+  })
+  .done(function(response){
+    flashAjaxResponse(response);
+  })
+  .error(function(xhr, unknown, error){
+    alert(error);
+  })
+}
+
+function removeFilmFromWatchlist(data){
+  $.ajax({
+    method: 'DELETE',
+    url: "/users_films/0",
+    data: data
+  })
+  .done(function(response){
+    flashAjaxResponse(response);
+    removeWatchlistListings(data["film_id"]);
+  })
+  .error(function(xhr, unknown, error){
+    alert(error);
+  })
+}
+
+function flashAjaxResponse(response){
+  if ( response.success ){
+    flashSuccess(response.success)
+  }
+  else if ( response.errors.film_id ){
+    flashError(response.errors.film_id[0])
+  }
+  else
+    console.log("ERROR");
+}
+
+function flashError(text){
+  $("div.alert-danger").empty().prepend(text).slideDown(150);
+  setTimeout(function() {
+    $("div.alert-danger").slideUp(150);
+  }, 2000);
+}
+
+function flashSuccess(text){
+  $("div.alert-success").empty().prepend(text).slideDown(150);
+  setTimeout(function() {
+    $("div.alert-success").slideUp(150);
+  }, 2000);
 }
 
 // END OF TOOLTIPS

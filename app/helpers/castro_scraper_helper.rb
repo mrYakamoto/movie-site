@@ -19,12 +19,21 @@ module CastroScraperHelper
     theater_id = Theater.where(name: "Castro Theater").first.id
     ticketing_url = "http://www.castrotheatre.com/p-list.html"
 
+    counter = 0
+    castro_column = nil
+    until(castro_column)
+      castro_column = counter if table[counter].text.downcase.include?('castro')
+      counter +=1
+    end
+
+
+
     row_num = 0
     while (row_num < table.nodes[0].length) do
 
       date_str = table.nodes[0][row_num].text
 
-      days_shows = table.nodes[3][row_num].element.css('p')
+      days_shows = table.nodes[castro_column][row_num].element.css('p')
       if ( days_shows.length > 0 )
         days_shows.each do |show|
           film_title = show.css('a').text

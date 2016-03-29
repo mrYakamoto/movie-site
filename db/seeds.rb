@@ -29,7 +29,7 @@ theater_seeds = {
       "address" => "429 Castro Street, San Francisco, CA",
       "website_url" => "http://www.castrotheatre.com/"
     },
-    "Yerba Buena Center for the Arts" => {
+    "YBCA" => {
       "address" => "701 Mission Street San Francisco, CA 94103",
       "website_url" => "http://www.ybca.org/"
     },

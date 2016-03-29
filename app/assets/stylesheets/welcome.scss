@@ -1,3 +1,8 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 @font-face {
   font-family: 'slick';
@@ -42,20 +47,12 @@ nav#main-header {
 }
 
 .affix {
-  top: 50px;
-  width: 100%;
   z-index: 16000;
 }
 
-div#affix-placeholder {
-  float: left;
-  height: 35px;
-  z-index: -1;
-}
-
-
 .theater-nav-container {
-  background-color: gray;
+
+  background-color: white;
   .navbar-toggle {
     margin: 0;
     padding: 6px 10px;
@@ -63,16 +60,6 @@ div#affix-placeholder {
       color: white;
     }
   }
-}
-
-.theater-tab-box {
-  border-radius: 4px;
-  background: gray;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  z-index: 2;
-  position: absolute;
 }
 
 theater-tab-box.collapsed {
@@ -85,17 +72,20 @@ theater-tab-box.collapsed {
 .buzz-box-container {
   padding-top: 10px;
   .carousel-control.right {
-    right: -3px;
+    right: -30px;
   }
   .carousel-control.left {
-    left: -20px;
+    left: -45px;
   }
 }
 
-.navbar-collapse {
-  clear: both;
-}
+#navbar-collapse-1 {
+  ul {
+    text-align: right;
+    margin-right: 10px;
 
+  }
+}
 
 .nav-tabs-dropdown {
   display: none;
@@ -113,9 +103,112 @@ theater-tab-box.collapsed {
   padding-left: 15px;
 }
 
+/****** LOGIN MODAL ******/
+
+.modal-dialog {
+  margin-top: 80px;
+}
+
+.loginmodal-container {
+  padding: 30px;
+  max-width: 350px;
+  width: 100% !important;
+  background-color: #F7F7F7;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: roboto;
+}
+
+.loginmodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: roboto;
+}
+
+.loginmodal-container input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.loginmodal-container input[type=text], input[type=password] {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  /* border-radius: 2px; */
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.loginmodal-container input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.loginmodal {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+/* border-radius: 3px; */
+/* -webkit-user-select: none;
+  user-select: none; */
+}
+
+.loginmodal-submit {
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1);
+  background-color: #4d90fe;
+  padding: 17px 0px;
+  font-family: roboto;
+  font-size: 14px;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+}
+
+.loginmodal-submit:hover {
+  /* border: 1px solid #2f5bb7; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #357ae8;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+
+.loginmodal-container a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+}
+
+.login-help{
+  font-size: 12px;
+}
+
 @media screen and (min-width: 769px) {
   #nav-tabs-wrapper {
     display: block!important;
+  }
+  div#affix-placeholder {
+    height: 75px;
   }
 }
 
@@ -132,8 +225,6 @@ theater-tab-box.collapsed {
     z-index: 1;
     float: left !important;
     background-color: white;
-
-
   }
   .nav-tabs-horizontal {
     min-height: 20px;
@@ -165,7 +256,27 @@ theater-tab-box.collapsed {
     color: #ffffff;
     background-color: #428bca;
   }
+
+  .theater-tab-box {
+    border-radius: 4px;
+    background: gray;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    z-index: 2;
+    position: absolute;
+  }
+  div#affix-placeholder {
+    height: 35px;
+  }
 }
+div#affix-placeholder {
+  float: left;
+  z-index: -1;
+  clear:both;
+
+}
+
 
 
 
@@ -181,6 +292,7 @@ nav.navbar.navbar-default {
   .navbar-brand {
     color: white;
   }
+
 }
 
 .buzz-box {
@@ -238,11 +350,7 @@ div.remove-film:before {
     );
 }
 
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+
 
 /*set html font-size at 62.5 to make sizing with rems similar to pixels*/
 html {
@@ -343,9 +451,3 @@ div.page-header h1 {
     padding-top: 10px !important;
   }
 }
-
-
-
-
-
-

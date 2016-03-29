@@ -34,10 +34,12 @@ class UsersController < ApplicationController
   end
 
   def create
+
     @user = User.new(user_params)
     p @user
 
-    @user.password = params[:password_plaintext]
+    @user.password = pass_param
+
     if @user.save
       session[:user_id] = @user.id
       redirect_to '/'
@@ -50,7 +52,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password_plaintext)
+    params.require(:user).permit(:username, :email)
+  end
+  def pass_param
+    params.require(:user).permit(:password_plaintext)
   end
 
 
