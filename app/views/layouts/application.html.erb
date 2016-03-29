@@ -42,7 +42,7 @@
         <%= f.submit "Login", name:"login", class:"login loginmodal-submit"%>
         <% end %>
         <div class="login-help">
-          <a href="#">Register</a> - <a href="#">Forgot Password</a>
+          <a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal">Register</a> - <a href="#">Forgot Password</a>
         </div>
       </div>
     </div>
@@ -55,12 +55,12 @@
         <%= form_for :user, url: users_path, html: {:class => 'form-horizontal', :id => 'login-form'}, remote: true do |f| %>
         <%= f.text_field :username, placeholder: "Username", id: "username", name: "user[username]"%>
         <%= f.text_field :email, placeholder: "Email", id: "email", name: "user[email]"%>
-        <%= f.password_field :password, placeholder: "Password", id: "password_plaintext", name: "user[password_plaintext]" %>
-        <%= f.password_field :confirm_password, placeholder: "Confirm Password", id: "confirm_password_plaintext", name: "user[confirm_password_plaintext]" %>
-        <%= f.submit "Login", name:"login", class:"login loginmodal-submit"%>
+        <%= f.password_field :password, placeholder: "Password", id: "password_plaintext", name: "pass[password_plaintext]" %>
+        <%= f.password_field :confirm_password, placeholder: "Confirm Password", id: "confirm_password_plaintext", name: "pass[confirm_password]" %>
+        <%= f.submit "Login", name:"login", class:"login loginmodal-submit" %>
         <% end %>
         <div class="login-help">
-          <a href="#">Register</a> - <a href="#">Forgot Password</a>
+          <a href="#" data-toggle="modal" data-target="#login-modal" data-dismiss="modal">Login</a>
         </div>
       </div>
     </div>

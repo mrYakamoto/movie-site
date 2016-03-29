@@ -69,15 +69,7 @@ theater-tab-box.collapsed {
 .calendar-container {
   clear:both;
 }
-.buzz-box-container {
-  padding-top: 10px;
-  .carousel-control.right {
-    right: -30px;
-  }
-  .carousel-control.left {
-    left: -45px;
-  }
-}
+
 
 #navbar-collapse-1 {
   ul {
@@ -330,7 +322,7 @@ div.remove-film:before {
   position: fixed;
   top: 0;
   left: 50%;
-  margin-top: 50px;
+  margin-top: 60px;
   z-index: 16002;
   transform: translate(-50%);
 }

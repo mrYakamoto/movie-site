@@ -16,7 +16,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-        <li><%= link_to 'Logout', session_path(session), method: :delete %></li>
+        <li class="logged-in"><%= link_to 'Logout', session_path(session), method: :delete %></li>
         <% else %>
         <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
         <li><a href="#" data-toggle="modal" data-target="#register-modal">Register</a></li>

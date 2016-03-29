@@ -15,6 +15,8 @@ function theaterTabListener(){
   $('li.theater-tab-box').click(function(){
     $('li.theater-tab-box.active').removeClass('active');
     $( this ).addClass('active');
+    $('div#theater-nav').removeClass('in')
+    $('button#theaters-dropdown-button span.theater-tab').html($(this).text())
   })
 }
 
@@ -30,6 +32,7 @@ function addBackgroundToAllEmptyDays(){
   var $pastEmptyDates = $( 'td.date-box:has( > span.past-placeholder )');
   $pastEmptyDates.addClass('gradient')
 }
+
 
 
 // TOOLTIPS
@@ -195,13 +198,11 @@ function flashSuccess(text){
 // END OF TOOLTIPS
 
 // USERS
-function cookieUserValue(){
-  var cookieUserValue = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-  return cookieUserValue;
-}
+
 
 function userLoggedIn(){
-  if (cookieUserValue()){
+  var $userCal = $('div#user-cal');
+  if ( $userCal.attr('data-user') == 'true' ){
     return true;
   } else {
     return false;
