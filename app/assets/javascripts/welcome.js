@@ -11,6 +11,12 @@ $('document').ready(function(){
 
 })
 
+function fillWatchlistButtons(){
+  $('a.watchlist-button').each(function(){
+
+  })
+}
+
 function theaterTabListener(){
   $('li.theater-tab-box').click(function(){
     $('li.theater-tab-box.active').removeClass('active');
@@ -86,12 +92,9 @@ function addAllTooltipClickListeners(){
 function addTooltipClickListener(){
   console.log("ADD TOOLTIP CLICK LISTENER")
   var tooltipContent = this
-
-
   var data = {film_id: tooltipContent.getAttribute('data-value')};
 
   $(tooltipContent).click(function(){
-    console.log('CLICKED');
     if (!isOnWatchlist.call(tooltipContent)){
       addFilmToWatchlist(data);
     } else if (isOnWatchlist.call(tooltipContent)){
@@ -100,6 +103,10 @@ function addTooltipClickListener(){
     $(tooltipContent).off('click');
     switchTooltips.call(tooltipContent);
   })
+}
+
+function buzzBoxWatchlistListener(){
+  $('')
 }
 
 function isOnWatchlist(){

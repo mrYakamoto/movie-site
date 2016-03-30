@@ -12,8 +12,18 @@
 
               <div class="caption">
                 <h4><%= short_title(film.title) %></h4>
-                <p>theater</p>
-                <p><a href="" class="label label-danger">dates</a></p>
+                <% film.all_theaters.each do |theater_name| %>
+                  <p><%= theater_name %></p>
+                <% end %>
+                <% film.screenings.each do |screening|%>
+                <p class="buzz-showtime"><a href="<%= screening.ticketing_url %>" class="label label-danger"><%= screening.buzz_box_screening_time %></a></p>
+                <% end %>
+                <p>
+                  <% if current_user && current_user.films.include?(film)%>
+                  <a href="" class="label label-default watchlist-button"></a>
+                  <% end %>
+
+                </p>
               </div>
 
               <a href="#">
@@ -40,8 +50,18 @@
 
            <div class="caption">
              <h4><%= short_title(film.title) %></h4>
-             <p>theater</p>
-             <p><a href="" class="label label-danger">dates</a></p>
+
+             <% film.all_theaters.each do |theater_name| %>
+             <p><%= theater_name %></p>
+             <% end %>
+
+
+             <% film.screenings.each do |screening| %>
+
+             <p class="buzz-showtime"><a href="<%= screening.ticketing_url %>" class="label label-danger buzz-showtime"><%= screening.buzz_box_screening_time %></a></p>
+
+             <% end %>
+
            </div>
 
            <a href="#">
@@ -59,11 +79,8 @@
   </div>
   <% end %>
 
-
 </div>
 <a class="left carousel-control " href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
 <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
 </div>
 </div>
-
-

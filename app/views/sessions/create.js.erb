@@ -1,5 +1,7 @@
+
+
 if ( "<%= flash[:success] %>".length > 0 ){
-  newSession("<%= @user.username %>");
+  newSession("<%= @user.username if @user %>");
   flashSuccess("<%= flash[:success] %>");
 }
 else if ("<%=flash[:error]%>".length > 0){
@@ -19,7 +21,7 @@ function swapToLogoutButton(){
 }
 
 function swapUserCalButton(){
-  $('div#user-cal').empty().append('<a class="theater-tab" data-remote="true" href="/users/<%= escape_javascript @user.id.to_s %>"><%= escape_javascript @user.username %>\'s Watchlist</a>');
+  $('div#user-cal').empty().append('<a class="theater-tab" data-remote="true" href="/users/<%= @user.id.to_s if @user %>"><%= @user.username if @user %>\'s Watchlist</a>');
   $('div#user-cal').toggleClass('btn-warning btn-success');
   $('div#user-cal').attr('data-user', 'true');
 }
