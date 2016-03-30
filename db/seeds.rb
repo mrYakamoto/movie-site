@@ -23,7 +23,7 @@
 theater_seeds = {
   "Roxie Theater" => {
     "address" => "3117 16th Street, San Francisco, CA",
-    "website_url" => "www.roxie.com"
+    "website_url" => "http://www.roxie.com"
     },
     "Castro Theater" => {
       "address" => "429 Castro Street, San Francisco, CA",
@@ -35,7 +35,7 @@ theater_seeds = {
     },
     "New Parkway" => {
       "address" => "474 24th Street, Oakland, CA 94612",
-      "website_url" => "newparkway.com"
+      "website_url" => "http://www.thenewparkway.com"
     }
   }
 

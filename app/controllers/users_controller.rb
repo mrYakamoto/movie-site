@@ -1,7 +1,7 @@
 include UsersHelper
 
 class UsersController < ApplicationController
-  before_action :check_admin_permissions, except: [:index, :show, :new, :create]
+  before_action :check_admin_permissions, except: [:index, :show, :new, :create, :current_user_films]
 
   def index
     redirect_to '/' unless current_user && current_user.is_admin?
@@ -50,6 +50,22 @@ class UsersController < ApplicationController
     end
 
     render :template => 'sessions/create'
+  end
+
+  def current_user_films
+    user_films = {}
+    if current_user
+      current_user.films.each do |film|
+        user_films[film.id.to_s] = film.title
+      end
+    end
+
+    if request.xhr?
+      render :json => user_films
+    else
+      redirect '/'
+    end
+
   end
 
   private

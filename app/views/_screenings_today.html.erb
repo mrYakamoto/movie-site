@@ -3,21 +3,19 @@
 <div class='film-listing-container' id=<%="film-#{film.id}"%>>
   <span class='film-title hasTooltip' data-value='<%=film.id%>'><%= film.title %></span>
 
-  <% if current_user && current_user.films.include?(film)%>
-    <div class="tooltipContent remove-film" data-value='<%=film.id%>'>
-  <% else %>
-    <div class="tooltipContent add-film" data-value='<%=film.id%>'>
-  <% end %>
-    </div><br>
+  <div class="tooltipContent" data-value='<%=film.id%>'>
+  </div><br>
 
-  <% screenings_today(film, @date_filler).each do |screening| %>
+    <% screenings_today(film, @date_filler).each do |screening| %>
     <a href="<%= screening.ticketing_url %>">
       <span class='showtime'><%= screening.time %></span>
     </a>
+    <% end %>
+
+    <br>
+    <a href="<%= screenings_today(film, @date_filler).first.theater.website_url %>">
+      <span class='theater-name'><%= screenings_today(film, @date_filler).first.theater.name %></span>
+    </a>
+  </div>
+
   <% end %>
-
-  <br>
-  <span class='theater-name'><%= screenings_today(film, @date_filler).first.theater.name %></span>
-</div>
-
-<% end %>

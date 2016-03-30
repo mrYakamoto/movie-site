@@ -8,7 +8,7 @@
           <% 6.times do %>
           <% film = @films.shift %>
           <div class="col-md-2 col-sm-3 col-xs-4 thumbnail-container">
-            <div class="thumbnail">
+            <div class="thumbnail" data-film-id="<%= film.id %>">
 
               <div class="caption">
                 <h4><%= short_title(film.title) %></h4>
@@ -20,7 +20,9 @@
                 <% end %>
                 <p>
                   <% if current_user && current_user.films.include?(film)%>
-                  <a href="" class="label label-default watchlist-button"></a>
+                  <a href="#" class="label label-default watchlist-button"></a>
+                  <% else %>
+                  <a href="#" class="label label-default watchlist-button"></a>
                   <% end %>
 
                 </p>
