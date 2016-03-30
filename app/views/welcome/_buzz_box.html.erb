@@ -1,60 +1,86 @@
-<div class="col-md-12 buzz-box-container clearfix">
-    <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="8000" id="myCarousel">
+<div class="col-md-12 buzz-box-container clearfix container">
+  <div class="carousel slide multi-item-carousel"id="myCarousel" data-interval="false">
 
-      <div class="carousel-inner">
+    <div class="carousel-inner">
 
-        <div class="item active">
-            <% film = @films.shift %>
-            <div class="col-md-2 col-sm-3 col-xs-4 thumbnail-container">
-                <div class="thumbnail">
+      <div class="item active">
+        <div class="row">
+          <% 6.times do %>
+          <% film = @films.shift %>
+          <div class="col-md-2 col-sm-3 col-xs-4 thumbnail-container">
+            <div class="thumbnail">
 
-                    <div class="caption">
-                        <h4><%= short_title(film.title) %></h4>
-                        <p>theater</p>
-                        <p><a href="" class="label label-danger">dates</a></p>
-                    </div>
+              <div class="caption">
+                <h4><%= short_title(film.title) %></h4>
+                <% film.all_theaters.each do |theater_name| %>
+                  <p><%= theater_name %></p>
+                <% end %>
+                <% film.screenings.each do |screening|%>
+                <p class="buzz-showtime"><a href="<%= screening.ticketing_url %>" class="label label-danger"><%= screening.buzz_box_screening_time %></a></p>
+                <% end %>
+                <p>
+                  <% if current_user && current_user.films.include?(film)%>
+                  <a href="" class="label label-default watchlist-button"></a>
+                  <% end %>
 
-                    <a href="#">
-                     <% if (film.poster_url == "NA") %>
-                     <%= image_tag "posters/default", class: "poster" %>
-                     <% else %>
-                     <%= image_tag "posters/poster-#{film.id}", class: "poster" %>
-                     <% end %>
-                 </a>
+                </p>
+              </div>
 
-                </div>
-            </div>
-        </div>
+              <a href="#">
+               <% if (film.poster_url == "NA") %>
+               <%= image_tag "posters/default", class: "poster" %>
+               <% else %>
+               <%= image_tag "posters/poster-#{film.id}", class: "poster" %>
+               <% end %>
+             </a>
 
-        <% @films.each do |film| %>
-        <div class="item">
-           <div class="col-md-2 col-sm-3 col-xs-4 thumbnail-container">
-               <div class="thumbnail">
+           </div>
+         </div>
+         <% end %>
+       </div>
+     </div>
 
-                   <div class="caption">
-                       <h4><%= short_title(film.title) %></h4>
-                       <p>theater</p>
-                       <p><a href="" class="label label-danger">dates</a></p>
-                   </div>
+     <% 4.times do %>
+     <div class="item">
+      <div class="row">
+        <% 6.times do %>
+        <% film = @films.shift %>
+        <div class="col-md-2 col-sm-3 col-xs-4 thumbnail-container">
+         <div class="thumbnail">
 
-                   <a href="#">
-                    <% if (film.poster_url == "NA") %>
-                    <%= image_tag "posters/default", class: "poster" %>
-                    <% else %>
-                    <%= image_tag "posters/poster-#{film.id}", class: "poster" %>
-                    <% end %>
-                   </a>
+           <div class="caption">
+             <h4><%= short_title(film.title) %></h4>
 
-               </div>
+             <% film.all_theaters.each do |theater_name| %>
+             <p><%= theater_name %></p>
+             <% end %>
+
+
+             <% film.screenings.each do |screening| %>
+
+             <p class="buzz-showtime"><a href="<%= screening.ticketing_url %>" class="label label-danger buzz-showtime"><%= screening.buzz_box_screening_time %></a></p>
+
+             <% end %>
+
            </div>
 
-       </div>
-       <% end %>
+           <a href="#">
+            <% if (film.poster_url == "NA") %>
+            <%= image_tag "posters/default", class: "poster" %>
+            <% else %>
+            <%= image_tag "posters/poster-#{film.id}", class: "poster" %>
+            <% end %>
+          </a>
 
+        </div>
+      </div>
+      <% end %>
     </div>
-<a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+  </div>
+  <% end %>
+
+</div>
+<a class="left carousel-control " href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
 <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
 </div>
 </div>
-
-

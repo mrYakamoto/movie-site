@@ -8,7 +8,7 @@ module YerbaScraperHelper
     data = Nokogiri::HTML(html)
     all_listings = data.css('div.view-content div.views-row')
 
-    theater_id = Theater.where(name: "Yerba Buena Center for the Arts").first.id
+    theater_id = Theater.where(name: "YBCA").first.id
     theater_root_url = "http://www.ybca.org"
 
     all_listings.each do |listing|

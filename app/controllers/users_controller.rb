@@ -22,11 +22,9 @@ class UsersController < ApplicationController
     end
   end
 
-
   def new
     @user = User.new
   end
-
 
   def edit
     @user = User.find(params[:id])
@@ -35,23 +33,32 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    p @user
+    @user.password = new_password[:password_plaintext]
+    @user.errors.messages[:pass] = ["password is too short"]
 
-    @user.password = params[:password_plaintext]
-    if @user.save
+    if (new_password[:password_plaintext] != new_password[:confirm_password])
+      flash[:error] = "Your passwords don't match, please re-enter"
+    elsif ( new_password[:password_plaintext].length > 12 )
+      flash[:error] = "Password is too long"
+    elsif ( new_password[:password_plaintext].length < 6 )
+      flash[:error] = "Password is too short"
+    elsif @user.save
       session[:user_id] = @user.id
-      redirect_to '/'
+      flash[:success] = "Welcome #{@user.username}"
     else
-      render 'new'
+      flash[:error] = @user.errors.full_messages.first
     end
-  end
 
+    render :template => 'sessions/create'
+  end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password_plaintext)
+    params.require(:user).permit(:username, :email)
   end
-
+  def new_password
+    params.require(:pass).permit(:password_plaintext, :confirm_password)
+  end
 
 end

@@ -1,54 +1,35 @@
 "use strict";
 
 $('document').ready(function(){
-  addBuzzBoxPosterListener();
 
   addAllTooltips();
   addBackgroundToAllEmptyDays();
 
-  carouselAdvanceOneAtATimeFix();
+  theaterTabListener();
 
-  $('#theater-nav-container').affix({
-    offset: {
-      top: ($('#theater-nav-container').offset().top -50)
-    }
-  });
-});
+  dropDownLinksListener();
 
+})
 
+function fillWatchlistButtons(){
+  $('a.watchlist-button').each(function(){
 
-function carouselAdvanceOneAtATimeFix(){
-  $('.carousel[data-type="multi"] .item').each(function(){
-    var next = $(this).next();
-    if (!next.length) {
-      next = $(this).siblings(':first');
-    }
-    next.children(':first-child').clone().appendTo($(this));
-
-    for (var i=0;i<4;i++) {
-      next=next.next();
-      if (!next.length) {
-        next = $(this).siblings(':first');
-      }
-      next.children(':first-child').clone().appendTo($(this));
-    }
-  });
+  })
 }
 
+function theaterTabListener(){
+  $('li.theater-tab-box').click(function(){
+    $('li.theater-tab-box.active').removeClass('active');
+    $( this ).addClass('active');
+    $('div#theater-nav').removeClass('in')
+    $('button#theaters-dropdown-button span.theater-tab').html($(this).text())
+  })
+}
 
-
-
-
-
-
-function addBuzzBoxPosterListener(){
-  $('div.thumbnail').hover(
-    function(){
-      $( this ).find('.overlay').fadeIn( 500 );
-    },
-    function(){
-      $( this ).find('.overlay').fadeOut( 500 );
-    })
+function dropDownLinksListener(){
+  $('div#navbar-collapse-1 a').click(function(){
+    $('div#navbar-collapse-1').toggleClass('in');
+  })
 }
 
 function addBackgroundToAllEmptyDays(){
@@ -58,7 +39,114 @@ function addBackgroundToAllEmptyDays(){
   $pastEmptyDates.addClass('gradient')
 }
 
-// AJAX
+
+
+// TOOLTIPS
+
+function addAllTooltips(){
+  console.log("ADD ALL TOOL TIPS");
+  if (userLoggedIn()){
+    console.log("USER LOGGED IN");
+
+    $('.hasTooltip').each(function(){
+      var target = this
+      addTooltip.call(target);
+    })
+    addAllTooltipClickListeners();
+  }
+}
+
+function addTooltip(){
+  console.log("ADD TOOL TIP")
+  $(this).qtip({
+    content: $(this).next('.tooltipContent:first'),
+    show: {
+      event: 'click',
+      effect: function(offset) {
+        $( this ).slideDown( 100 )
+      }
+    },
+    hide: {
+      event: 'unfocus',
+      effect: function(offset) {
+        $( this ).slideUp( 100 )
+      },
+      inactive: 1500
+    },
+    style: { classes: 'qtip-tipsy' },
+    position: {
+      my: 'top left',
+      at: 'top left'
+    }
+  });
+}
+
+function addAllTooltipClickListeners(){
+  console.log("ADD ALL TOOLTIP CLICK LISTENERS");
+  $('div.tooltipContent').each(function(){
+    var tooltipContent = this
+    addTooltipClickListener.call(tooltipContent);
+  })
+}
+
+function addTooltipClickListener(){
+  console.log("ADD TOOLTIP CLICK LISTENER")
+  var tooltipContent = this
+  var data = {film_id: tooltipContent.getAttribute('data-value')};
+
+  $(tooltipContent).click(function(){
+    if (!isOnWatchlist.call(tooltipContent)){
+      addFilmToWatchlist(data);
+    } else if (isOnWatchlist.call(tooltipContent)){
+      removeFilmFromWatchlist(data);
+    }
+    $(tooltipContent).off('click');
+    switchTooltips.call(tooltipContent);
+  })
+}
+
+function buzzBoxWatchlistListener(){
+  $('')
+}
+
+function isOnWatchlist(){
+  console.log("IS ON WATCHLIST?");
+
+  var $tooltipContent = $(this)
+  if ( $tooltipContent.hasClass('remove-film') ){
+    return true;
+  }
+  else if ( $tooltipContent.hasClass('add-film') ){
+    return false;
+  }
+}
+
+function switchTooltips(){
+  console.log("SWITCH TOOLTIPS");
+  var $tooltipContent = $(this);
+  var filmId = $tooltipContent.attr('data-value');
+  var $allFilmsTooltips = $("div.tooltipContent[data-value='"+filmId+"']");
+
+  $allFilmsTooltips.each(function(){
+    var tooltipContent = this;
+    $(tooltipContent).toggleClass("add-film remove-film");
+    $(tooltipContent).off('click');
+    addTooltipClickListener.call(tooltipContent);
+
+  })
+}
+
+function removeWatchlistListings(film_id){
+  var $filmListings = $(".user-watchlist div.film-listing-container#film-"+film_id)
+  var $dateBoxes = $filmListings.parent();
+  $filmListings.remove();
+  $dateBoxes.each(function(){
+    if ($(this).has('div.film-listing-container').length === 0){
+      $(this).append("<br><span class='placeholder hidden-sm hidden-md hidden-lg hidden-xl'></span>");
+      $(this).addClass('gradient')
+    }
+  })
+}
 
 function addFilmToWatchlist(data){
   $.ajax({
@@ -114,140 +202,14 @@ function flashSuccess(text){
   }, 2000);
 }
 
-// END OF AJAX
-
-// TOOLTIPS
-
-function addAllTooltips(){
-  console.log("ADD ALL TOOL TIPS");
-  if (userLoggedIn()){
-    console.log("USER LOGGED IN");
-
-    $('.hasTooltip').each(function(){
-      var target = this
-      addTooltip.call(target);
-    })
-    addAllTooltipClickListeners();
-  }
-}
-
-function addTooltip(){
-  console.log("ADD TOOL TIP")
-  $(this).qtip({
-    content: $(this).next('.tooltipContent:first'),
-    show: {
-      event: 'click',
-      effect: function(offset) {
-        $( this ).slideDown( 100 )
-      }
-    },
-    hide: {
-      event: 'unfocus',
-      effect: function(offset) {
-        $( this ).slideUp( 100 )
-      },
-      inactive: 1300
-    },
-    style: { classes: 'qtip-tipsy' },
-    position: {
-      my: 'top center',
-      at: 'bottom center'
-    }
-  });
-}
-
-function addAllTooltipClickListeners(){
-  console.log("ADD ALL TOOLTIP CLICK LISTENERS");
-  $('div.tooltipContent').each(function(){
-    var tooltipContent = this
-    addTooltipClickListener.call(tooltipContent);
-  })
-}
-
-function addTooltipClickListener(){
-  console.log("ADD TOOLTIP CLICK LISTENER")
-  var tooltipContent = this
-
-
-  var data = {film_id: tooltipContent.getAttribute('data-value')};
-
-  $(tooltipContent).click(function(){
-    console.log('CLICKED');
-    if (!isOnWatchlist.call(tooltipContent)){
-      addFilmToWatchlist(data);
-    } else if (isOnWatchlist.call(tooltipContent)){
-      removeFilmFromWatchlist(data);
-    }
-    $(tooltipContent).off('click');
-    switchTooltips.call(tooltipContent);
-  })
-}
-
-function isOnWatchlist(){
-  console.log("IS ON WATCHLIST?");
-
-  var $tooltipContent = $(this)
-  if ( $tooltipContent.hasClass('remove-film') ){
-    return true;
-  }
-  else if ( $tooltipContent.hasClass('add-film') ){
-    return false;
-  }
-}
-
-function switchTooltips(){
-  console.log("SWITCH TOOLTIPS");
-  var $tooltipContent = $(this);
-  var filmId = $tooltipContent.attr('data-value');
-  var $allFilmsTooltips = $("div.tooltipContent[data-value='"+filmId+"']");
-
-  $allFilmsTooltips.each(function(){
-    var tooltipContent = this;
-    $(tooltipContent).toggleClass("add-film remove-film");
-    $(tooltipContent).off('click');
-    addTooltipClickListener.call(tooltipContent);
-
-  })
-
-
-
-  // var qtipId = $toolTipContent.closest('div.qtip').attr('data-qtip-id');
-  // var target = $('span[data-hasqtip='+qtipId+']');
-  // var api = $(target).qtip('api');
-
-
-
-  // $allFilmsToolTips.each(function(){
-  //   var tooltipContent = this
-
-  //   $(tooltipContent).toggleClass("add-film remove-film");
-  //   addTooltipClickListener.call(tooltipContent);
-  // })
-
-}
-
-function removeWatchlistListings(film_id){
-  var $filmListings = $(".user-watchlist div.film-listing-container#film-"+film_id)
-  var $dateBoxes = $filmListings.parent();
-  $filmListings.remove();
-  $dateBoxes.each(function(){
-    if ($(this).has('div.film-listing-container').length === 0){
-      $(this).append("<br><span class='placeholder hidden-sm hidden-md hidden-lg hidden-xl'></span>");
-      $(this).addClass('gradient')
-    }
-  })
-}
-
 // END OF TOOLTIPS
 
 // USERS
-function cookieUserValue(){
-  var cookieUserValue = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-  return cookieUserValue;
-}
+
 
 function userLoggedIn(){
-  if (cookieUserValue()){
+  var $userCal = $('div#user-cal');
+  if ( $userCal.attr('data-user') == 'true' ){
     return true;
   } else {
     return false;
