@@ -1,0 +1,32 @@
+<% film = @films.shift %>
+<div class="col-md-2 col-sm-3 col-xs-4 thumbnail-container">
+  <div class="thumbnail" data-film-id="<%= film.id %>">
+
+    <div class="caption">
+      <h4><%= short_title(film.title) %></h4>
+      <% film.all_theaters.each do |theater_name| %>
+      <p><%= theater_name %></p>
+      <% end %>
+      <% film.screenings.each do |screening|%>
+      <p class="buzz-showtime"><a href="<%= screening.ticketing_url %>" class="label label-danger"><%= screening.buzz_box_screening_time %></a></p>
+      <% end %>
+      <p>
+        <% if current_user && current_user.films.include?(film)%>
+        <a href="#" class="label label-default watchlist-button"></a>
+        <% else %>
+        <a href="#" class="label label-default watchlist-button"></a>
+        <% end %>
+
+      </p>
+    </div>
+
+    <a href="#">
+     <% if (film.poster_url == "NA") %>
+     <%= image_tag "posters/default", class: "poster" %>
+     <% else %>
+     <%= image_tag "posters/poster-#{film.id}", class: "poster" %>
+     <% end %>
+   </a>
+
+ </div>
+</div>

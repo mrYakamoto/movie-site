@@ -1,18 +1,63 @@
 "use strict";
 
 $('document').ready(function(){
-
-  addAllTooltips();
-  addBackgroundToAllEmptyDays();
-
+  updateAllOnUserLogin();
   theaterTabListener();
-
   dropDownLinksListener();
-
 })
 
-function fillWatchlistButtons(){
+function fillWatchlistButtons(userFilms){
   $('a.watchlist-button').each(function(){
+    var filmId = $( this ).closest('.thumbnail[data-film-id]').attr('data-film-id')
+    if (userFilms[filmId]){
+      $( this ).text('remove from watchlist')
+    } else {
+      $( this ).text('add to watchlist')
+    }
+  })
+}
+
+function addAllWatchlistButtonListeners(){
+  $('a.watchlist-button').each(function(){
+    watchlistButtonListener(this);
+  })
+}
+
+function watchlistButtonListener(watchlistButton){
+  $(watchlistButton).click(function(e){
+    e.preventDefault();
+    if (userLoggedIn()){
+    var data = {};
+    data.film_id = $( watchlistButton ).closest('.thumbnail[data-film-id]').attr('data-film-id');
+    if ( $( watchlistButton ).text() == "remove from watchlist" ){
+      removeFilmFromWatchlist(data);
+      $( watchlistButton ).text("add to watchlist");
+    } else {
+      addFilmToWatchlist(data);
+      $( watchlistButton ).text("remove from watchlist");
+    }
+  } else {
+    flashError("log in to save movies to your own watchlist");
+  }
+  })
+}
+
+
+function updateAllOnUserLogin(){
+  $.ajax({
+    method: 'GET',
+    url: '/current_user_films'
+  })
+  .done(function(response){
+    var userFilms = response;
+    fillWatchlistButtons(userFilms);
+    addAllWatchlistButtonListeners();
+
+    populateTooltipContent(userFilms);
+    addAllTooltips();
+    addBackgroundToAllEmptyDays();
+    })
+  .error(function(xhr, unknown, error){
 
   })
 }
@@ -39,14 +84,26 @@ function addBackgroundToAllEmptyDays(){
   $pastEmptyDates.addClass('gradient')
 }
 
+function populateTooltipContent(usersFilms){
+  $('.tooltipContent').each(function(){
+    var filmId = $(this).attr('data-value')
+    if ( usersFilms[filmId] ){
+      $(this).removeClass('add-film remove-film');
+      $(this).addClass('remove-film');
+    } else {
+      (this).removeClass('add-film remove-film');
+      $(this).toggleClass('add-film');
+    }
+  })
+}
 
 
 // TOOLTIPS
-
 function addAllTooltips(){
   console.log("ADD ALL TOOL TIPS");
   if (userLoggedIn()){
     console.log("USER LOGGED IN");
+    $(".qtip").remove();
 
     $('.hasTooltip').each(function(){
       var target = this
@@ -93,11 +150,12 @@ function addTooltipClickListener(){
   console.log("ADD TOOLTIP CLICK LISTENER")
   var tooltipContent = this
   var data = {film_id: tooltipContent.getAttribute('data-value')};
+  var isOnWatchlist = toolTipIsOnWatchlist.call(tooltipContent);
 
   $(tooltipContent).click(function(){
-    if (!isOnWatchlist.call(tooltipContent)){
+    if (!isOnWatchlist){
       addFilmToWatchlist(data);
-    } else if (isOnWatchlist.call(tooltipContent)){
+    } else if (isOnWatchlist){
       removeFilmFromWatchlist(data);
     }
     $(tooltipContent).off('click');
@@ -105,11 +163,8 @@ function addTooltipClickListener(){
   })
 }
 
-function buzzBoxWatchlistListener(){
-  $('')
-}
 
-function isOnWatchlist(){
+function toolTipIsOnWatchlist(){
   console.log("IS ON WATCHLIST?");
 
   var $tooltipContent = $(this)

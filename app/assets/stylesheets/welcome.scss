@@ -62,6 +62,14 @@ nav#main-header {
   }
 }
 
+.theater-tab-box {
+  background: #BFD1CC;
+
+}
+button.navbar-toggle:hover {
+    background-color: #ffffff;
+}
+
 .buzz-showtime {
   margin-bottom: 0px;
 }
@@ -91,15 +99,12 @@ theater-tab-box.collapsed {
   border-bottom-right-radius: 0;
 }
 
-.nav-tabs-dropdown:before {
+span.theater-tab:after {
   content: "▼";
   position: absolute;
   right: 20px;
 }
 
-.theaters-dropdown-nav {
-  padding-left: 15px;
-}
 
 /****** LOGIN MODAL ******/
 
@@ -257,7 +262,6 @@ theater-tab-box.collapsed {
 
   .theater-tab-box {
     border-radius: 4px;
-    background: gray;
     margin: 0;
     padding: 0;
     border: 0;
@@ -365,6 +369,7 @@ a:hover {
 
 span.film-title {
   font-weight: 800;
+  cursor: pointer;
 }
 
 td.date-box div.film-listing-container:first-of-type{

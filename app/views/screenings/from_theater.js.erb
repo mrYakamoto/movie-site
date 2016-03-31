@@ -2,5 +2,4 @@ $("#calendar-box").html("<%= escape_javascript(render partial: '/calendar', loca
 if ( $("#calendar-box").hasClass("user-watchlist") ){
   $("#calendar-box").removeClass("user-watchlist")
 }
-addAllTooltips();
-addBackgroundToAllEmptyDays();
+updateAllOnUserLogin();

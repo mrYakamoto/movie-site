@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   get "/fetch_screenings" => 'screenings#from_theater', as: 'fetch_screenings'
-  get "/user_calendar" => 'user#show', as: 'user_calendar'
+  get "/current_user_films" => 'users#current_user_films'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
