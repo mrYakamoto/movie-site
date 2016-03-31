@@ -58,7 +58,7 @@ function updateAllOnUserLogin(){
     addBackgroundToAllEmptyDays();
     })
   .error(function(xhr, unknown, error){
-    debugger
+
   })
 }
 
@@ -88,9 +88,11 @@ function populateTooltipContent(usersFilms){
   $('.tooltipContent').each(function(){
     var filmId = $(this).attr('data-value')
     if ( usersFilms[filmId] ){
-      $(this).toggleClass('add-film remove-film')
+      $(this).removeClass('add-film remove-film');
+      $(this).addClass('remove-film');
     } else {
-      $(this).toggleClass('add-film remove-film')
+      (this).removeClass('add-film remove-film');
+      $(this).toggleClass('add-film');
     }
   })
 }
@@ -148,18 +150,18 @@ function addTooltipClickListener(){
   console.log("ADD TOOLTIP CLICK LISTENER")
   var tooltipContent = this
   var data = {film_id: tooltipContent.getAttribute('data-value')};
+  var isOnWatchlist = toolTipIsOnWatchlist.call(tooltipContent);
 
   $(tooltipContent).click(function(){
-    if (!toolTipIsOnWatchlist.call(tooltipContent)){
+    if (!isOnWatchlist){
       addFilmToWatchlist(data);
-    } else if (toolTipIsOnWatchlist.call(tooltipContent)){
+    } else if (isOnWatchlist){
       removeFilmFromWatchlist(data);
     }
     $(tooltipContent).off('click');
     switchTooltips.call(tooltipContent);
   })
 }
-
 
 
 function toolTipIsOnWatchlist(){
