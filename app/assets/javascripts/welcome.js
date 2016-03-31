@@ -1,12 +1,9 @@
 "use strict";
 
 $('document').ready(function(){
-
-  userLogsIn();
+  updateAllOnUserLogin();
   theaterTabListener();
   dropDownLinksListener();
-
-
 })
 
 function fillWatchlistButtons(userFilms){
@@ -22,22 +19,22 @@ function fillWatchlistButtons(userFilms){
 
 function addAllWatchlistButtonListeners(){
   $('a.watchlist-button').each(function(){
-    watchlistButtonListener.call(this);
+    watchlistButtonListener(this);
   })
 }
 
-function watchlistButtonListener(){
-  $(this).click(function(e){
+function watchlistButtonListener(watchlistButton){
+  $(watchlistButton).click(function(e){
     e.preventDefault();
     if (userLoggedIn()){
     var data = {};
-    data.film_id = $( this ).closest('.thumbnail[data-film-id]').attr('data-film-id');
-    if ( $( this ).text() == "remove from watchlist" ){
+    data.film_id = $( watchlistButton ).closest('.thumbnail[data-film-id]').attr('data-film-id');
+    if ( $( watchlistButton ).text() == "remove from watchlist" ){
       removeFilmFromWatchlist(data);
-      $( this ).text("add to watchlist");
+      $( watchlistButton ).text("add to watchlist");
     } else {
       addFilmToWatchlist(data);
-      $( this ).text("remove from watchlist");
+      $( watchlistButton ).text("remove from watchlist");
     }
   } else {
     flashError("log in to save movies to your own watchlist");
@@ -46,7 +43,7 @@ function watchlistButtonListener(){
 }
 
 
-function userLogsIn(){
+function updateAllOnUserLogin(){
   $.ajax({
     method: 'GET',
     url: '/current_user_films'
@@ -54,8 +51,9 @@ function userLogsIn(){
   .done(function(response){
     var userFilms = response;
     fillWatchlistButtons(userFilms);
-    populateTooltipContent(userFilms);
     addAllWatchlistButtonListeners();
+
+    populateTooltipContent(userFilms);
     addAllTooltips();
     addBackgroundToAllEmptyDays();
     })
@@ -90,9 +88,9 @@ function populateTooltipContent(usersFilms){
   $('.tooltipContent').each(function(){
     var filmId = $(this).attr('data-value')
     if ( usersFilms[filmId] ){
-      $(this).addClass('remove-film')
+      $(this).toggleClass('add-film remove-film')
     } else {
-      $(this).addClass('add-film')
+      $(this).toggleClass('add-film remove-film')
     }
   })
 }
@@ -103,6 +101,7 @@ function addAllTooltips(){
   console.log("ADD ALL TOOL TIPS");
   if (userLoggedIn()){
     console.log("USER LOGGED IN");
+    $(".qtip").remove();
 
     $('.hasTooltip').each(function(){
       var target = this
@@ -161,9 +160,7 @@ function addTooltipClickListener(){
   })
 }
 
-function buzzBoxWatchlistListener(){
-  $('')
-}
+
 
 function toolTipIsOnWatchlist(){
   console.log("IS ON WATCHLIST?");

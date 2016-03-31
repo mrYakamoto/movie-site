@@ -3,7 +3,7 @@
 <div class='film-listing-container' id=<%="film-#{film.id}"%>>
   <span class='film-title hasTooltip' data-value='<%=film.id%>'><%= film.title %></span>
 
-  <div class="tooltipContent" data-value='<%=film.id%>'>
+  <div class="tooltipContent add-film" data-value='<%=film.id%>'>
   </div><br>
 
     <% screenings_today(film, @date_filler).each do |screening| %>
