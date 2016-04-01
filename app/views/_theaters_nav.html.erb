@@ -1,14 +1,12 @@
 <div class="theater-nav-container clearfix" id="theater-nav-container">
 
-
   <% if current_user %>
-  <button id="user-cal" data-user='true' class="user-cal btn btn-success center col-xs-6 col-sm-12 pull-right"><%= link_to "#{current_user.username}'s Watchlist", current_user, class: "theater-tab", :remote => true %></div>
+    <%= button_to "#{current_user.username}'s Watchlist", current_user, class: "user-cal btn btn-success center col-xs-6 col-sm-12 pull-right", id: "user-cal",method: 'get', :remote => true %>
   <% else %>
-  <button id="user-cal" data-user='false' class="user-cal btn btn-warning pull-right col-xs-6 col-sm-12">
-    <a href="#" data-toggle="modal" data-target="#login-modal">Your Watchlist</a>
-  </button>
+    <button id="user-cal" data-toggle="modal" data-target="#login-modal" class="user-cal btn btn-warning pull-right col-xs-5 col-sm-12">
+    Your Watchlist
+    </button>
   <% end %>
-
 
   <div class="theater-tab-box pull-left collapsed col-xs-6 col-sm-12">
     <div class="navbar-header">

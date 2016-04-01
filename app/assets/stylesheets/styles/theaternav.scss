@@ -1,31 +1,15 @@
-/*theater-nav*/
-.theater-nav-container {
+.theater-tab-box { background: $primary-color; }
 
-  background-color: white;
-  .navbar-toggle {
 
-    margin: 0;
-    padding: 6px 10px;
-    span {
-      color: white;
+button#theaters-dropdown-button {
+  margin: 0;
+  padding: 6px 10px;
+  background-color: $primary-color;
+  border: 1px solid $secondary-color;
+
+  span {
+      color: $secondary-color;
     }
-  }
-}
-#navbar-collapse-1 {
-  ul {
-    text-align: right;
-    margin-right: 10px;
-
-  }
-}
-
-.theater-tab-box {
-  background: #BFD1CC;
-
-}
-
-.theater-tab-box.collapsed {
-  width: 100%;
 }
 
 span.theater-tab:after {
@@ -34,8 +18,32 @@ span.theater-tab:after {
   right: 20px;
 }
 
-@media screen and (max-width: 768px) {
+a.theater-tab {
+  color: $secondary-color;
+  border-right: 1px dotted black;
+}
 
+li.theater-tab-box:hover, li.theater-tab-box.active {
+  a.theater-tab{
+    /*background-color: $secondary-color;*/
+    color: $tertiary-color;
+    background-color: $secondary-color;
+  }
+}
+
+button.btn-warning {
+  background-color: $primary-color;
+  color: $secondary-color;
+  border: 1px solid black;
+}
+button.btn-warning:hover {
+  background-color: $secondary-color;
+  color: $tertiary-color;
+  border: 1px solid black;
+}
+
+
+@media screen and (max-width: 768px) {
   .theater-tab-box {
     border-radius: 4px;
     margin: 0;
