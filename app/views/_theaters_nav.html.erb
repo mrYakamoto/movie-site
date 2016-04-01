@@ -1,13 +1,12 @@
-<div id="affix-placeholder"></div>
 <div class="theater-nav-container clearfix" id="theater-nav-container">
 
 
   <% if current_user %>
-  <div id="user-cal" data-user='true' class="user-cal btn btn-success center col-xs-6 col-sm-12 pull-right"><%= link_to "#{current_user.username}'s Watchlist", current_user, class: "theater-tab", :remote => true %></div>
+  <button id="user-cal" data-user='true' class="user-cal btn btn-success center col-xs-6 col-sm-12 pull-right"><%= link_to "#{current_user.username}'s Watchlist", current_user, class: "theater-tab", :remote => true %></div>
   <% else %>
-  <div id="user-cal" data-user='false' class="user-cal btn btn-warning pull-right col-xs-6 col-sm-12">
+  <button id="user-cal" data-user='false' class="user-cal btn btn-warning pull-right col-xs-6 col-sm-12">
     <a href="#" data-toggle="modal" data-target="#login-modal">Your Watchlist</a>
-  </div>
+  </button>
   <% end %>
 
 

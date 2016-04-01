@@ -1,0 +1,48 @@
+/*theater-nav*/
+.theater-nav-container {
+
+  background-color: white;
+  .navbar-toggle {
+
+    margin: 0;
+    padding: 6px 10px;
+    span {
+      color: white;
+    }
+  }
+}
+#navbar-collapse-1 {
+  ul {
+    text-align: right;
+    margin-right: 10px;
+
+  }
+}
+
+.theater-tab-box {
+  background: #BFD1CC;
+
+}
+
+.theater-tab-box.collapsed {
+  width: 100%;
+}
+
+span.theater-tab:after {
+  content: "▼";
+  position: absolute;
+  right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+
+  .theater-tab-box {
+    border-radius: 4px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    z-index: 2;
+    position: absolute;
+  }
+
+}

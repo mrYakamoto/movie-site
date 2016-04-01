@@ -1,0 +1,118 @@
+@media (max-width: 767px) {
+  div#myCarousel {
+    .caption {
+      height: 93%;
+      width: 91%;
+      padding: 4px 4px 0px 4px !important;
+      h4.film-title {
+        font-size: 1rem;
+        max-height: 45%;
+        overflow: hidden;
+      }
+      p.theater-name { display: none; }
+      p.buzz-showtime {
+        span.screening-time { display: none;}
+      }
+    }
+  }
+
+  .item > div.row > div { display: none; }
+  .active > div.row > div:first-child { display:block; }
+  .active > div.row > div:first-child + div { display:block; }
+  .active > div.row > div:first-child + div + div { display:block }
+
+}
+
+@media (min-width: 767px) and (max-width: 992px ) {
+  .caption h4 { font-size: 1.6rem; }
+  .item > div.row > div { display: none; }
+  .active > div.row > div:first-child { display:block; }
+  .active > div.row > div:first-child + div { display:block; }
+  .active > div.row > div:first-child + div + div { display:block; }
+  .active > div.row > div:first-child + div + div + div { display:block; }
+}
+
+@media (min-width: 992px ) {
+
+}
+
+.buzz-box {
+  position: relative;
+}
+
+img.poster {
+  /*min-height: 100px;*/
+  max-height: 200px;
+}
+
+.buzz-box-container { padding: 10px 40px 0px 40px; }
+
+div#myCarousel {
+  padding-bottom: 10px;
+
+  .carousel-control {
+    width:  4%;
+    background-image:none;
+  }
+  .carousel-control.left{
+    left: -20px;
+    i { left: 0px; }
+  }
+  .carousel-control.right {
+    right: -20px;
+    i { right: 0px; }
+  }
+
+  div.carousel-inner { overflow: visible; }
+  img.poster { min-height: 100px; }
+  div.item.active { z-index: 5; }
+
+}
+
+.thumbnail-container {
+  *{
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+  }
+  .thumbnail {
+    position:relative;
+    overflow:hidden;
+    border: 0px !important;
+    margin-bottom: 0;
+    .caption {
+      position:absolute;
+      display: none;
+      background:rgba(0, 0, 0, 0.5);
+      width:95%;
+      height:96%;
+      text-align:center;
+      color:#fff !important;
+      z-index:2;
+      h4 {
+        border-bottom: 2px solid yellow;
+        margin: 0 0 5px 0;
+        padding-bottom: 5px;
+      }
+      p {
+        font-size: 1rem;
+      }
+      .buzz-showtime {
+        margin-bottom: 0px;
+      }
+    }
+  }
+  .thumbnail:hover {
+    -webkit-transform: scale(1.3, 1.3);
+    -ms-transform: scale(1.3, 1.3);
+    transform: scale(1.3, 1.3);
+    transition: all 0.5s ease-in-out;
+    background-color: yellow !important;
+
+    .caption {
+      display: block;
+    }
+  }
+}

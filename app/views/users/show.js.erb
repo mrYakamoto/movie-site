@@ -1,4 +1,4 @@
-$("#calendar-box").html("<%= escape_javascript(render partial: '/calendar', locals: { screenings: @screenings, date_fille: @date_filler })%>");
+$("#calendar-box").html("<%= escape_javascript(render partial: '/calendar', locals: { screenings: @screenings, date_filler: @date_filler })%>");
 $("#calendar-box").toggleClass("user-watchlist")
-addAllTooltips();
+
 addBackgroundToAllEmptyDays();

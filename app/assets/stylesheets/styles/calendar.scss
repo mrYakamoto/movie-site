@@ -1,0 +1,94 @@
+/*calendar*/
+.calendar-container {
+  clear:both;
+}
+
+.gradient {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    #ccc 10px,
+    #ccc 20px
+    ),
+  linear-gradient(
+    to bottom,
+    #aaa,
+    #fff
+    );
+}
+
+span.film-title {
+  font-weight: 800;
+  cursor: pointer;
+}
+
+td.date-box div.film-listing-container:first-of-type{
+  margin-top: 2.2rem;
+}
+
+span.date {
+  float: right;
+}
+
+th, td {
+  width: 14.29%;
+}
+
+.tooltipContent { display: none; }
+div.add-film:before { content: "add film to watchlist"; }
+div.remove-film:before { content: "remove from watchlist"; }
+
+
+/* 'No-more-tables' based responsive styling */
+@media only screen and (max-width: 768px) {
+  /* Force table to not be like tables anymore */
+  #no-more-tables table,
+  #no-more-tables thead,
+  #no-more-tables tbody,
+  #no-more-tables th,
+  #no-more-tables td,
+  #no-more-tables tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  #no-more-tables thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  #no-more-tables { border: 1px solid #ccc; }
+
+  #no-more-tables td {
+    /* Behave like a "row" */
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    white-space: normal;
+    text-align:left;
+  }
+
+  #no-more-tables td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 100%;
+    white-space: nowrap;
+    text-align:left;
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+
+  span.placeholder { font-style: italic; }
+  span.placeholder:before { content: "no screenings"; }
+
+  /* Label the data */
+  #no-more-tables td:before { content: attr(data-title); }
+  #no-more-tables td.gradient:before { color: gray; }
+  td.date-box { padding-top: 10px !important; }
+}

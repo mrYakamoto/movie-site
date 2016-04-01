@@ -6,8 +6,11 @@ class Screening < ActiveRecord::Base
 
   validates_uniqueness_of :date_time, :scope => [:film_id, :theater_id]
 
+  def buzz_box_screening_date
+    self.date_time.strftime("%a %_m/%-d")
+  end
   def buzz_box_screening_time
-    self.date_time.strftime("%a %_m/%-d %_I:%M%P")
+    self.date_time.strftime("%_I:%M%P")
   end
 
 end

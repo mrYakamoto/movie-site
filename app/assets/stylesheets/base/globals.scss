@@ -1,0 +1,30 @@
+$primary-color: #ffffff;
+$secondary-color: yellow;
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body { overflow-x: hidden; }
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/assets/glyphicons-halflings-regular.eot');
+  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  url('/assets/glyphicons-halflings-regular.woff') format('woff'),
+  url('/assets/glyphicons-halflings-regular.ttf') format('truetype'),
+  url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+h1, h2, h3, h4, h5, h6, th, td, span.theater-name, span.theater-tab, li, a, div.panel-heading { font-family: 'Poiret One', courier !important; }
+p, div { font-family: courier !important; }
+
+.body-container { background-color: white; }
+
+/*set html font-size at 62.5 to make sizing with rems similar to pixels*/
+html { font-size: 62.5%; }
+
+a:hover { text-decoration: none !important; }
+a:active { text-decoration: none !important; }
