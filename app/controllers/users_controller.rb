@@ -53,15 +53,16 @@ class UsersController < ApplicationController
   end
 
   def current_user_films
-    user_films = {}
+    data = {"user" => false, "user_films" => {}}
     if current_user
+      data["user"] = true
       current_user.films.each do |film|
-        user_films[film.id.to_s] = film.title
+        data["user_films"][film.id.to_s] = film.title
       end
     end
 
     if request.xhr?
-      render :json => user_films
+      render :json => data
     else
       redirect '/'
     end

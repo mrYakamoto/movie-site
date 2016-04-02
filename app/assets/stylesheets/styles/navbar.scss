@@ -1,0 +1,31 @@
+.navbar-nav { -webkit-backface-visibility: hidden; }
+
+nav#main-nav {
+  z-index: 16001;
+  background-color: black;
+  margin-bottom: 0px;
+  border: 0;
+  position: fixed;
+  width: 100%;
+  border-radius: 0;
+
+  padding-right: 30px;
+
+  .navbar-brand {
+    color: $primary-color;
+  }
+
+  ul.navbar-nav a {
+    color: $primary-color;
+  }
+  ul.navbar-nav a:hover {
+    color: $tertiary-color;
+  }
+
+}
+
+@media screen and (max-width: 768px){
+  ul.navbar-nav {
+    margin: 0;
+  }
+}

@@ -2,12 +2,15 @@
 <% until @date_filler.month == end_month%>
 <% @date_filler = set_start_date(@date_filler) %>
 <div class="row calendar-container">
-  <div class="panel panel-default">
-    <div class="panel-heading"><%= Date::MONTHNAMES[@date_filler.month] %>
+  <div class="">
+    <div class="">
+      <span class="month-header">
+        <%= Date::MONTHNAMES[@date_filler.month] %>
+      </span>
     </div>
     <!-- Responsive Calendar -->
     <div id="no-more-tables">
-      <table class="table table-bordered col-sm-12 table-condensed cf" id="<%= Date::MONTHNAMES[@date_filler.month] %>">
+      <table class="table calendar-table col-sm-12 table-condensed cf" id="<%= Date::MONTHNAMES[@date_filler.month] %>">
         <thead class="cf">
           <tr>
             <th>sunday</th>

@@ -1,5 +1,3 @@
-
-
 if ( "<%= flash[:success] %>".length > 0 ){
   newSession("<%= @user.username if @user %>");
   flashSuccess("<%= flash[:success] %>");
@@ -13,7 +11,7 @@ function newSession(){
   deactivateModal();
   swapToLogoutButton();
   swapUserCalButton();
-  addAllTooltips();
+  initWatchlistTriggers();
 }
 
 function swapToLogoutButton(){

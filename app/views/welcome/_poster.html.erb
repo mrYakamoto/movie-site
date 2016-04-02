@@ -3,12 +3,14 @@
   <div class="thumbnail" data-film-id="<%= film.id %>">
 
     <div class="caption">
-      <h4><%= short_title(film.title) %></h4>
+      <h4 class="film-title"><%= short_title(film.title) %></h4>
       <% film.all_theaters.each do |theater_name| %>
-      <p><%= theater_name %></p>
+      <p class="theater-name"><%= theater_name %></p>
       <% end %>
       <% film.screenings.each do |screening|%>
-      <p class="buzz-showtime"><a href="<%= screening.ticketing_url %>" class="label label-danger"><%= screening.buzz_box_screening_time %></a></p>
+        <p class="buzz-showtime">
+          <a href="<%= screening.ticketing_url %>" class="label label-danger"><%= screening.buzz_box_screening_date%><span class="screening-time"><%= screening.buzz_box_screening_time %></span></a>
+        </p>
       <% end %>
       <p>
         <% if current_user && current_user.films.include?(film)%>
