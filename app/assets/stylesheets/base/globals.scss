@@ -14,6 +14,8 @@ $septenary-color: ;*/
 
 body { overflow-x: hidden; }
 
+div.body-container { background-color: #F5F5F5; }
+
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url('/assets/glyphicons-halflings-regular.eot');
@@ -24,7 +26,7 @@ body { overflow-x: hidden; }
 }
 
 h1, h2, h3, h4, h5, h6, th, td, span.theater-name, span.theater-tab, li, a, div.panel-heading { font-family: 'Poiret One', courier !important; }
-p, div { font-family: courier !important; }
+p, div { font-family: 'Poiret One', courier !important; }
 
 .body-container { background-color: white; }
 
@@ -33,3 +35,5 @@ html { font-size: 62.5%; }
 
 a:hover { text-decoration: none !important; }
 a:active { text-decoration: none !important; }
+button:focus {outline:0 !important; }
+

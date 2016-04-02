@@ -1,17 +1,19 @@
-  <div class="container">
-    <div class="row page-header">
-      <h1>Hottest Screenings</h1>
+  <div class="header-wrapper">
+    <div class="container headline-wrapper">
+      <div class="row page-header">
+        <h1>Buzz Screenings</h1>
+      </div>
     </div>
-  </div>
-  <!-- buzz-box -->
-  <div class="container">
-    <div class="row">
-      <%= render partial: 'welcome/buzz_box', locals: {films: @films}%>
+    <!-- buzz-box -->
+    <div class="container buzz-box-wrapper">
+      <div class="row">
+        <%= render partial: 'welcome/buzz_box', locals: {films: @films}%>
+      </div>
     </div>
   </div>
 
   <!-- theater-tab buttons -->
-  <div class="container">
+  <div class="container theater-nav-container" id="theater-nav-container">
     <div class="row">
       <%= render partial: "/theaters_nav", locals: {theaters: @theaters}%>
     </div>
@@ -21,7 +23,7 @@
 
 
   <div class="container" id="calendar-box">
-    <div class="row">
-      <%= render partial: "/calendar", locals: {screenings: @screenings, date_filler: @date_filler} %>
-    </div>
+
+    <%= render partial: "/calendar", locals: {screenings: @screenings, date_filler: @date_filler} %>
+
   </div>

@@ -8,7 +8,9 @@
       <p class="theater-name"><%= theater_name %></p>
       <% end %>
       <% film.screenings.each do |screening|%>
-      <p class="buzz-showtime"><a href="<%= screening.ticketing_url %>" class="label label-danger"><%= screening.buzz_box_screening_date%><span class="screening-time"><%= screening.buzz_box_screening_time %></span></a></p>
+        <p class="buzz-showtime">
+          <a href="<%= screening.ticketing_url %>" class="label label-danger"><%= screening.buzz_box_screening_date%><span class="screening-time"><%= screening.buzz_box_screening_time %></span></a>
+        </p>
       <% end %>
       <p>
         <% if current_user && current_user.films.include?(film)%>

@@ -1,5 +1,18 @@
+#theater-nav-container { margin-bottom: 20px; }
+/*div.user-cal-container { padding-left: 5px;}*/
+div.theater-tab-box-container { padding: 0 5px 0 15px; }
+
 .theater-tab-box { background: $primary-color; }
 
+.affix {
+  z-index: 16002;
+  top: 50px;
+
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    background-color: #F44336;
+    border-color: #F44336;
+}
 
 button#theaters-dropdown-button {
   margin: 0;
@@ -8,9 +21,10 @@ button#theaters-dropdown-button {
   border: 1px solid $secondary-color;
 
   span {
-      color: $secondary-color;
-    }
+    color: $secondary-color;
+  }
 }
+
 
 span.theater-tab:after {
   content: "▼";
@@ -21,6 +35,7 @@ span.theater-tab:after {
 a.theater-tab {
   color: $secondary-color;
   border-right: 1px dotted black;
+  border-bottom: 1px dotted black;
 }
 
 li.theater-tab-box:hover, li.theater-tab-box.active {
@@ -36,21 +51,20 @@ button.btn-warning {
   color: $secondary-color;
   border: 1px solid black;
 }
-button.btn-warning:hover {
+button.btn-warning:hover, button.btn-warning:focus {
   background-color: $secondary-color;
   color: $tertiary-color;
   border: 1px solid black;
 }
 
+button.btn-warning:active {
+  background-color: $tertiary-color !important;
+}
 
 @media screen and (max-width: 768px) {
-  .theater-tab-box {
-    border-radius: 4px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    z-index: 2;
+  .theater-tab-box-container {
     position: absolute;
+    z-index: 2;
   }
 
 }

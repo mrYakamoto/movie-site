@@ -1,7 +1,44 @@
 /*calendar*/
 .calendar-container {
   clear:both;
+
 }
+
+table.calendar-table {
+  background-color: white;
+  margin-bottom: 0;
+
+}
+
+td.date-box div.film-listing-container:first-of-type{
+  margin-top: 2.2rem;
+}
+
+th, td {
+  width: 14.29%;
+}
+
+div.film-listing-container {
+  span.film-title {
+    font-weight: 800;
+    cursor: pointer;
+  }
+  span.showtime { font-size: 1rem; }
+  span.theater-name { font-size: 1rem; }
+}
+
+span.month-header {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+span.date {
+  float: right;
+}
+
+
+
+
+
 
 .gradient {
   background: repeating-linear-gradient(
@@ -18,22 +55,6 @@
     );
 }
 
-span.film-title {
-  font-weight: 800;
-  cursor: pointer;
-}
-
-td.date-box div.film-listing-container:first-of-type{
-  margin-top: 2.2rem;
-}
-
-span.date {
-  float: right;
-}
-
-th, td {
-  width: 14.29%;
-}
 
 .tooltipContent { display: none; }
 div.add-film:before { content: "add film to watchlist"; }
