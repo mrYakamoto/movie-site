@@ -5,11 +5,19 @@
   left: 50%;
   transform: translate(-50%);
   margin-top: 135px;
-  z-index: 16004;
-
+  z-index: 99998;
 }
 
-.modal-dialog { margin-top: 80px; }
+.modal{
+  z-index: 99999;
+  background-color:rgba(0, 0, 0, 0.5)
+}
+
+
+.modal-dialog {
+  margin-top: 80px;
+  z-index: 99999;
+}
 
 .loginmodal-container {
   padding: 30px;

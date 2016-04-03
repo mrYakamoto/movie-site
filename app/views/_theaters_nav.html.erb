@@ -1,37 +1,33 @@
-<div class="row clearfix" >
+<nav class="navbar" id="nav-2">
 
 
+  <button type="button" id="theaters-dropdown-button" class="navbar-toggle col-xs-6" data-toggle="collapse" data-target="#theater-nav">
+    <span class="theater-tab">THEATERS<span class="caret"></span></span>
+  </button>
 
-  <div class="user-cal-container col-xs-6 col-sm-12 pull-right">
   <% if current_user %>
-    <%= button_to "#{current_user.username}'s Watchlist", current_user, class: "user-cal btn btn-success center col-xs-12", id: "user-cal",method: 'get', :remote => true %>
+  <%= button_to "#{current_user.username}'s watchlist", current_user, class: "user-cal btn btn-success center col-xs-6 col-sm-12", id: "user-cal",method: 'get', :remote => true %>
   <% else %>
-    <button id="user-cal" data-toggle="modal" data-target="#login-modal" class="user-cal btn btn-warning col-xs-12">
+  <button id="user-cal" data-toggle="modal" data-target="#login-modal" class="user-cal btn btn-warning col-xs-6 col-sm-12">
     Your Watchlist
-    </button>
+  </button>
   <% end %>
-</div>
 
-  <div class="theater-tab-box-container pull-left collapsed col-xs-6 col-sm-12">
-    <div class="navbar-header">
-      <button type="button" id="theaters-dropdown-button"class="navbar-toggle pull-left col-xs-12" data-toggle="collapse" data-target="#theater-nav">
-        <span class="theater-tab">THEATERS</span>
-      </button>
-    </div>
 
-    <div class="collapse navbar-collapse" id="theater-nav">
-      <ul class="nav nav-pills nav-justified">
-        <input type="hidden" id="selected_menu_item" value="=$selectedMenuId; ?>" />
-        <li class="theater-tab-box active">
-          <%= link_to 'all screenings', root_path, class:"theater-tab", :remote => true %>
-        </li>
-        <% @theaters.each do |theater| %>
-        <li class="theater-tab-box">
-          <%= link_to theater.name, fetch_screenings_path(:theater_id => theater.id), class: "theater-tab", :remote => true %>
-        </li>
-        <% end %>
-      </ul>
-    </div>
+
+  <div class="collapse navbar-collapse" id="theater-nav">
+    <ul class="nav nav-pills nav-justified">
+      <input type="hidden" id="selected_menu_item" value="=$selectedMenuId; ?>" />
+      <li class="theater-tab-box active">
+        <%= link_to 'all screenings', root_path, class:"theater-tab", :remote => true %>
+      </li>
+      <% @theaters.each do |theater| %>
+      <li class="theater-tab-box">
+        <%= link_to theater.name, fetch_screenings_path(:theater_id => theater.id), class: "theater-tab", :remote => true %>
+      </li>
+      <% end %>
+    </ul>
   </div>
 
-</div>
+
+</nav>

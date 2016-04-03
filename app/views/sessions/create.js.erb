@@ -7,19 +7,19 @@ else if ("<%=flash[:error]%>".length > 0){
 }
 
 
-function newSession(){
+function newSession(username){
   deactivateModal();
   swapToLogoutButton();
-  swapUserCalButton();
+  swapUserCalButton(username);
   initWatchlistTriggers();
 }
 
 function swapToLogoutButton(){
-  $('#navbar-collapse-1 ul').empty().append('<li><a rel="nofollow" data-method="delete" class="logged-in" href="/sessions/%23%3CActionDispatch::Request::Session:0x007fba83002ba8%3E">Logout</a></li>');
+  $('nav#main-nav ul').empty().append('<li><a rel="nofollow" data-method="delete" class="logged-in pull-right" href="/sessions/%23%3CActionDispatch::Request::Session:0x007fba83002ba8%3E">Logout</a></li>');
 }
 
-function swapUserCalButton(){
-  $('div#user-cal').empty().append('<a class="theater-tab" data-remote="true" href="/users/<%= @user.id.to_s if @user %>"><%= @user.username if @user %>\'s Watchlist</a>');
+function swapUserCalButton(username){
+  $('button#user-cal').replaceWith('<input class="user-cal btn btn-success center col-xs-6 col-sm-12" id="user-cal" type="submit" value="'+username+'\'s watchlist">');
   $('div#user-cal').toggleClass('btn-warning btn-success');
   $('div#user-cal').attr('data-user', 'true');
 }

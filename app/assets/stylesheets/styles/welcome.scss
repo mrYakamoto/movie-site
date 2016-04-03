@@ -2,7 +2,9 @@ div.page-header {
   margin-top: 60px;
   margin-bottom: 0;
   font-size: 3rem;
-  color: black;
+  border-bottom: 1px solid gray;
+  color: $secondary-color;
+  margin-bottom: 15px;
   h1{
     margin-bottom: 0;
   }
