@@ -1,7 +1,10 @@
 /*calendar*/
 .calendar-container {
   clear:both;
+}
 
+#calendar-box {
+  margin-top: 20px;
 }
 
 table.calendar-table {
@@ -23,8 +26,14 @@ div.film-listing-container {
     font-weight: 800;
     cursor: pointer;
   }
-  span.showtime { font-size: 1rem; }
-  span.theater-name { font-size: 1rem; }
+  span.showtime {
+    font-size: 1rem;
+    color: #5C5A5B;
+  }
+  span.theater-name {
+    font-size: 1rem;
+    color: #454445;
+  }
 }
 
 span.month-header {
@@ -34,6 +43,7 @@ span.month-header {
 span.date {
   float: right;
 }
+
 
 
 

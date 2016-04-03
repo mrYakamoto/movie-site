@@ -44,6 +44,10 @@
   position: relative;
 }
 
+.buzz-box-wrapper {
+  margin-bottom: 10px;
+}
+
 img.poster {
   /*min-height: 100px;*/
   max-height: 200px;
@@ -57,6 +61,7 @@ div#myCarousel {
   .carousel-control {
     width:  4%;
     background-image:none;
+    text-shadow: 0 1px 6px black;
   }
   .carousel-control.left{
     left: -20px;
@@ -80,6 +85,7 @@ div#myCarousel {
     transition: all 0.5s ease-in-out;
   }
   .thumbnail {
+    background-color:black;
     position:relative;
     overflow:hidden;
     border: 0px !important;

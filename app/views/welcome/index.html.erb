@@ -1,6 +1,6 @@
   <div class="header-wrapper">
     <div class="container headline-wrapper">
-      <div class="row page-header">
+      <div class="page-header">
         <h1>Buzz Screenings</h1>
       </div>
     </div>
@@ -13,10 +13,10 @@
   </div>
 
   <!-- theater-tab buttons -->
-  <div class="container theater-nav-container" id="theater-nav-container">
-    <div class="row">
+  <div class="theater-nav-container col-xs-12" id="theater-nav-container">
+
       <%= render partial: "/theaters_nav", locals: {theaters: @theaters}%>
-    </div>
+
   </div>
 
   <!-- Calendar -->

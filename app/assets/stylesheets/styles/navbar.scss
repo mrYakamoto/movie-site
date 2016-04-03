@@ -2,7 +2,7 @@
 
 nav#main-nav {
   z-index: 16001;
-  background-color: black;
+  background-image: image-url('backgrounds/dark_Tire.png');
   margin-bottom: 0px;
   border: 0;
   position: fixed;
@@ -17,6 +17,9 @@ nav#main-nav {
 
   ul.navbar-nav a {
     color: $primary-color;
+    line-height: 50px;
+    padding: 0 20px 0 0;
+
   }
   ul.navbar-nav a:hover {
     color: $tertiary-color;

@@ -9,34 +9,35 @@ $('document').ready(function(){
 
   initPosterLinkListeners();
 
-$(window).load(function(){
-  initStickyTheaterNav();
-  affixListener();
-  affixOffListener();
-})
+  $(window).load(function(){
+    initStickyTheaterNav();
+  })
 
 })
+
 
 function initStickyTheaterNav(){
-
   var heightOff = ($('.header-wrapper').height() - $('#main-nav').height());
 
   $('#theater-nav-container').affix({
     offset: { top: heightOff}
   });
+
+  affixListener();
+  affixOffListener();
 }
 
 function affixListener(){
   $('#theater-nav-container').on('affix.bs.affix', function () {
     var navHeight = $('#theater-nav-container').outerHeight(true);
     $('#theater-nav-container + .container').css('margin-top', navHeight);
-});
+  });
 }
 
 function affixOffListener(){
   $('#theater-nav-container').on('affix-top.bs.affix', function () {
     $('#theater-nav-container + .container').css('margin-top', 0);
-});
+  });
 }
 
 
@@ -74,7 +75,7 @@ function theaterTabListener(){
     $('li.theater-tab-box.active').removeClass('active');
     $( this ).addClass('active');
     $('div#theater-nav').removeClass('in')
-    $('button#theaters-dropdown-button span.theater-tab').html($(this).text())
+    $('button#theaters-dropdown-button span.theater-tab').html($(this).text() + "<span class='caret'></span>")
   })
 }
 
@@ -180,12 +181,12 @@ function populateTooltipContent(usersFilms){
 function addAllTooltips(){
   console.log("ADD ALL TOOL TIPS");
   console.log("USER LOGGED IN");
-    $( ".qtip" ).remove();
-    $( '.hasTooltip' ).each(function(){
-      var target = this
-      addTooltip.call(target);
-    })
-    addAllTooltipClickListeners();
+  $( ".qtip" ).remove();
+  $( '.hasTooltip' ).each(function(){
+    var target = this
+    addTooltip.call(target);
+  })
+  addAllTooltipClickListeners();
 }
 
 function addTooltip(){
@@ -251,7 +252,7 @@ function switchTooltips(){
 
 // CALENDAR
 function removeWatchlistListings(film_id){
-  var $filmListings = $(".user-watchlist div.film-listing-container#film-"+film_id)
+  var $filmListings = $("div.film-listing-container#film-"+film_id)
   var $dateBoxes = $filmListings.parent();
   $filmListings.remove();
   $dateBoxes.each(function(){

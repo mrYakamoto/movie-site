@@ -1,18 +1,49 @@
-#theater-nav-container { margin-bottom: 20px; }
-/*div.user-cal-container { padding-left: 5px;}*/
+#theater-nav-container {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 20px;
+}
+
+div.user-cal-container { padding: 0;}
 div.theater-tab-box-container { padding: 0 5px 0 15px; }
 
-.theater-tab-box { background: $primary-color; }
+#nav-2 {
+  min-height: 0;
+  margin-bottom: 0;
+  border: 0;
+}
+
+.theater-tab-box {
+  background: transparent;
+  border-radius: 4px;
+  a { background-color: $primary-color; }
+}
+
+.affix-top {
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+@media screen and (min-width: 769px) {
+  .affix-top { padding: 0 10% 0 10%; }
+}
 
 .affix {
+  padding: 0;
   z-index: 16002;
-  top: 50px;
-
-    -webkit-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-    background-color: #F44336;
-    border-color: #F44336;
+  top: 49px;
+  input.user-cal {
+    border-radius: 0;
+  }
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
 }
+
+
+.user-cal {
+  float: left !important;
+}
+
 
 button#theaters-dropdown-button {
   margin: 0;
@@ -26,33 +57,33 @@ button#theaters-dropdown-button {
 }
 
 
-span.theater-tab:after {
-  content: "▼";
-  position: absolute;
-  right: 20px;
+span.caret {
+  margin-left:10px;
 }
 
 a.theater-tab {
   color: $secondary-color;
-  border-right: 1px dotted black;
-  border-bottom: 1px dotted black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-bottom: 0 !important
+  ;
 }
 
 li.theater-tab-box:hover, li.theater-tab-box.active {
   a.theater-tab{
     /*background-color: $secondary-color;*/
-    color: $tertiary-color;
-    background-color: $secondary-color;
+    color: yellow;
+    background-image: $dark-tire
   }
 }
 
-button.btn-warning {
+button.btn-warning, button.btn-warning:focus {
   background-color: $primary-color;
   color: $secondary-color;
   border: 1px solid black;
 }
-button.btn-warning:hover, button.btn-warning:focus {
-  background-color: $secondary-color;
+button.btn-warning:hover {
+  background-image: image-url('backgrounds/dark_embroidery.png');
   color: $tertiary-color;
   border: 1px solid black;
 }
@@ -60,6 +91,24 @@ button.btn-warning:hover, button.btn-warning:focus {
 button.btn-warning:active {
   background-color: $tertiary-color !important;
 }
+
+.btn-success {
+  background-image: image-url('backgrounds/dark_embroidery.png');
+  /*background-color: $primary-color;*/
+  color: white;
+  border: 1px solid black;
+}
+.btn-success:hover, .btn-success:focus {
+  background-color: $secondary-color;
+  color: $tertiary-color;
+  border: 1px solid black;
+}
+
+.btn-success:active {
+  background-color: $tertiary-color !important;
+}
+
+
 
 @media screen and (max-width: 768px) {
   .theater-tab-box-container {

@@ -1,6 +1,9 @@
 $primary-color: white;
 $secondary-color: black;
 $tertiary-color: yellow;
+
+$linen-background: image-url('backgrounds/low_contrast_linen.png');
+$dark-tire: image-url('backgrounds/dark_Tire.png');
 /*$quaternary-color: ;
 $quinary-color: ;
 $senary-color: ;
@@ -12,7 +15,11 @@ $septenary-color: ;*/
   box-sizing: border-box;
 }
 
-body { overflow-x: hidden; }
+body {
+  overflow-x: hidden;
+  background-image: image-url("backgrounds/new_year_background.png");
+  background-repeat: repeat;
+}
 
 div.body-container { background-color: #F5F5F5; }
 
@@ -25,8 +32,20 @@ div.body-container { background-color: #F5F5F5; }
   url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 
-h1, h2, h3, h4, h5, h6, th, td, span.theater-name, span.theater-tab, li, a, div.panel-heading { font-family: 'Poiret One', courier !important; }
-p, div { font-family: 'Poiret One', courier !important; }
+/*'Poiret One'*/
+h1 { font-family: 'Poiret One'; }
+
+h2, h3, h4, h5, h6, th, td, span.theater-name, span.theater-tab, li, a, div.panel-heading {
+  font-family: 'Poiret One', courier !important;
+  font-weight: 800;
+}
+p, div, span.showtime {
+  font-family: 'Futura', courier !important;
+}
+
+input {
+  font-family: 'Poiret One';
+}
 
 .body-container { background-color: white; }
 
@@ -35,5 +54,9 @@ html { font-size: 62.5%; }
 
 a:hover { text-decoration: none !important; }
 a:active { text-decoration: none !important; }
-button:focus {outline:0 !important; }
+
+a:focus {outline:0;}
+button:focus { outline:0 !important; }
+input:focus { outline:0 !important;}
+
 

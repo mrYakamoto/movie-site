@@ -1,18 +1,23 @@
 <nav class="navbar navbar-default" id="main-nav">
+  <div class="container-fluid">
+
       <a class="navbar-brand" href="/">SF Film Calendar</a>
 
-      <ul class="nav navbar-nav navbar-right">
 
-        <% if current_user %>
+    <ul class="nav navbar-nav navbar-right">
 
-        <li class="logged-in pull-right"><%= link_to 'Logout', session_path(session), method: :delete %></li>
+      <% if current_user %>
 
-        <% else %>
-        <li class="pull-right"><a href="#" data-toggle="modal" data-target="#register-modal">Register</a></li>
-        <li class="pull-right"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+      <li class="logged-in pull-right"><%= link_to 'Logout', session_path(session), method: :delete %></li>
 
-        <% end %>
+      <% else %>
+      <li class="pull-right"><a href="#" data-toggle="modal" data-target="#register-modal">Register</a></li>
+      <li class="pull-right"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
 
-      </ul>
+      <% end %>
 
+    </ul>
+  </div>
 </nav>
+
+
