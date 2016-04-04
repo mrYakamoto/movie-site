@@ -6,7 +6,7 @@ gem 'pg', '~> 0.15'
 
 gem 'sass-rails', '~> 5.0'
 
-gem 'therubyracer', :platform => :ruby
+# gem 'therubyracer', :platform => :ruby
 
 gem 'uglifier', '>= 1.3.0'
 
@@ -29,12 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
-gem 'rubber','~>3.1.0'
-gem 'open4'
-gem 'gelf'
-gem 'graylog2_exceptions', :git => 'git://github.com/wr0ngway/graylog2_exceptions.git'
-gem 'graylog2-resque'
+gem 'rails_12factor', group: :production
 
 gem 'factory_girl'
 gem 'hirb'

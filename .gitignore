@@ -19,6 +19,5 @@ doc/
 .idea
 .rvmrc
 .ruby-*
-.secret
 .byebug_history
 /config/rubber
