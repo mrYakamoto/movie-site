@@ -38,7 +38,7 @@
 
                 <span class='date hidden-xs'><%=@date_filler.mday%></span>
                 <% if (screenings_today?(@screenings, @date_filler)) %>
-                  <%= render partial: '/screenings_today', locals: {screenings: screenings, date_filler: @date_filler}%>
+                  <%= render partial: '/welcome/screenings_today', locals: {screenings: screenings, date_filler: @date_filler}%>
 
                 <% elsif @date_filler < date_today %>
                   <span class='past-placeholder'></span>

@@ -40,8 +40,6 @@ function affixOffListener(){
   });
 }
 
-
-
 function initPosterLinkListeners(){
   posterMobileListener();
   posterHoverListener();
@@ -50,7 +48,7 @@ function initPosterLinkListeners(){
 function posterMobileListener(){
   $('.caption').on("touchstart", function(e){
     var $links = $(this).find('a');
-    $links.css({"pointer-events": "auto"});
+    setTimeout($links.css({"pointer-events": "auto"}),500);
   })
 }
 
@@ -75,7 +73,7 @@ function theaterTabListener(){
     $('li.theater-tab-box.active').removeClass('active');
     $( this ).addClass('active');
     $('div#theater-nav').removeClass('in')
-    $('button#theaters-dropdown-button span.theater-tab').html($(this).text() + "<span class='caret'></span>")
+    $('button#theaters-dropdown-button').html($(this).text() + "<span class='caret'></span>")
   })
 }
 
@@ -287,7 +285,9 @@ function removeFilmFromWatchlist(data){
   })
   .done(function(response){
     flashAjaxResponse(response);
-    removeWatchlistListings(data["film_id"]);
+    if ($('#calendar-box').hasClass('user-watchlist')){
+      removeWatchlistListings(data["film_id"]);
+    }
   })
   .error(function(xhr, unknown, error){
     alert(error);
