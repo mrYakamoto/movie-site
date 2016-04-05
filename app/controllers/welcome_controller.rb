@@ -7,13 +7,11 @@ class WelcomeController < ApplicationController
 
 
     @films = []
-    Film.all.each{|film_obj|@films << film_obj}
-    @top_three_films_arr = @films.sample(3)
-    @fourth_top_film = @films.sample()
-    @fifth_and_sixth_top_films_arr = @films.sample(2)
+    Film.order(popularity: :desc).each{|film_obj|@films << film_obj}
 
     @date_filler = DateTime.now()
-    @screenings = Screening.all.where("month > ? OR month = ? AND mday >= ?",@date_filler.month, @date_filler.month, @date_filler.mday)
+    showtime_plus_20min = (@date_filler + (30/1440.0))
+    @screenings = Screening.all.where("date_time >= ?", showtime_plus_20min)
     @theaters = Theater.all
 
     respond_to do |format|

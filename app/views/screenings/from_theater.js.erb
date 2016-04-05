@@ -1,4 +1,4 @@
-$("#calendar-box").html("<%= escape_javascript(render partial: '/calendar', locals: { screenings: @selected })%>");
+$("#calendar-box").html("<%= escape_javascript(render partial: '/welcome/calendar', locals: { screenings: @selected })%>");
 if ( $("#calendar-box").hasClass("user-watchlist") ){
   $("#calendar-box").removeClass("user-watchlist")
 }

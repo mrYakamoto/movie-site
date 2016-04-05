@@ -14,6 +14,8 @@ module RoxieScraperHelper
 
     theater_id = Theater.where(name: "Roxie Theater").first.id
 
+
+
     all_listings.each do |listing|
       date_str = listing.match(/\"startDate\":\"(.*)\",\"duration/)[1]
       time_obj = Time.parse(date_str)
@@ -26,13 +28,16 @@ module RoxieScraperHelper
       film_title = narrow_info.match(/^(.*)\",\"url\"/)[1]
       ticketing_url = narrow_info.match(/,\"url\":\"(.*)/)[1]
 
-      poster_url = data.css('img').find{|x|x['alt'] == film_title}['src']
-      poster_url = "#{url_root}#{poster_url}"
 
-      new_film = Film.create_with(poster_url: poster_url).find_or_create_by!(title: film_title)
+      poster_url = data.css('img').find{|x|x and x['alt'] == film_title}
+      if poster_url
+        poster_url = poster_url['src']
+        poster_url = "#{url_root}#{poster_url}"
 
+        new_film = Film.create_with(poster_url: poster_url).find_or_create_by!(title: film_title)
 
-      new_film.screenings.create(date_time: date_time_obj, month: date_time_obj.month, mday: date_time_obj.mday, year: date_time_obj.year, time: showtime, ticketing_url: ticketing_url, theater_id: theater_id)
+        new_film.screenings.create(date_time: date_time_obj, month: date_time_obj.month, mday: date_time_obj.mday, year: date_time_obj.year, time: showtime, ticketing_url: ticketing_url, theater_id: theater_id)
+       end
     end
   end
 

@@ -30,14 +30,15 @@ module ParkwayScraperHelper
           if ticketing_url.include?(ticketing_site_root)
             ticket_html = open(ticketing_url).read
             ticket_data = Nokogiri::HTML(ticket_html)
-
-            poster_url = ticket_data.css('img.poster').attr('src').text
-            poster_url = "#{ticketing_site_root}#{poster_url}"
+            if (ticket_data.css('img.poster').length > 0)
+              poster_url = ticket_data.css('img.poster').attr('src').text
+              poster_url = "#{ticketing_site_root}#{poster_url}"
+            end
           else
             poster_url = "NA"
           end
 
-
+          poster_url ||= "NA"
           time_obj = Time.parse(date_str)
           date_time_obj = DateTime.new(time_obj.year,time_obj.month,time_obj.mday,time_obj.hour,time_obj.min)
           showtime = format_time(date_time_obj)

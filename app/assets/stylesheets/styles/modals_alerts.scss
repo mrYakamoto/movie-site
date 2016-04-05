@@ -1,22 +1,22 @@
 .alert {
   display: none;
   position: fixed;
-  top: 0;
   left: 50%;
-  transform: translate(-50%);
-  margin-top: 135px;
-  z-index: 99998;
+  transform: translateX(-50%);
+  margin: 10vh auto;
+
+  z-index: 99999;
 }
 
 .modal{
-  z-index: 99999;
+  z-index: 99998;
   background-color:rgba(0, 0, 0, 0.5)
 }
 
 
 .modal-dialog {
   margin-top: 80px;
-  z-index: 99999;
+  z-index: 99998;
 }
 
 .loginmodal-container {

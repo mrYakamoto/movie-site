@@ -15,7 +15,7 @@
   <!-- theater-tab buttons -->
   <div class="theater-nav-container col-xs-12" id="theater-nav-container">
 
-      <%= render partial: "/theaters_nav", locals: {theaters: @theaters}%>
+      <%= render partial: "/welcome/theaters_nav", locals: {theaters: @theaters}%>
 
   </div>
 
@@ -24,6 +24,6 @@
 
   <div class="container" id="calendar-box">
 
-    <%= render partial: "/calendar", locals: {screenings: @screenings, date_filler: @date_filler} %>
+    <%= render partial: "/welcome/calendar", locals: {screenings: @screenings, date_filler: @date_filler} %>
 
   </div>

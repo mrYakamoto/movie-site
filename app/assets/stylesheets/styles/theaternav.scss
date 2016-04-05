@@ -23,10 +23,10 @@ div.theater-tab-box-container { padding: 0 5px 0 15px; }
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
 }
-
 @media screen and (min-width: 769px) {
   .affix-top { padding: 0 10% 0 10%; }
 }
+
 
 .affix {
   padding: 0;
@@ -42,6 +42,8 @@ div.theater-tab-box-container { padding: 0 5px 0 15px; }
 
 .user-cal {
   float: left !important;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
 
@@ -55,6 +57,7 @@ button#theaters-dropdown-button {
     color: $secondary-color;
   }
 }
+
 
 
 span.caret {
@@ -82,7 +85,8 @@ button.btn-warning, button.btn-warning:focus {
   color: $secondary-color;
   border: 1px solid black;
 }
-button.btn-warning:hover {
+
+button.btn-warning:hover, button#theaters-dropdown-button:hover {
   background-image: image-url('backgrounds/dark_embroidery.png');
   color: $tertiary-color;
   border: 1px solid black;
