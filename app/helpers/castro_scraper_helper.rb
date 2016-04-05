@@ -26,8 +26,6 @@ module CastroScraperHelper
       counter +=1
     end
 
-
-
     row_num = 0
     while (row_num < table.nodes[0].length) do
 
@@ -66,8 +64,4 @@ module CastroScraperHelper
     end
   end
 
-
-
 end
-
-

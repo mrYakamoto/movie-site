@@ -1,9 +1,10 @@
 .alert {
   display: none;
   position: fixed;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 10vh auto;
 
-  margin-top: 20vh;
   z-index: 99999;
 }
 

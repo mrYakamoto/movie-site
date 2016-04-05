@@ -1,3 +1,11 @@
+require 'nokogiri'
+require 'open-uri'
+
+include CastroScraperHelper
+include ParkwayScraperHelper
+include RoxieScraperHelper
+include YerbaScraperHelper
+
 class Scraper
 
   def self.save_all_posters
@@ -8,6 +16,7 @@ class Scraper
         end
       end
     end
+    Rails.logger.info("posters updated at #{Time.now}")
   end
 
   def self.have_poster_file?(file_name)
@@ -31,6 +40,21 @@ class Scraper
         File.delete(Rails.root.join('app','assets','images','posters', file))
       end
     end
+    Rails.logger.info("Old posters deleted at #{Time.now}")
+  end
+
+  def self.delete_old_screenings
+    now = DateTime.now()
+    Screening.all.each do |screening|
+      film = screening.film
+      if ( (screening.date_time < now)&&(film.screenings.length == 1) )
+        film.destroy
+        screening.destroy
+      elsif (screening.date_time < now)
+        screening.destroy
+      end
+    end
+    Rails.logger.info("old screenings deleted at #{Time.now}")
   end
 
 end
