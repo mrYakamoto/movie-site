@@ -24,6 +24,13 @@ module ParkwayScraperHelper
           showtime = listing.css('span.startTime').text
           date_str = "#{day_str} #{showtime}"
 
+          time_obj = Time.parse(date_str)
+          date_time_obj = DateTime.new(time_obj.year,time_obj.month,time_obj.mday,time_obj.hour,time_obj.min)
+          showtime = format_time(date_time_obj)
+
+          now = DateTime.now()
+          if date_time_obj < now then next end
+
           film_title = listing.css('span.summary').text.gsub(' (Purchase Tickets Online)','')
           ticketing_url = listing.css('span.summary').css('a').attr('href').text
 
@@ -39,9 +46,8 @@ module ParkwayScraperHelper
           end
 
           poster_url ||= "NA"
-          time_obj = Time.parse(date_str)
-          date_time_obj = DateTime.new(time_obj.year,time_obj.month,time_obj.mday,time_obj.hour,time_obj.min)
-          showtime = format_time(date_time_obj)
+
+
 
 
           new_film = Film.create_with(poster_url: poster_url).find_or_create_by!(title: film_title)
