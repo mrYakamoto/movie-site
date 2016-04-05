@@ -15,8 +15,10 @@ module YerbaScraperHelper
 
       show_rel_url = listing.css('div.views-field-title a').attr('href').value
       ticketing_url = "#{theater_root_url}#{show_rel_url}"
-
-      # hero_image_src = listing.css('div.views-field-field-hero-image img').attr('src').value
+      if listing.css('div.views-field-field-hero-image img').length > 0
+        hero_image_src = listing.css('div.views-field-field-hero-image img').attr('src').value
+      end
+      hero_image_src ||= "NA"
 
       date_str = listing.css('div.views-field-field-performance-times span').text
       time_obj = Time.parse(date_str)
