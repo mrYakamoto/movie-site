@@ -33,7 +33,7 @@ module MovieBoard
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.precompile += [
- 'application.js','application.css'
+ '/javascripts/application.js','/stylesheets/application.css'
  ]
   end
 end
