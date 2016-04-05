@@ -10,7 +10,7 @@ class Scraper
 
   def self.save_all_posters
     Film.all.each do |film|
-      unless ((Scraper.have_poster_file?("poster-#{film.id}"))||(film.poster_url == "NA"))
+      unless ( (Scraper.have_poster_file?("poster-#{film.id}") )|| (film.poster_url == "NA") )
         open(Rails.root.join('app','assets','images','posters',"poster-#{film.id}.jpg"), 'wb') do |file|
           file << open(film.poster_url).read
         end

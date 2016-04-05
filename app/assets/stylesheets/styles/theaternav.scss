@@ -32,7 +32,11 @@ div.theater-tab-box-container { padding: 0 5px 0 15px; }
   padding: 0;
   z-index: 16002;
   top: 49px;
+  border-top: 2px solid yellow;
   input.user-cal {
+    border-radius: 0;
+  }
+  button.user-cal {
     border-radius: 0;
   }
   -webkit-transition: all .5s ease-in-out;
