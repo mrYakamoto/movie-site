@@ -10,6 +10,8 @@ module YerbaScraperHelper
     theater_root_url = "http://www.ybca.org"
 
     all_listings.each do |listing|
+      if listing.css('div.views-field-title').length == 0 then next end
+
       film_title = listing.css('div.views-field-title').text
       film_title = remove_whitespace(film_title)
 
@@ -21,6 +23,7 @@ module YerbaScraperHelper
       hero_image_src ||= "NA"
 
       date_str = listing.css('div.views-field-field-performance-times span').text
+      if date_str.length == 0 then next end
       time_obj = Time.parse(date_str)
       date_time_obj = DateTime.new(time_obj.year,time_obj.month,time_obj.mday,time_obj.hour,time_obj.min)
       showtime = format_time(date_time_obj)
