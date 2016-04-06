@@ -12,29 +12,33 @@ task :update_data => :environment do
   Scraper.new.scrape_roxie
   puts "scraping Parkway"
   Scraper.new.scrape_parkway
-  puts "saving new posters"
-  Scraper.save_all_posters
-  puts "done."
 end
 
-task :delete_old_screenings => :environment do
-  Scraper.delete_old_screenings
-end
-task :delete_old_posters => :environment do
-  Scraper.delete_old_posters
-end
-task :scrape_castro => :environment do
-  Scraper.new.scrape_castro
-end
-task :scrape_yerba => :environment do
-  Scraper.new.scrape_yerba
-end
-task :scrape_roxie => :environment do
-  Scraper.new.scrape_roxie
-end
-task :scrape_parkway => :environment do
-  Scraper.new.scrape_parkway
-end
 task :save_all_posters => :environment do
+  puts "saving new posters"
   Scraper.save_all_posters
 end
+
+
+# task :delete_old_screenings => :environment do
+#   Scraper.delete_old_screenings
+# end
+# task :delete_old_posters => :environment do
+#   Scraper.delete_old_posters
+# end
+
+
+
+# task :scrape_castro => :environment do
+#   Scraper.new.scrape_castro
+# end
+# task :scrape_yerba => :environment do
+#   Scraper.new.scrape_yerba
+# end
+# task :scrape_roxie => :environment do
+#   Scraper.new.scrape_roxie
+# end
+# task :scrape_parkway => :environment do
+#   Scraper.new.scrape_parkway
+# end
+
