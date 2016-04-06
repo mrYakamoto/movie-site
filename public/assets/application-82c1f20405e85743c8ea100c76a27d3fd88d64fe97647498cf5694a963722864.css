@@ -7443,39 +7443,44 @@ div.theater-tab-box-container {
   padding: 0;
   z-index: 16002;
   top: 49px;
+  border-top: 2px solid yellow;
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
 }
-/* line 35, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 36, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 .affix input.user-cal {
   border-radius: 0;
 }
+/* line 39, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+.affix button.user-cal {
+  border-radius: 0;
+}
 
-/* line 43, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 47, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 .user-cal {
   float: left !important;
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
 }
 
-/* line 50, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 54, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 button#theaters-dropdown-button {
   margin: 0;
   padding: 6px 10px;
   background-color: white;
   border: 1px solid black;
 }
-/* line 56, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 60, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 button#theaters-dropdown-button span {
   color: black;
 }
 
-/* line 63, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 67, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 span.caret {
   margin-left: 10px;
 }
 
-/* line 67, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 71, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 a.theater-tab {
   color: black;
   border-right: 1px solid black;
@@ -7483,33 +7488,33 @@ a.theater-tab {
   margin-bottom: 0 !important;
 }
 
-/* line 76, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 80, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 li.theater-tab-box:hover a.theater-tab, li.theater-tab-box.active a.theater-tab {
   /*background-color: $secondary-color;*/
   color: yellow;
   background-image: url(/assets/backgrounds/dark_Tire-b10b1f4b2d4a35989bbfb7841837670bcc460f203a14244eb92c53392b30fe0d.png);
 }
 
-/* line 83, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 87, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 button.btn-warning, button.btn-warning:focus {
   background-color: white;
   color: black;
   border: 1px solid black;
 }
 
-/* line 89, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 93, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 button.btn-warning:hover, button#theaters-dropdown-button:hover {
   background-image: url(/assets/backgrounds/dark_embroidery-1ce7b04a3db469f8a603326b7f764ed62f1ec5fcfa874e4fc6a67c582b45b145.png);
   color: yellow;
   border: 1px solid black;
 }
 
-/* line 95, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 99, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 button.btn-warning:active {
   background-color: yellow !important;
 }
 
-/* line 99, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 103, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 .btn-success {
   background-image: url(/assets/backgrounds/dark_embroidery-1ce7b04a3db469f8a603326b7f764ed62f1ec5fcfa874e4fc6a67c582b45b145.png);
   /*background-color: $primary-color;*/
@@ -7517,20 +7522,20 @@ button.btn-warning:active {
   border: 1px solid black;
 }
 
-/* line 105, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 109, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 .btn-success:hover, .btn-success:focus {
   background-color: black;
   color: yellow;
   border: 1px solid black;
 }
 
-/* line 111, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+/* line 115, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
 .btn-success:active {
   background-color: yellow !important;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 118, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
+  /* line 122, /Users/Balthasar/Desktop/projects/movie-site/app/assets/stylesheets/styles/theaternav.scss */
   .theater-tab-box-container {
     position: absolute;
     z-index: 2;
