@@ -91,7 +91,7 @@ button.btn-warning, button.btn-warning:focus {
 }
 
 button.btn-warning:hover, button#theaters-dropdown-button:hover {
-  background-image: image-url('backgrounds/dark_embroidery.png');
+  background-image: image-url('bg-dark_embroidery.png');
   color: $tertiary-color;
   border: 1px solid black;
 }
@@ -101,7 +101,7 @@ button.btn-warning:active {
 }
 
 .btn-success {
-  background-image: image-url('backgrounds/dark_embroidery.png');
+  background-image: image-url('bg-dark_embroidery.png');
   /*background-color: $primary-color;*/
   color: white;
   border: 1px solid black;

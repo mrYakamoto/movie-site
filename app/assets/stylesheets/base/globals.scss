@@ -2,8 +2,8 @@ $primary-color: white;
 $secondary-color: black;
 $tertiary-color: yellow;
 
-$linen-background: image-url('backgrounds/low_contrast_linen.png');
-$dark-tire: image-url('backgrounds/dark_Tire.png');
+$linen-background: image-url('bg-low_contrast_linen.png');
+$dark-tire: image-url('bg-dark_Tire.png');
 /*$quaternary-color: ;
 $quinary-color: ;
 $senary-color: ;
@@ -17,7 +17,7 @@ $septenary-color: ;*/
 
 body {
   overflow-x: hidden;
-  background-image: image-url("backgrounds/new_year_background.png");
+  background-image: image-url("bg-new_year_background.png");
   background-repeat: repeat;
 }
 
