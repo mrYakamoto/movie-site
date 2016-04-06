@@ -33,6 +33,15 @@ class Scraper
 
 
   def self.delete_old_posters
+# poster_assets = Rails.application.assets_manifest.files.select{|k,v|( k.include?('posters/') )&&( !k.include?('default'))}
+# poster_assets.each do |k,v|
+#   film_id = k[/poster-(.*?)-/m, 1]
+#   if ( !Film.exists?(film_id) )
+
+#   end
+
+#   File.delete Rails.root.join('app','assets','images','posters','poster-1.jpg')
+
     Dir.foreach(Rails.root.join('app','assets','images','posters')) do |file|
       next if file == '.' or file == '..' or file == 'default.jpg'
 
