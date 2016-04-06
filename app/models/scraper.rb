@@ -12,7 +12,7 @@ class Scraper
     Film.all.each do |film|
       unless ( (Scraper.have_poster_file?("poster-#{film.id}") )|| (film.poster_url == "NA") )
         puts file
-        open(Rails.root.join('app','assets','images','posters',"poster-#{film.id}.jpg"), 'wb') do |file|
+        open(Rails.root.join('app','assets','images',"poster-#{film.id}.jpg"), 'wb') do |file|
           file << open(film.poster_url).read
         end
       end
@@ -21,7 +21,7 @@ class Scraper
   end
 
   def self.have_poster_file?(file_name)
-    if (Rails.application.assets.find_asset "posters/#{file_name}")
+    if (Rails.application.assets.find_asset "#{file_name}")
       true
     else
       false
@@ -43,11 +43,11 @@ class Scraper
 
 #   File.delete Rails.root.join('app','assets','images','posters','poster-1.jpg')
 
-    Dir.foreach(Rails.root.join('app','assets','images','posters')) do |file|
-      next if file == '.' or file == '..' or file == 'default.jpg'
+    Dir.foreach(Rails.root.join('app','assets','images')) do |file|
+      next if !file.include?('poster-')
 
       if ( !Film.exists?(file.gsub('/\D/','')) )
-        File.delete(Rails.root.join('app','assets','images','posters', file))
+        File.delete(Rails.root.join('app','assets','images', file))
       end
     end
     Rails.logger.info("Old posters deleted at #{Time.now}")

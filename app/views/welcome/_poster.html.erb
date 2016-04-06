@@ -24,9 +24,9 @@
 
     <a href="#">
      <% if (film.poster_url == "NA") %>
-     <%= image_tag "posters/default", class: "poster" %>
+     <%= image_tag "default", class: "poster" %>
      <% else %>
-     <%= image_tag "posters/poster-#{film.id}", class: "poster" %>
+     <%= image_tag "poster-#{film.id}", class: "poster" %>
      <% end %>
    </a>
 
