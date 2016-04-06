@@ -12,7 +12,7 @@ class Scraper
     Film.all.each do |film|
       unless ( (Scraper.have_poster_file?("poster-#{film.id}") )|| (film.poster_url == "NA") )
         puts file
-        open(Rails.root.join('app','assets','images',"poster-#{film.id}.jpg"), 'wb') do |file|
+        open(Rails.root.join('app','assets',"poster-#{film.id}.jpg"), 'wb') do |file|
           file << open(film.poster_url).read
         end
       end
