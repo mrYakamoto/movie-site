@@ -1,6 +1,8 @@
 class Film < ActiveRecord::Base
   has_attached_file :poster,
-  :bucket => 'filmlist-assets'
+  :bucket => 'filmlist-assets',
+  :s3_protocol => :https,
+  :styles => { :original => "182x268#" }
 
   after_create :poster_from_url
 
