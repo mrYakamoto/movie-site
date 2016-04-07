@@ -1,0 +1,33 @@
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="loginmodal-container">
+        <h1>Login to Save Movies to Your Own Calendar</h1><br>
+        <%= form_for :session, url: sessions_path, html: {:class => 'form-horizontal', :id => 'login-form'}, remote: true do |f| %>
+        <%= f.text_field :username_or_email, placeholder: "Username or Email", id: "username_or_email", name: "username_or_email"%>
+        <%= f.password_field :password, placeholder: "Password", id: "password_plaintext", name: "password_plaintext" %>
+        <%= f.submit "Login", name:"login", class:"login loginmodal-submit"%>
+        <% end %>
+        <div class="login-help">
+          <a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal">Register</a> <!-- - <a href="#">Forgot Password</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="loginmodal-container">
+        <h1>Register</h1><br>
+        <%= form_for :user, url: users_path, html: {:class => 'form-horizontal', :id => 'login-form'}, remote: true do |f| %>
+            <%= f.text_field :username, placeholder: "Username", id: "username", name: "user[username]"%>
+            <%= f.text_field :email, placeholder: "Email", id: "email", name: "user[email]"%>
+            <%= f.password_field :password, confirmation: true, placeholder: "Password", id: "password_plaintext", name: "pass[password_plaintext]" %>
+            <%= f.password_field :password_confirmation, presence: true, placeholder: "Confirm Password", id: "confirm_password_plaintext", name: "pass[confirm_password]" %>
+            <%= f.submit "Login", name:"login", class:"login loginmodal-submit" %>
+        <% end %>
+        <div class="login-help">
+          <a href="#" data-toggle="modal" data-target="#login-modal" data-dismiss="modal">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>

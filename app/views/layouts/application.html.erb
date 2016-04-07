@@ -1,80 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MovieBoard</title>
+  <head>
+    <title>MovieBoard</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  </head>
 
-<body class="<%= controller_name %> <%= action_name %>">
-
-  <%= render partial: "shared/flash_messages", flash: flash %>
-
-  <center>
-    <div class="alert alert-info" data-dismiss="alert" role="alert">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    </div>
-  </center>
-
-  <center>
-    <div class="alert alert-danger" data-dismiss="alert" role="alert">
-    </div>
-  </center>
-
-  <center>
-    <div class="alert alert-success" data-dismiss="alert" role="alert">
-    </div>
-  </center>
-
-
-  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-      <div class="loginmodal-container">
-        <h1>Login to Save Movies to Your Own Calendar</h1><br>
-        <%= form_for :session, url: sessions_path, html: {:class => 'form-horizontal', :id => 'login-form'}, remote: true do |f| %>
-        <%= f.text_field :username_or_email, placeholder: "Username or Email", id: "username_or_email", name: "username_or_email"%>
-        <%= f.password_field :password, placeholder: "Password", id: "password_plaintext", name: "password_plaintext" %>
-        <%= f.submit "Login", name:"login", class:"login loginmodal-submit"%>
-        <% end %>
-        <div class="login-help">
-          <a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal">Register</a> - <a href="#">Forgot Password</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-      <div class="loginmodal-container">
-        <h1>Register</h1><br>
-        <%= form_for :user, url: users_path, html: {:class => 'form-horizontal', :id => 'login-form'}, remote: true do |f| %>
-            <%= f.text_field :username, placeholder: "Username", id: "username", name: "user[username]"%>
-            <%= f.text_field :email, placeholder: "Email", id: "email", name: "user[email]"%>
-            <%= f.password_field :password, confirmation: true, placeholder: "Password", id: "password_plaintext", name: "pass[password_plaintext]" %>
-            <%= f.password_field :password_confirmation, presence: true, placeholder: "Confirm Password", id: "confirm_password_plaintext", name: "pass[confirm_password]" %>
-            <%= f.submit "Login", name:"login", class:"login loginmodal-submit" %>
-        <% end %>
-        <div class="login-help">
-          <a href="#" data-toggle="modal" data-target="#login-modal" data-dismiss="modal">Login</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <%= render 'layouts/nav' %>
-
-
+  <body class="<%= controller_name %> <%= action_name %>">
+    <%= render partial: "shared/flash_messages", flash: flash %>
+    <%= render partial: "layouts/alerts" %>
+    <%= render partial: "layouts/modals" %>
+    <%= render 'layouts/nav' %>
 
     <%= yield %>
-
-
-
-</body>
+  </body>
 </html>

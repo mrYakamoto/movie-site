@@ -10,6 +10,10 @@ task :update_data => :environment do
   Scraper.new.scrape_parkway
 end
 
+task :destroy_old_screenings => :environment do
+  puts "clearing old screenings"
+  Scraper.delete_old_screenings
+end
 
 # task :delete_old_screenings => :environment do
 #   Scraper.delete_old_screenings
