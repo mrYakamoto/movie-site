@@ -43,7 +43,7 @@ module CastroScraperHelper
           if (imdb_parsed.css('div.poster img').length > 0)
             poster_url = imdb_parsed.css('div.poster img').attr('src').value
           else
-            poster_url = "NA"
+            poster_url = nil
           end
 
           new_film = Film.create_with(poster_url: poster_url).find_or_create_by!(title: film_title)

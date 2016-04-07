@@ -6,24 +6,23 @@
       <div class="item active">
         <div class="row">
           <% 6.times do %>
-            <%= render partial: 'welcome/poster', locals: {films: @films} %>
+          <%= render partial: 'welcome/poster', locals: {films: @films} %>
           <% end %>
-       </div>
-     </div>
+        </div>
+      </div>
 
-
-     <% (@films.length / 6).times do %>
-     <div class="item">
-      <div class="row">
-        <% 6.times do %>
-        <%= render partial: 'welcome/poster', locals: {films: @films} %>
+      <% 3.times do %>
+      <div class="item">
+        <div class="row">
+          <% 6.times do %>
+          <%= render partial: 'welcome/poster', locals: {films: @films} %>
+          <% end %>
+        </div>
+      </div>
       <% end %>
-    </div>
-  </div>
-  <% end %>
 
-</div>
-<a class="left carousel-control " href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-<a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-</div>
+    </div>
+    <a class="left carousel-control " href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+  </div>
 </div>

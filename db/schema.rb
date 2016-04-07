@@ -11,17 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308205446) do
+ActiveRecord::Schema.define(version: 20160406230529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "films", force: :cascade do |t|
     t.string   "title"
-    t.string   "poster_url", default: "NA", null: false
-    t.integer  "popularity", default: 0
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "poster_url"
+    t.integer  "popularity",          default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
   end
 
   create_table "screenings", force: :cascade do |t|
