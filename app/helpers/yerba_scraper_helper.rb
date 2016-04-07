@@ -20,7 +20,7 @@ module YerbaScraperHelper
       if listing.css('div.views-field-field-hero-image img').length > 0
         hero_image_src = listing.css('div.views-field-field-hero-image img').attr('src').value
       end
-      hero_image_src ||= "NA"
+      hero_image_src ||= nil
 
       date_str = listing.css('div.views-field-field-performance-times span').text
       if date_str.length == 0 then next end

@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20160406230529) do
 
   create_table "films", force: :cascade do |t|
     t.string   "title"
-    t.string   "poster_url",          default: "NA", null: false
+    t.string   "poster_url"
     t.integer  "popularity",          default: 0
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"

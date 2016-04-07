@@ -42,10 +42,10 @@ module ParkwayScraperHelper
               poster_url = "#{ticketing_site_root}#{poster_url}"
             end
           else
-            poster_url = "NA"
+            poster_url = nil
           end
 
-          poster_url ||= "NA"
+          poster_url ||= nil
 
 
 

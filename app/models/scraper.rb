@@ -8,25 +8,6 @@ include YerbaScraperHelper
 
 class Scraper
 
-  def self.save_all_posters
-    Film.all.each do |film|
-      unless ( (Scraper.have_poster_file?("poster-#{film.id}") )|| (film.poster_url == "NA") )
-        puts file
-        open(Rails.root.join('app','assets',"poster-#{film.id}.jpg"), 'wb') do |file|
-          file << open(film.poster_url).read
-        end
-      end
-    end
-    Rails.logger.info("posters updated at #{Time.now}")
-  end
-
-  def self.have_poster_file?(file_name)
-    if (Rails.application.assets.find_asset "#{file_name}")
-      true
-    else
-      false
-    end
-  end
 
   def self.remove_whitespace(string)
     string.gsub(/^\s*|\n\s*|\r\s*|\s{2}|\s*$/,'')
@@ -34,15 +15,6 @@ class Scraper
 
 
   def self.delete_old_posters
-# poster_assets = Rails.application.assets_manifest.files.select{|k,v|( k.include?('posters/') )&&( !k.include?('default'))}
-# poster_assets.each do |k,v|
-#   film_id = k[/poster-(.*?)-/m, 1]
-#   if ( !Film.exists?(film_id) )
-
-#   end
-
-#   File.delete Rails.root.join('app','assets','images','posters','poster-1.jpg')
-
     Dir.foreach(Rails.root.join('app','assets','images')) do |file|
       next if !file.include?('poster-')
 
