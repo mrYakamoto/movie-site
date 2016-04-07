@@ -6,7 +6,6 @@ else if ("<%=flash[:error]%>".length > 0){
   flashError("<%= flash[:error] %>");
 }
 
-
 function newSession(username){
   deactivateModal();
   swapToLogoutButton();
@@ -14,17 +13,14 @@ function newSession(username){
   initWatchlistTriggers();
   console.log("INSIDE #newSession");
 }
-
 function swapToLogoutButton(){
   $('nav#main-nav ul').empty().append('<li><a rel="nofollow" data-method="delete" class="logged-in pull-right" href="/sessions/%23%3CActionDispatch::Request::Session:0x007fba83002ba8%3E">Logout</a></li>');
 }
-
 function swapUserCalButton(username){
-  $('button#user-cal').replaceWith('<input class="user-cal btn btn-success center col-xs-6 col-sm-12" id="user-cal" type="submit" value="'+username+'\'s watchlist">');
+  $('button#user-cal').replaceWith('<form class="button_to" method="get" action="/users/1" data-remote="true"><input class="user-cal btn btn-success center col-xs-6 col-sm-12" id="user-cal" type="submit" value="'+username+'\'s watchlist"></form>');
   $('div#user-cal').toggleClass('btn-warning btn-success');
   $('div#user-cal').attr('data-user', 'true');
 }
-
 function deactivateModal(){
   $('div.modal').modal('hide');
 }
