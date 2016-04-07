@@ -23,11 +23,7 @@
     </div>
 
     <a href="#">
-     <% if (film.poster_url == "NA") %>
-     <%= image_tag "default", class: "poster" %>
-     <% else %>
-     <%= image_tag "poster-#{film.id}", class: "poster" %>
-     <% end %>
+      <%= image_tag film.poster.url, class:"poster" %>
    </a>
 
  </div>
