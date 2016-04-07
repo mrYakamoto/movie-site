@@ -29,6 +29,9 @@ gem 'factory_girl'
 gem 'hirb'
 gem 'table_parser'
 
+gem 'paperclip'
+gem 'aws-sdk', '~> 1.6'
+
 ruby '2.2.1'
 
 group :development, :test do

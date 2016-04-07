@@ -1,4 +1,5 @@
 class Film < ActiveRecord::Base
+  has_attached_file :poster
   before_create :check_poster_url
 
   has_many :users, through: :users_films
@@ -9,6 +10,10 @@ class Film < ActiveRecord::Base
   scope :by_popularity, -> {
     order(:popularity => :desc)
   }
+
+  def picture_from_url(url)
+    self.picture = open(url)
+  end
 
   def all_theaters
     theaters = []
