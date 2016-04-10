@@ -78,7 +78,7 @@ input:focus { outline:0 !important;}
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  height: 50px;
+  height: 20px;
   background: $secondary-color;
 }
 ::-webkit-scrollbar-thumb:window-inactive {

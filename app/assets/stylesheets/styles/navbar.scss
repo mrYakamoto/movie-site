@@ -9,7 +9,6 @@ nav#main-nav {
   width: 100%;
   border-radius: 0;
 
-  padding-right: 30px;
 
   .navbar-brand {
     color: $primary-color;
@@ -18,7 +17,7 @@ nav#main-nav {
   ul.navbar-nav a {
     color: $primary-color;
     line-height: 50px;
-    padding: 0 20px 0 0;
+    padding: 0 10px 0 0;
 
   }
   ul.navbar-nav a:hover {

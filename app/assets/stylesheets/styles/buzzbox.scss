@@ -1,9 +1,6 @@
 @media (max-width: 767px) {
   div#myCarousel {
     .caption {
-      height: 93%;
-      width: 91%;
-      padding: 4px 4px 0px 4px !important;
       p.theater-name { display: none; }
       p.buzz-showtime {
         span.screening-time { display: none;}
@@ -85,17 +82,18 @@ div#myCarousel {
     transition: all 0.5s ease-in-out;
   }
   .thumbnail {
-    background-color:black;
+    padding: 0;
+    box-shadow: 10px 10px 5px #888888;
     position:relative;
     overflow:hidden;
     border: 0px !important;
     margin-bottom: 0;
     .caption {
+      width: 100%;
+      height: 100%;
       position:absolute;
-      display: none;
+      /*display: none;*/
       background:rgba(0, 0, 0, 0.5);
-      width:95%;
-      height:96%;
       text-align:center;
       color:#fff !important;
       z-index:2;
@@ -118,7 +116,8 @@ div#myCarousel {
     -ms-transform: scale(1.3, 1.3);
     transform: scale(1.3, 1.3);
     transition: all 0.5s ease-in-out;
-    background-color: yellow !important;
+
+    box-shadow: -10px -10px 5px yellow;
 
     .caption {
       display: block;
