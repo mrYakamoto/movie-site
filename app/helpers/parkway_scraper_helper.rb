@@ -35,6 +35,7 @@ module ParkwayScraperHelper
           ticketing_url = listing.css('span.summary').css('a').attr('href').text
 
           if ticketing_url.include?(ticketing_site_root)
+            ticketing_url = ticketing_url.gsub('*','')
             ticket_html = open(ticketing_url).read
             ticket_data = Nokogiri::HTML(ticket_html)
             if (ticket_data.css('img.poster').length > 0)
