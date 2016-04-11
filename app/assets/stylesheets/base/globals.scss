@@ -13,7 +13,6 @@ $septenary-color: ;*/
   overflow-y: auto;
 }
 
-
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -38,10 +37,10 @@ div.body-container { background-color: #F5F5F5; }
 }
 
 /*'Poiret One'*/
-h1 { font-family: 'Poiret One'; }
+h1 { font-family: 'Futura', courier !important; }
 
 h2, h3, h4, h5, h6, th, td, span.theater-name, span.theater-tab, li, a, div.panel-heading {
-  font-family: 'Poiret One', courier !important;
+  font-family: 'Futura', courier !important;
   font-weight: 800;
 }
 p, div, span.showtime {
@@ -49,7 +48,7 @@ p, div, span.showtime {
 }
 
 input {
-  font-family: 'Poiret One';
+  font-family: 'Futura', courier !important;;
 }
 
 .body-container { background-color: white; }
