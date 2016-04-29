@@ -47,7 +47,6 @@ p, div, input, span.showtime {
   font-family: 'Futura', courier !important;
 }
 
-
 .body-container { background-color: white; }
 
 /*set html font-size at 62.5 to make sizing with rems similar to pixels*/
@@ -59,9 +58,6 @@ a:active { text-decoration: none !important; }
 a:focus {outline:0;}
 button:focus { outline:0 !important; }
 input:focus { outline:0 !important;}
-
-
-
 
 /* browser scrollbar */
 ::-webkit-scrollbar {
