@@ -16,7 +16,7 @@ class Scraper
     now = DateTime.now()
     Screening.all.each do |screening|
       film = screening.film
-      if ( (screening.date_time < now)&&(film.screenings.length == 1) )
+      if ( (screening.date_time < (now - 0.001) )&&(film.screenings.length == 1) )
         film.destroy
         screening.destroy
         puts "destroying #{film.title} screening and film"
