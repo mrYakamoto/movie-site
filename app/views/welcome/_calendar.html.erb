@@ -29,7 +29,7 @@
             <% 7.times do %>
 
                 <td
-                  <% if @date_filler < date_today %>
+                  <% if @date_filler < date_today - 1 %>
                   data-title=""
                   <% else %>
                   data-title="<%=@date_filler.strftime("%A, %B %-d")%>"
