@@ -26,10 +26,10 @@
           <% next_month = @date_filler.month + 1 %>
           <% until @date_filler.month == next_month %>
             <tr>
-            <% 7.times do %>
 
+            <% 7.times do %>
                 <td
-                  <% if @date_filler < date_today - 1 %>
+                  <% if @date_filler < date_today %>
                   data-title=""
                   <% else %>
                   data-title="<%=@date_filler.strftime("%A, %B %-d")%>"
